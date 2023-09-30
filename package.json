@@ -1,15 +1,15 @@
 {
-  "name": "storybook-addon-kit",
+  "name": "storybook-addon-playground",
   "version": "0.0.0",
-  "description": "everything you need to build a Storybook addon",
+  "description": "A playground to enable consumers learn how to use the component library or to reproduce bugs",
   "keywords": [
-    "storybook-addons"
+    "playground", "sandbox", "code", "debug", "learn", "reproduce", "bugs", "component", "storybook-addons"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybookjs/storybook-addon-kit"
+    "url": "https://github.com/YossiSaadi/storybook-addon-playground"
   },
-  "author": "package-author",
+  "author": "Yossi Saadi <yossisaadi@gmail.com>",
   "license": "MIT",
   "exports": {
     ".": {
@@ -39,7 +39,6 @@
     "*.d.ts"
   ],
   "scripts": {
-    "postinstall": "node scripts/welcome.js",
     "clean": "rimraf ./dist",
     "prebuild": "yarn clean",
     "build": "tsup",
@@ -101,9 +100,9 @@
     "access": "public"
   },
   "storybook": {
-    "displayName": "Addon Kit",
+    "displayName": "Playground",
     "supportedFrameworks": [
-      "supported-frameworks"
+      "react"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   }
