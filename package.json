@@ -3,7 +3,15 @@
   "version": "0.0.0",
   "description": "A playground to enable consumers learn how to use the component library or to reproduce bugs",
   "keywords": [
-    "playground", "sandbox", "code", "debug", "learn", "reproduce", "bugs", "component", "storybook-addons"
+    "playground",
+    "sandbox",
+    "code",
+    "debug",
+    "learn",
+    "reproduce",
+    "bugs",
+    "component",
+    "storybook-addons"
   ],
   "repository": {
     "type": "git",
@@ -47,34 +55,34 @@
     "start": "run-p build:watch 'storybook --quiet'",
     "prerelease": "zx scripts/prepublish-checks.mjs",
     "release": "yarn build && auto shipit",
-    "eject-ts": "zx scripts/eject-typescript.mjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.0",
-    "@storybook/addon-interactions": "^7.0.0",
-    "@storybook/addon-links": "^7.0.0",
     "@storybook/react": "^7.0.0",
     "@storybook/react-vite": "^7.0.0",
     "@storybook/testing-library": "^0.0.14-next.1",
     "@types/node": "^18.15.0",
-    "@types/react": "^18.0.34",
+    "@types/react": "^18.2.23",
+    "@types/react-dom": "^18.2.8",
     "@vitejs/plugin-react": "^3.1.0",
     "auto": "^10.3.0",
     "boxen": "^5.0.1",
     "dedent": "^0.7.0",
+    "monday-ui-react-core": "^2.41.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.1",
     "prompts": "^2.4.2",
     "prop-types": "^15.8.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-jsx-parser": "^1.29.0",
     "rimraf": "^3.0.2",
     "storybook": "^7.0.0",
     "tsup": "^6.6.3",
     "typescript": "^4.9.5",
-    "vite": "^4.1.4",
+    "vite": "^4.1.5",
     "zx": "^1.14.1"
   },
   "peerDependencies": {
@@ -85,6 +93,7 @@
     "@storybook/preview-api": "^7.0.0",
     "@storybook/theming": "^7.0.0",
     "@storybook/types": "^7.0.0",
+    "monday-ui-react-core": "^2.0.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
@@ -105,5 +114,10 @@
       "react"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  },
+  "dependencies": {
+    "@babel/standalone": "^7.23.1",
+    "@codemirror/lang-javascript": "^6.2.1",
+    "@uiw/react-codemirror": "^4.21.18"
   }
 }
