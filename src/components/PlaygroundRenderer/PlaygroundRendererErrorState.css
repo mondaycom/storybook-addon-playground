@@ -1,0 +1,8 @@
+.error-state {
+  background: var(--color-error);
+  border-radius: var(--border-radius-medium);
+  padding: 16px;
+  font-size: var(--font-size-subtext);
+  color: var(--text-color-on-inverted);
+  font-family: var(--font-family);
+}
