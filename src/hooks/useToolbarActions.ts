@@ -1,10 +1,9 @@
 import { useCallback } from "react";
-import { createPaste, formatCss, formatJsx } from "@/utils";
+import { formatCss, formatJsx } from "@/utils";
 import { Code, Tab } from "@/types";
 import useCopyToClipboard from "./useCopyToClipboard";
 
 interface UseToolbarActionsReturnType {
-  onSave: () => void;
   onReset: () => void;
   onFormatCode: () => void;
   onCopy: () => void;
@@ -19,13 +18,6 @@ const useToolbarActions = (
   currentTab: Tab
 ): UseToolbarActionsReturnType => {
   const { onCopy, isCopied, shouldAllowCopy } = useCopyToClipboard(code);
-
-  const onSave = useCallback(async () => {
-    if (code) {
-      const response = await createPaste(code.jsx);
-      console.log(response);
-    }
-  }, [code]);
 
   const onFormatCode = useCallback(async () => {
     let formatted: string;
@@ -45,7 +37,7 @@ const useToolbarActions = (
     resetCode();
   }, [resetCode]);
 
-  return { onCopy, isCopied, shouldAllowCopy, onSave, onFormatCode, onReset };
+  return { onCopy, isCopied, shouldAllowCopy, onFormatCode, onReset };
 };
 
 export default useToolbarActions;

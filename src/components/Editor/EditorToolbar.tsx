@@ -13,7 +13,7 @@ import {
   PANEL_ID,
   DEFAULT_ADDON_PARAMETERS,
 } from "@/consts";
-import {PlaygroundState} from "@/types";
+import { PlaygroundState } from "@/types";
 
 const EditorToolbar: React.FC = () => {
   const { selectStory } = useStorybookApi();
@@ -23,7 +23,10 @@ const EditorToolbar: React.FC = () => {
   );
 
   const { code, updateCode, resetCode } = usePlaygroundArgs();
-  const [state, setState] = useAddonState<PlaygroundState>(PANEL_ID, DEFAULT_ADDON_STATE);
+  const [state, setState] = useAddonState<PlaygroundState>(
+    PANEL_ID,
+    DEFAULT_ADDON_STATE
+  );
   const onFontSizeChange = useCallback(
     (amount: number) => {
       setState((state) => ({
@@ -61,8 +64,6 @@ const EditorToolbar: React.FC = () => {
         disabled={isCopied || !shouldAllowCopy}
         onClick={onCopy}
       />
-      {/* TODO not supported yet */}
-      {/*<EditorToolbarButton text="Share" icon="share" onClick={onSave} />*/}
       <EditorToolbarButton
         text="Format"
         icon="paintbrush"

@@ -1,1 +1,1 @@
-export { withPlaygroundRenderer } from "./decorators";
+export { withPlaygroundRenderer } from "@/decorators";
