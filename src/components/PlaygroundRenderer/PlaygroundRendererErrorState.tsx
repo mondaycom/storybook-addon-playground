@@ -6,7 +6,7 @@ interface PlaygroundRendererErrorStateProps {
 }
 
 const PlaygroundRendererErrorState: React.FC<PlaygroundRendererErrorStateProps> = ({ error }) => {
-  return <div className={"error-state"}>{error}</div>;
+  return <div className="error-state">{error}</div>;
 };
 
 export default PlaygroundRendererErrorState;

@@ -6,7 +6,7 @@ import { Addon_RenderOptions } from "@storybook/types";
 import { Extension } from "@uiw/react-codemirror";
 import { useAddonState } from "@storybook/manager-api";
 import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
-import { Tab } from "@/types";
+import { PlaygroundState, Tab } from "@/types";
 import { langs } from "@uiw/codemirror-extensions-langs";
 
 const commonExtensions: Extension[] = [];
@@ -16,7 +16,10 @@ const extensions: { jsx: Extension[]; css: Extension[] } = {
 };
 
 const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
-  const [state, setState] = useAddonState(PANEL_ID, DEFAULT_ADDON_STATE);
+  const [state, setState] = useAddonState<PlaygroundState>(
+    PANEL_ID,
+    DEFAULT_ADDON_STATE
+  );
 
   const { code, updateCode } = usePlaygroundArgs();
   const { selectedTab, fontSize } = state;
@@ -42,7 +45,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
         <div style={{ display: "flex", height: "100%" }}>
           <EditorTabs selectedTab={selectedTab} onTabChange={onTabChange} />
           <div style={{ flex: 1 }}>
-            <Suspense fallback={"$$Loading Editor$$"}>
+            <Suspense fallback={"Loading Editor..."}>
               <Editor
                 type={selectedTab}
                 code={code[selectedTab]}

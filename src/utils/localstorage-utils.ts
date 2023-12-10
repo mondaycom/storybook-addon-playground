@@ -7,7 +7,7 @@ export function saveToLocalStorage<T>(key: string, data: T): void {
   }
 }
 
-export function fetchFromLocalStorage<T>(key: string): T {
+export function fetchFromLocalStorage<T>(key: string): T | null {
   try {
     const data = localStorage.getItem(key);
     if (data === null) {

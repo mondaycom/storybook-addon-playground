@@ -1,0 +1,17 @@
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  cursor: pointer;
+
+  &.active {
+    border-right: 3px solid #029cfd;
+  }
+
+  &:not(.active) {
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
