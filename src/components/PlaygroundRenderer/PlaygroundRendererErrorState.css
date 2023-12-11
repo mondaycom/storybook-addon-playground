@@ -1,8 +1,7 @@
 .error-state {
-  background: var(--color-error);
-  border-radius: var(--border-radius-medium);
+  background: #d83a52;
+  border-radius: 8px;
   padding: 16px;
-  font-size: var(--font-size-subtext);
-  color: var(--text-color-on-inverted);
-  font-family: var(--font-family);
+  font-size: 14px;
+  color: #ffffff;
 }

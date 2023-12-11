@@ -2,7 +2,7 @@
 
 ![img.png](assets/img.png)
 
-## How to run locally
+## Develop locally
 
 Install dependencies and start
 
@@ -21,38 +21,42 @@ Go to [localhost:6006](http://localhost:6006)
 npm install -D @mondaydotcomorg/storybook/addons/playground
 ```
 
-### Implement
+### Register addon
 
 On your `.storybook/main.ts` file, add the following:
 
 ```js
 const config = {
-  // ...config
+  ...
   addons: [
-    // ...addons
+    ...
     "@mondaydotcomorg/storybook/addons/playground",
   ],
 };
 ```
 
+### Load custom components and set Playground story
+
 On your `.storybook/preview.ts` file, add the following:
 
 ```js
+...
+import MyComponentsLibrary from 'my-components-library';
+import MyIconsLibrary from 'my-icons-library';
+...
 const preview = {
-  // ...preview
+  ...
   parameters: {
     playground: {
-      // title of your story (including category prefix)
+      // title of your story (including category prefix, if there is one)
       playgroundStoryId: "playground",
-      components: {
-        // ...your custom components
-      },
+      components: { ...MyComponentsLibrary, ...MyIconsLibrary },
     },
   },
 };
 ```
 
-### Story
+### Render a story including the playground in the sidebar
 
 Create a story with the following content:
 
