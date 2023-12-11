@@ -18,7 +18,7 @@ Go to [localhost:6006](http://localhost:6006)
 ### Install
 
 ```bash
-npm install -D @mondaydotcomorg/storybook/addons/playground
+npm install -D @mondaydotcomorg/storybook-addon-playground
 ```
 
 ### Register addon
@@ -30,7 +30,7 @@ const config = {
   ...
   addons: [
     ...
-    "@mondaydotcomorg/storybook/addons/playground",
+    "@mondaydotcomorg/storybook-addon-playground",
   ],
 };
 ```
