@@ -1,40 +1,27 @@
-import { addons, types } from "@storybook/manager-api";
-import { ADDON_ID, TOOL_ID, PANEL_ID, TAB_ID } from "./constants";
-import { Tool } from "./Tool";
-import { Panel } from "./Panel";
-import { Tab } from "./Tab";
+import { addons } from "@storybook/manager-api";
+import { Addon_TypesEnum } from "@storybook/types";
+import { Tool, Panel, PanelTitle } from "@/components/Addons";
+import { ADDON_ID, ADDON_ID_FOR_PARAMETERS, PANEL_ID, TOOL_ID } from "./consts";
+import { PlaygroundParameters } from "@/types";
 
-/**
- * Note: if you want to use JSX in this file, rename it to `manager.tsx`
- * and update the entry prop in tsup.config.ts to use "src/manager.tsx",
- */
+addons.register(ADDON_ID, (api) => {
+  function getPlaygroundStoryId() {
+    const { playgroundStoryId } = (api.getCurrentParameter(
+      ADDON_ID_FOR_PARAMETERS
+    ) || {}) as PlaygroundParameters;
+    return playgroundStoryId;
+  }
 
-// Register the addon
-addons.register(ADDON_ID, () => {
-  // Register the tool
   addons.add(TOOL_ID, {
-    type: types.TOOL,
-    title: "My addon",
-    match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
+    type: Addon_TypesEnum.TOOLEXTRA,
+    title: "", // has no effect, but it is a must-have attr
+    match: ({ storyId }) => !storyId.includes(getPlaygroundStoryId()),
     render: Tool,
   });
 
-  // Register the panel
   addons.add(PANEL_ID, {
-    type: types.PANEL,
-    title: "My addon",
-    match: ({ viewMode }) => viewMode === "story",
+    type: Addon_TypesEnum.PANEL,
+    title: PanelTitle,
     render: Panel,
-  });
-
-  // Register the tab
-  addons.add(TAB_ID, {
-    type: types.TAB,
-    title: "My addon",
-    //👇 Checks the current route for the story
-    route: ({ storyId }) => `/myaddon/${storyId}`,
-    //👇 Shows the Tab UI element in myaddon view mode
-    match: ({ viewMode }) => viewMode === "myaddon",
-    render: Tab,
   });
 });

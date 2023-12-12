@@ -1,16 +1,12 @@
 import type { Preview } from "@storybook/react";
+import * as VibeComponents from "monday-ui-react-core";
+import * as VibeIcons from "monday-ui-react-core/icons";
 
 const preview: Preview = {
   parameters: {
-    backgrounds: {
-      default: "light",
-    },
-    actions: { argTypesRegex: "^on[A-Z].*" },
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/,
-      },
+    playground: {
+      playgroundStoryId: "playground",
+      components: { ...VibeComponents, VibeIcons },
     },
   },
 };

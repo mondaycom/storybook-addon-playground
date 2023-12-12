@@ -1,103 +1,22 @@
 {
-  "name": "storybook-addon-playground",
-  "version": "0.0.0",
+  "name": "@mondaydotcomorg/storybook-addon-playground",
+  "version": "0.0.1",
   "description": "A playground to enable consumers learn how to use the component library or to reproduce bugs",
+  "type": "module",
   "keywords": [
-    "playground", "sandbox", "code", "debug", "learn", "reproduce", "bugs", "component", "storybook-addons"
+    "playground",
+    "sandbox",
+    "code",
+    "debug",
+    "learn",
+    "reproduce",
+    "bugs",
+    "component",
+    "storybook-addons"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/YossiSaadi/storybook-addon-playground"
-  },
-  "author": "Yossi Saadi <yossisaadi@gmail.com>",
-  "license": "MIT",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./manager": {
-      "require": "./dist/manager.js",
-      "import": "./dist/manager.mjs",
-      "types": "./dist/manager.d.ts"
-    },
-    "./preview": {
-      "require": "./dist/preview.js",
-      "import": "./dist/preview.mjs",
-      "types": "./dist/preview.d.ts"
-    },
-    "./package.json": "./package.json"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist/**/*",
-    "README.md",
-    "*.js",
-    "*.d.ts"
-  ],
-  "scripts": {
-    "clean": "rimraf ./dist",
-    "prebuild": "yarn clean",
-    "build": "tsup",
-    "build:watch": "yarn build --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "run-p build:watch 'storybook --quiet'",
-    "prerelease": "zx scripts/prepublish-checks.mjs",
-    "release": "yarn build && auto shipit",
-    "eject-ts": "zx scripts/eject-typescript.mjs",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.0",
-    "@storybook/addon-interactions": "^7.0.0",
-    "@storybook/addon-links": "^7.0.0",
-    "@storybook/react": "^7.0.0",
-    "@storybook/react-vite": "^7.0.0",
-    "@storybook/testing-library": "^0.0.14-next.1",
-    "@types/node": "^18.15.0",
-    "@types/react": "^18.0.34",
-    "@vitejs/plugin-react": "^3.1.0",
-    "auto": "^10.3.0",
-    "boxen": "^5.0.1",
-    "dedent": "^0.7.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.3.1",
-    "prompts": "^2.4.2",
-    "prop-types": "^15.8.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "rimraf": "^3.0.2",
-    "storybook": "^7.0.0",
-    "tsup": "^6.6.3",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.4",
-    "zx": "^1.14.1"
-  },
-  "peerDependencies": {
-    "@storybook/blocks": "^7.0.0",
-    "@storybook/components": "^7.0.0",
-    "@storybook/core-events": "^7.0.0",
-    "@storybook/manager-api": "^7.0.0",
-    "@storybook/preview-api": "^7.0.0",
-    "@storybook/theming": "^7.0.0",
-    "@storybook/types": "^7.0.0",
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    },
-    "react-dom": {
-      "optional": true
-    }
-  },
-  "publishConfig": {
-    "access": "public"
+    "url": "https://github.com/mondaycom/storybook-addon-playground"
   },
   "storybook": {
     "displayName": "Playground",
@@ -105,5 +24,75 @@
       "react"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  },
+  "author": "Vibe",
+  "license": "MIT",
+  "exports": {
+    "./manager": {
+      "import": "./dist/manager.js",
+      "types": "./dist/manager.d.ts"
+    },
+    "./index": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "npm run build -- -w",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "storybook": "storybook dev -p 6006",
+    "start": "npm run build && npm run storybook"
+  },
+  "dependencies": {
+    "@uiw/codemirror-extensions-langs": "^4.21.21",
+    "@uiw/react-codemirror": "^4.21.21",
+    "prettier": "^2.3.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@storybook/addon-essentials": "^7.6.4",
+    "@storybook/react": "^7.6.4",
+    "@storybook/react-vite": "^7.6.4",
+    "@types/node": "^18.19.3",
+    "@types/prettier": "^2.7.3",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.8",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "monday-ui-react-core": "^2.69.1",
+    "postcss": "^8.4.32",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-jsx-parser": "^1.29.0",
+    "rollup": "^4.7.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "sass": "^1.69.5",
+    "storybook": "^7.6.4",
+    "typescript": "^4.9.5",
+    "vite": "^5.0.7"
+  },
+  "peerDependencies": {
+    "@storybook/components": ">=7.5.3",
+    "@storybook/core-events": ">=7.5.3",
+    "@storybook/manager-api": ">=7.5.3",
+    "@storybook/types": ">=7.5.3",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
   }
 }
