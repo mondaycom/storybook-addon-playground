@@ -14,7 +14,7 @@ addons.register(ADDON_ID, (api) => {
 
   addons.add(TOOL_ID, {
     type: Addon_TypesEnum.TOOLEXTRA,
-    title: null, // has no effect, but it is a must-have attr
+    title: "", // has no effect, but it is a must-have attr
     match: ({ storyId }) => !storyId.includes(getPlaygroundStoryId()),
     render: Tool,
   });
