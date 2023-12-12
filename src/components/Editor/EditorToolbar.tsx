@@ -41,7 +41,6 @@ const EditorToolbar: React.FC = () => {
 
   return (
     <div
-      className="toolbar"
       style={{
         position: "relative",
         display: "flex",

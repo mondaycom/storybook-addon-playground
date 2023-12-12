@@ -1,5 +1,4 @@
 import React from "react";
-import "./EditorTab.css";
 
 interface EditorTabProps {
   title: string;
@@ -11,7 +10,6 @@ const EditorTab: React.FC<EditorTabProps> = ({ title, selected, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className={`tab${selected ? " active" : ""}`}
       style={{
         display: "flex",
         alignItems: "center",

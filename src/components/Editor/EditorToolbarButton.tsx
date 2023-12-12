@@ -1,6 +1,5 @@
 import React, { SVGAttributes, memo } from "react";
 import { IconButton, Icons, IconsProps } from "@storybook/components";
-import "./EditorToolbarButton.css";
 
 interface EditorToolbarButtonProps {
   tooltip?: string;
@@ -26,7 +25,6 @@ const EditorToolbarButton: React.FC<EditorToolbarButtonProps> = ({
     title={tooltip}
     onClick={onClick}
     disabled={disabled}
-    className={`icon-button${smallPadding ? " small-padding" : ""}`}
     style={{
       margin: 0,
       padding: `8px ${smallPadding ? "8px" : "16px"}`,

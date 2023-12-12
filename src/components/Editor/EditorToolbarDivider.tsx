@@ -1,10 +1,8 @@
 import React, { memo } from "react";
-import "./EditorToolbarDivider.css";
 
 const EditorToolbarDivider: React.FC = () => {
   return (
     <div
-      className="divider"
       style={{
         width: 1,
         height: "100%",

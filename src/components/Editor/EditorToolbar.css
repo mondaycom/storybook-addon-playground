@@ -1,9 +1,0 @@
-.toolbar {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding-block: 4px;
-  padding-inline: 48px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}

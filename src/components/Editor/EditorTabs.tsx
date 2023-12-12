@@ -1,6 +1,5 @@
 import React from "react";
 import { Tab } from "@/types";
-import "./EditorTabs.css";
 import EditorTab from "./EditorTab";
 
 interface EditorTabsProps {
@@ -13,7 +12,6 @@ const EditorTabs: React.FC<EditorTabsProps> = ({
   onTabChange,
 }) => (
   <div
-    className="tabs-panel"
     style={{
       borderRight: "1px solid rgba(255, 255, 255, 0.1)",
       width: 50,
