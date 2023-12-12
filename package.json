@@ -1,5 +1,5 @@
 {
-  "name": "storybook-addon-playground",
+  "name": "@mondaydotcomorg/storybook-addon-playground",
   "version": "0.0.1",
   "description": "A playground to enable consumers learn how to use the component library or to reproduce bugs",
   "type": "module",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/YossiSaadi/storybook-addon-playground"
+    "url": "https://github.com/mondaycom/storybook-addon-playground"
   },
   "storybook": {
     "displayName": "Playground",
@@ -25,7 +25,7 @@
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   },
-  "author": "Yossi Saadi <yossisaadi@gmail.com>",
+  "author": "Vibe",
   "license": "MIT",
   "exports": {
     "./manager": {
