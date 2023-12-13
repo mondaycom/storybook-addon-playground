@@ -5,7 +5,7 @@ import * as VibeIcons from "monday-ui-react-core/icons";
 const preview: Preview = {
   parameters: {
     playground: {
-      playgroundStoryId: "playground",
+      storyId: "playground",
       components: { ...VibeComponents, VibeIcons },
     },
   },

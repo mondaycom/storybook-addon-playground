@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface PlaygroundParameters {
-  playgroundStoryId: string;
+  storyId: string;
   components: PlaygroundComponents;
 }
 

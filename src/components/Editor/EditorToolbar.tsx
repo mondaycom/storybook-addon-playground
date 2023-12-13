@@ -13,11 +13,11 @@ import {
   PANEL_ID,
   DEFAULT_ADDON_PARAMETERS,
 } from "@/consts";
-import { PlaygroundState } from "@/types";
+import { PlaygroundParameters, PlaygroundState } from "@/types";
 
 const EditorToolbar: React.FC = () => {
   const { selectStory } = useStorybookApi();
-  const { playgroundStoryId } = useParameter(
+  const { storyId } = useParameter<PlaygroundParameters>(
     ADDON_ID_FOR_PARAMETERS,
     DEFAULT_ADDON_PARAMETERS
   );
@@ -53,7 +53,7 @@ const EditorToolbar: React.FC = () => {
       <EditorToolbarButton
         tooltip="Show playground view"
         icon="beaker"
-        onClick={() => selectStory(playgroundStoryId)}
+        onClick={() => selectStory(storyId)}
       />
       <EditorToolbarButton
         tooltip={shouldAllowCopy ? "" : "Editor is empty"}

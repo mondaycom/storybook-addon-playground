@@ -49,7 +49,7 @@ const preview = {
   parameters: {
     playground: {
       // title of your story (including category prefix, if there is one)
-      playgroundStoryId: "playground",
+      storyId: "playground",
       components: { ...MyComponentsLibrary, ...MyIconsLibrary },
     },
   },
