@@ -93,13 +93,5 @@
     "@storybook/types": ">=7.5.3",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
-  },
-  "bundler": {
-    "exportEntries": [
-      "src/index.ts"
-    ],
-    "managerEntries": [
-      "src/manager.ts"
-    ]
   }
 }
