@@ -1,11 +1,11 @@
 module.exports = {
-  parser: ["@typescript-eslint/parser"],
+  parser: "@typescript-eslint/parser",
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
   ],
-  ignorePatterns: ["dist/", ".eslintrc.js"],
+  ignorePatterns: ["dist/", ".eslintrc.cjs"],
   plugins: ["react", "react-hooks", "@typescript-eslint"],
   rules: {
     "react/display-name": "off",

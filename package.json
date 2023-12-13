@@ -52,8 +52,10 @@
     "start": "npm run build && npm run storybook"
   },
   "dependencies": {
+    "@types/lodash-es": "^4.17.12",
     "@uiw/codemirror-extensions-langs": "^4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
+    "lodash-es": "^4.17.21",
     "prettier": "^2.3.2",
     "react-jsx-parser": "^1.29.0"
   },
@@ -93,13 +95,5 @@
     "@storybook/types": ">=7.5.3",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
-  },
-  "bundler": {
-    "exportEntries": [
-      "src/index.ts"
-    ],
-    "managerEntries": [
-      "src/manager.ts"
-    ]
   }
 }
