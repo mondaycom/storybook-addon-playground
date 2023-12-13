@@ -51,6 +51,7 @@ const preview = {
       // title of your story (including category prefix, if there is one)
       storyId: "playground",
       components: { ...MyComponentsLibrary, ...MyIconsLibrary },
+      editorTheme: "light", // optional - set this to override your storybook's theme
     },
   },
 };
