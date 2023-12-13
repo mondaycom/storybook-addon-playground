@@ -4,12 +4,11 @@ import { Tool, Panel, PanelTitle } from "@/components/Addons";
 import { ADDON_ID, ADDON_ID_FOR_PARAMETERS, PANEL_ID, TOOL_ID } from "./consts";
 import { PlaygroundParameters } from "@/types";
 
-addons.register(ADDON_ID, (api) => {
+addons.register(ADDON_ID, ({ getCurrentParameter }) => {
   function getPlaygroundStoryId() {
-    const { playgroundStoryId } = (api.getCurrentParameter(
-      ADDON_ID_FOR_PARAMETERS
-    ) || {}) as PlaygroundParameters;
-    return playgroundStoryId;
+    const { storyId } =
+      getCurrentParameter<PlaygroundParameters>(ADDON_ID_FOR_PARAMETERS) || {};
+    return storyId;
   }
 
   addons.add(TOOL_ID, {

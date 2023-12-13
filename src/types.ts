@@ -1,8 +1,9 @@
 import React from "react";
 
 export interface PlaygroundParameters {
-  playgroundStoryId: string;
+  storyId: string;
   components: PlaygroundComponents;
+  editorTheme?: EditorTheme;
 }
 
 export type PlaygroundComponents = Record<
@@ -25,3 +26,5 @@ export interface PlaygroundState {
 export type Code = { jsx: string; css: string };
 
 export type Tab = "jsx" | "css";
+
+export type EditorTheme = "light" | "dark";
