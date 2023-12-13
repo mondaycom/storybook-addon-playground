@@ -7,6 +7,7 @@ const preview: Preview = {
     playground: {
       storyId: "playground",
       components: { ...VibeComponents, VibeIcons },
+      editorTheme: "light",
     },
   },
 };
