@@ -27,15 +27,14 @@
   },
   "author": "Vibe",
   "license": "MIT",
+  "main": "./dist/index.js",
   "exports": {
-    "./manager": {
-      "import": "./dist/manager.js",
-      "types": "./dist/manager.d.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./dist/index.js",
+      "import": "./dist/index.js"
     },
-    "./index": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
+    "./manager": "./dist/manager.js",
     "./package.json": "./package.json"
   },
   "files": [
@@ -55,7 +54,8 @@
   "dependencies": {
     "@uiw/codemirror-extensions-langs": "^4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "react-jsx-parser": "^1.29.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -78,7 +78,6 @@
     "postcss": "^8.4.32",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-jsx-parser": "^1.29.0",
     "rollup": "^4.7.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
@@ -94,5 +93,13 @@
     "@storybook/types": ">=7.5.3",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
+  },
+  "bundler": {
+    "exportEntries": [
+      "src/index.ts"
+    ],
+    "managerEntries": [
+      "src/manager.ts"
+    ]
   }
 }

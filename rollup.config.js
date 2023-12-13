@@ -4,22 +4,17 @@ import json from "@rollup/plugin-json";
 import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 
+const exportEntry = "src/index.ts";
+const managerEntry = "src/manager.ts";
+
 export default {
-  input: ["src/index.ts", "src/manager.ts"],
-  output: [
-    {
-      dir: "dist",
-      format: "esm",
-      sourcemap: true,
-      preserveModules: true,
-    },
-  ],
   external: [/node_modules/],
-  plugins: [
-    resolve(),
-    commonjs(),
-    json(),
-    typescript({ useTsconfigDeclarationDir: true }),
-    postcss(),
-  ],
+  plugins: [resolve(), commonjs(), json(), typescript(), postcss()],
+  input: [exportEntry, managerEntry],
+  output: {
+    dir: "dist",
+    format: "esm",
+    sourcemap: true,
+    preserveModules: true,
+  },
 };
