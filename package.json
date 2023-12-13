@@ -94,9 +94,6 @@
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "bundler": {
     "exportEntries": [
       "src/index.ts"
