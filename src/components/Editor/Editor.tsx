@@ -1,6 +1,6 @@
 import React, { forwardRef, lazy } from "react";
 import { Extension, ReactCodeMirrorRef } from "@uiw/react-codemirror";
-import { EditorColor, PlaygroundParameters, PlaygroundState } from "@/types";
+import { EditorTheme, PlaygroundParameters, PlaygroundState } from "@/types";
 import { useParameter, useStorybookState } from "@storybook/manager-api";
 import { ADDON_ID_FOR_PARAMETERS, DEFAULT_ADDON_PARAMETERS } from "@/consts";
 const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
@@ -25,7 +25,7 @@ const Editor: EditorComponent = forwardRef(
       DEFAULT_ADDON_PARAMETERS
     );
     const placeholder = `Insert your ${type.toUpperCase()} code here`;
-    const theme: EditorColor =
+    const theme: EditorTheme =
       addonTheme || storybookTheme.base === "dark" ? "dark" : "light";
 
     return (

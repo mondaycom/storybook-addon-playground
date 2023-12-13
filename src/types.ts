@@ -3,7 +3,7 @@ import React from "react";
 export interface PlaygroundParameters {
   storyId: string;
   components: PlaygroundComponents;
-  editorTheme?: EditorColor;
+  editorTheme?: EditorTheme;
 }
 
 export type PlaygroundComponents = Record<
@@ -27,4 +27,4 @@ export type Code = { jsx: string; css: string };
 
 export type Tab = "jsx" | "css";
 
-export type EditorColor = "light" | "dark";
+export type EditorTheme = "light" | "dark";
