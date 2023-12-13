@@ -7,9 +7,10 @@ import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
 const usePlaygroundArgs = (): PlaygroundArgs => {
   const [state] = useAddonState<PlaygroundState>(PANEL_ID, DEFAULT_ADDON_STATE);
   const [args, updateArgs] = useArgs();
-  const debouncedUpdateArgs = useCallback(debounce(updateArgs, 300), [
-    updateArgs,
-  ]);
+  const debouncedUpdateArgs = useMemo(
+    () => debounce(updateArgs, 300),
+    [updateArgs]
+  );
 
   const code = useMemo<Code>(
     () => args?.code || { jsx: "", css: "" },
