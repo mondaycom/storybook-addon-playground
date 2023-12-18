@@ -26,7 +26,7 @@ const Editor: EditorComponent = forwardRef(
     );
     const placeholder = `Insert your ${type.toUpperCase()} code here`;
     const theme: EditorTheme =
-      addonTheme || storybookTheme.base === "dark" ? "dark" : "light";
+      addonTheme || (storybookTheme.base === "dark" ? "dark" : "light");
 
     return (
       <CodeMirror
