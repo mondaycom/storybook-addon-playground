@@ -49,9 +49,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "storybook": "storybook dev -p 6006",
-    "start": "npm run build && npm run storybook",
-    "preversion": "npm run lint && npm run build",
-    "postversion": "git push --follow-tags"
+    "start": "npm run build && npm run storybook"
   },
   "dependencies": {
     "@types/lodash-es": "^4.17.12",
