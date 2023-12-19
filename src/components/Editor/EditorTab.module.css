@@ -1,0 +1,24 @@
+.tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  cursor: default;
+}
+
+.tab.selected::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 3px;
+  background: #029cfd;
+}
+
+.tab:hover:not(.selected) {
+  cursor: pointer;
+  background: rgba(2, 156, 253, 0.12);
+  color: #029cfd;
+}

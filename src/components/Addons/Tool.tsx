@@ -5,6 +5,7 @@ import { Addon_RenderOptions } from "@storybook/types";
 import { DEFAULT_ADDON_PARAMETERS } from "@/consts";
 import { ADDON_ID_FOR_PARAMETERS } from "@/consts";
 import { PlaygroundParameters } from "@/types";
+import styles from "./Tool.module.css";
 
 const Tool: React.FC<Addon_RenderOptions> = () => {
   const { selectStory } = useStorybookApi();
@@ -18,7 +19,7 @@ const Tool: React.FC<Addon_RenderOptions> = () => {
       placeholder="Show playground view"
       title="Show playground view"
       onClick={() => selectStory(storyId)}
-      style={{ outline: "1px dashed" }}
+      className={styles.tool}
     >
       <Icons icon="beaker" />
     </IconButton>

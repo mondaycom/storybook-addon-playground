@@ -8,6 +8,7 @@ import { useAddonState } from "@storybook/manager-api";
 import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
 import { PlaygroundState, Tab } from "@/types";
 import { langs } from "@uiw/codemirror-extensions-langs";
+import styles from "./Panel.module.css";
 
 const commonExtensions: Extension[] = [];
 const extensions: { jsx: Extension[]; css: Extension[] } = {
@@ -40,11 +41,11 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
 
   return (
     <AddonPanel active={active}>
-      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      <div className={styles.panel}>
         <EditorToolbar />
-        <div style={{ display: "flex", height: "100%" }}>
+        <div className={styles.editorWrapper}>
           <EditorTabs selectedTab={selectedTab} onTabChange={onTabChange} />
-          <div style={{ flex: 1 }}>
+          <div className={styles.editor}>
             <Suspense fallback={"Loading Editor..."}>
               <Editor
                 type={selectedTab}

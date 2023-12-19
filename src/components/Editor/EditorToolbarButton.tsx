@@ -1,5 +1,7 @@
 import React, { SVGAttributes, memo } from "react";
 import { IconButton, Icons, IconsProps } from "@storybook/components";
+import cx from "classnames";
+import styles from "./EditorToolbarButton.module.css";
 
 interface EditorToolbarButtonProps {
   tooltip?: string;
@@ -25,11 +27,9 @@ const EditorToolbarButton: React.FC<EditorToolbarButtonProps> = ({
     title={tooltip}
     onClick={onClick}
     disabled={disabled}
-    style={{
-      margin: 0,
-      padding: `8px ${smallPadding ? "8px" : "16px"}`,
-      gap: 4,
-    }}
+    className={cx(styles.toolbarButton, {
+      [styles.smallPadding]: smallPadding,
+    })}
   >
     <Icons icon={icon} color={color} />
     {text && <span>{text}</span>}
