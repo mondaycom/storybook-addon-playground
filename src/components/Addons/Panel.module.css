@@ -1,0 +1,14 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.editorWrapper {
+  display: flex;
+  height: 100%;
+}
+
+.editor {
+  flex: 1;
+}
