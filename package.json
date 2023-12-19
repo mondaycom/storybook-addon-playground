@@ -1,6 +1,6 @@
 {
-  "name": "@mondaydotcomorg/storybook-addon-playground",
-  "version": "0.0.1",
+  "name": "storybook-addon-playground",
+  "version": "0.0.0",
   "description": "A playground to enable consumers learn how to use the component library or to reproduce bugs",
   "type": "module",
   "keywords": [
@@ -46,8 +46,8 @@
   "scripts": {
     "build": "rollup -c",
     "build:watch": "npm run build -- -w",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "npm run lint -- --fix",
     "storybook": "storybook dev -p 6006",
     "start": "npm run build && npm run storybook"
   },
