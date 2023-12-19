@@ -1,5 +1,5 @@
 import React from "react";
-import "./PlaygroundRendererErrorState.css";
+import styles from "./PlaygroundRendererErrorState.module.css";
 
 interface PlaygroundRendererErrorStateProps {
   error: string;
@@ -8,7 +8,7 @@ interface PlaygroundRendererErrorStateProps {
 const PlaygroundRendererErrorState: React.FC<
   PlaygroundRendererErrorStateProps
 > = ({ error }) => {
-  return <div className="error-state">{error}</div>;
+  return <div className={styles.errorState}>{error}</div>;
 };
 
 export default PlaygroundRendererErrorState;

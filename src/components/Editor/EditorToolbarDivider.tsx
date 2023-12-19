@@ -1,16 +1,8 @@
 import React, { memo } from "react";
+import styles from "./EditorToolbarDivider.module.css";
 
 const EditorToolbarDivider: React.FC = () => {
-  return (
-    <div
-      style={{
-        width: 1,
-        height: "100%",
-        background: "rgba(255, 255, 255, 0.1)",
-        marginInline: 8,
-      }}
-    />
-  );
+  return <div className={styles.divider} />;
 };
 
 export default memo(EditorToolbarDivider);

@@ -1,0 +1,9 @@
+.toolbarButton {
+  margin: 0;
+  padding: 8px 16px;
+  gap: 4px;
+}
+
+.toolbarButton.smallPadding {
+  padding-inline: 8px;
+}

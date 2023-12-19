@@ -1,6 +1,7 @@
 import React from "react";
 import { Tab } from "@/types";
 import EditorTab from "./EditorTab";
+import styles from "./EditorTabs.module.css";
 
 interface EditorTabsProps {
   selectedTab: Tab;
@@ -11,12 +12,7 @@ const EditorTabs: React.FC<EditorTabsProps> = ({
   selectedTab,
   onTabChange,
 }) => (
-  <div
-    style={{
-      borderRight: "1px solid rgba(255, 255, 255, 0.1)",
-      width: 50,
-    }}
-  >
+  <div className={styles.tabs}>
     <EditorTab
       title="JSX"
       selected={selectedTab === "jsx"}

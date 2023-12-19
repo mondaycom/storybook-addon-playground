@@ -1,4 +1,6 @@
 import React from "react";
+import styles from "./EditorTab.module.css";
+import cx from "classnames";
 
 interface EditorTabProps {
   title: string;
@@ -10,18 +12,11 @@ const EditorTab: React.FC<EditorTabProps> = ({ title, selected, onClick }) => {
   return (
     <div
       onClick={onClick}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: 50,
-        cursor: "pointer",
-        borderRight: selected ? "3px solid #029cfd" : "none",
-      }}
+      className={cx(styles.tab, { [styles.selected]: selected })}
     >
       {title}
     </div>
   );
 };
 
-export default EditorTab;
+export default React.memo(EditorTab);

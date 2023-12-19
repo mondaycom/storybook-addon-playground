@@ -14,6 +14,7 @@ import {
   DEFAULT_ADDON_PARAMETERS,
 } from "@/consts";
 import { PlaygroundParameters, PlaygroundState } from "@/types";
+import styles from "./EditorToolbar.module.css";
 
 const EditorToolbar: React.FC = () => {
   const { selectStory } = useStorybookApi();
@@ -40,16 +41,7 @@ const EditorToolbar: React.FC = () => {
     useToolbarActions(code, updateCode, resetCode, state.selectedTab);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        display: "flex",
-        alignItems: "center",
-        gap: 4,
-        padding: 4,
-        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-      }}
-    >
+    <div className={styles.toolbar}>
       <EditorToolbarButton
         tooltip="Show playground view"
         icon="beaker"
