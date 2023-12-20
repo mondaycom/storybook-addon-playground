@@ -9,7 +9,13 @@ const managerEntry = "src/manager.ts";
 
 export default {
   external: [/node_modules/],
-  plugins: [resolve(), commonjs(), json(), typescript(), postcss()],
+  plugins: [
+    resolve(),
+    commonjs(),
+    json(),
+    typescript(),
+    postcss({ modules: true }),
+  ],
   input: [exportEntry, managerEntry],
   output: {
     dir: "dist",
