@@ -57,14 +57,15 @@
     "@uiw/react-codemirror": "^4.21.21",
     "lodash-es": "^4.17.21",
     "prettier": "^2.3.2",
-    "react-jsx-parser": "^1.29.0"
+    "react-jsx-parser": "^1.29.0",
+    "style-inject": "^0.3.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.1",
     "@storybook/addon-essentials": "^7.6.4",
     "@storybook/react": "^7.6.4",
     "@storybook/react-vite": "^7.6.4",
