@@ -14,7 +14,12 @@ export default {
     commonjs(),
     json(),
     typescript(),
-    postcss({ modules: true }),
+    postcss({
+      modules: true,
+      inject(cssVariableName) {
+        return `import styleInject from 'style-inject';\nstyleInject(${cssVariableName});`;
+      },
+    }),
   ],
   input: [exportEntry, managerEntry],
   output: {
