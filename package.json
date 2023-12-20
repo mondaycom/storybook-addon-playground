@@ -57,7 +57,8 @@
     "@uiw/react-codemirror": "^4.21.21",
     "lodash-es": "^4.17.21",
     "prettier": "^2.3.2",
-    "react-jsx-parser": "^1.29.0"
+    "react-jsx-parser": "^1.29.0",
+    "style-inject": "^0.3.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
