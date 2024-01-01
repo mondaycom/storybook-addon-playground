@@ -27,7 +27,6 @@ function formatCode(code: string, options: Options): string {
   try {
     return format(code, options).replace(/;\s*$/, "");
   } catch (e) {
-    console.error("Error formatting code: ", e);
-    return null;
+    throw new Error(`[Playground Error]: Error formatting code: ${e}`);
   }
 }
