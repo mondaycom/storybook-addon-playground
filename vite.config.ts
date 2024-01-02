@@ -11,10 +11,16 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    include: ["**/__tests__/**/*.ts", "**/__tests__/**/*.tsx"],
+    setupFiles: "src/tests/setup.ts",
+    include: ["**/__tests__/**/*.test.ts", "**/__tests__/**/*.test.tsx"],
     clearMocks: true,
     typecheck: {
       enabled: true,
+    },
+    css: {
+      modules: {
+        classNameStrategy: "non-scoped",
+      },
     },
     passWithNoTests: true,
   },
