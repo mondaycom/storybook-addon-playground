@@ -72,6 +72,8 @@
     "@storybook/react": "^7.6.4",
     "@storybook/react-vite": "^7.6.4",
     "@storybook/theming": "^7.6.4",
+    "@testing-library/jest-dom": "^6.1.6",
+    "@testing-library/react": "^14.1.2",
     "@types/node": "^18.19.3",
     "@types/prettier": "^2.7.3",
     "@types/react": "^18.2.43",
