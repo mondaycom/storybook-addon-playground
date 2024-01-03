@@ -22,6 +22,5 @@ export default defineConfig({
         classNameStrategy: "non-scoped",
       },
     },
-    passWithNoTests: true,
   },
 });
