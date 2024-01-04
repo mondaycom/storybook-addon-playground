@@ -17,26 +17,19 @@ const extensions: { jsx: Extension[]; css: Extension[] } = {
 };
 
 const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
+  const { updateCode } = usePlaygroundArgs();
   const [state, setState] = useAddonState<PlaygroundState>(
     PANEL_ID,
     DEFAULT_ADDON_STATE
   );
 
-  const { code, updateCode } = usePlaygroundArgs();
-  const { selectedTab, fontSize } = state;
+  const { code, selectedTab, fontSize } = state;
 
   const onTabChange = useCallback(
     (newTab: Tab) => {
       setState((state) => ({ ...state, selectedTab: newTab }));
     },
     [setState]
-  );
-
-  const onCodeChange = useCallback(
-    (newVal: string) => {
-      updateCode(newVal);
-    },
-    [updateCode]
   );
 
   return (
@@ -52,7 +45,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
                 code={code[selectedTab]}
                 extensions={extensions[selectedTab]}
                 fontSize={fontSize}
-                onChange={onCodeChange}
+                onChange={updateCode}
               />
             </Suspense>
           </div>
