@@ -4,14 +4,18 @@ import cx from "classnames";
 
 interface EditorTabProps {
   title: string;
-  selected: boolean;
-  onClick: () => void;
+  selected?: boolean;
+  onClick?: () => void;
 }
 
-const EditorTab: React.FC<EditorTabProps> = ({ title, selected, onClick }) => {
+const EditorTab: React.FC<EditorTabProps> = ({
+  title,
+  selected,
+  onClick = () => {},
+}) => {
   return (
     <div
-      onClick={onClick}
+      onClick={() => !selected && onClick()}
       className={cx(styles.tab, { [styles.selected]: selected })}
     >
       {title}

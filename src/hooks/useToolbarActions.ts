@@ -28,7 +28,7 @@ const useToolbarActions = (
         formatted = formatCss(code.css);
       }
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
     updateCode(formatted);
   }, [code, currentTab, updateCode]);
