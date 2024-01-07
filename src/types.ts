@@ -12,7 +12,6 @@ export type PlaygroundComponents = Record<
 >;
 
 export interface PlaygroundArgs {
-  code: Code;
   updateCode: (newCode: string) => void;
   resetCode: () => void;
 }
