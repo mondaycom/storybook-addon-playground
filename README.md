@@ -101,6 +101,8 @@ graph TD;
     J[useCopyToClipboard]
     K[usePlaygroundArgs]
     Q[useInitialCode]
+    R[useBroadcastEditorChanges]
+    S[usePlaygroundState]
     L[useToolbarActions]
     M[prettier]
     N[react-codemirror]
@@ -124,7 +126,9 @@ graph TD;
     F -->|Renders in a story| G
     G ======>|Using lib| H
 
-    D -->|Uses| Q
+    D -->|Calls| Q
+    D -->|Calls| R
+    R -->|Uses| S
     D --->|Renders| I
     I ====>|Using lib| N
     I -->|Uses| L
