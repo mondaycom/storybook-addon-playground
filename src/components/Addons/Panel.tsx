@@ -10,6 +10,7 @@ import { PlaygroundState, Tab } from "@/types";
 import { langs } from "@uiw/codemirror-extensions-langs";
 import styles from "./Panel.module.css";
 import useInitialCode from "../../hooks/useInitialCode";
+import useBroadcastEditorChanges from "../../hooks/useBroadcastEditorChanges";
 
 const commonExtensions: Extension[] = [];
 const extensions: { jsx: Extension[]; css: Extension[] } = {
@@ -19,6 +20,7 @@ const extensions: { jsx: Extension[]; css: Extension[] } = {
 
 const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
   useInitialCode();
+  useBroadcastEditorChanges();
   const { updateCode } = usePlaygroundArgs();
   const [state, setState] = useAddonState<PlaygroundState>(
     PANEL_ID,
