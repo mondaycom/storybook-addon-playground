@@ -6,12 +6,12 @@ import {
   PLAYGROUND_STORY_PREPARED,
 } from "@/consts";
 import { useAddonState, useStorybookApi } from "@storybook/manager-api";
-import usePlaygroundApi from "./usePlaygroundApi";
+import usePlaygroundState from "./usePlaygroundState";
 import { PlaygroundState } from "@/types";
 
 const useBroadcastEditorChanges = () => {
   const { emit, on } = useStorybookApi();
-  const { isPlaygroundStorySelected } = usePlaygroundApi();
+  const { isPlaygroundStorySelected } = usePlaygroundState();
   const [state] = useAddonState<PlaygroundState>(PANEL_ID, DEFAULT_ADDON_STATE);
   const { code } = state;
 
