@@ -9,6 +9,10 @@ const preview: Preview = {
       storyId: "playground",
       components: { ...VibeComponents, VibeIcons, VibeNext },
       editorTheme: "light",
+      introCode: {
+        jsx: `<VibeNext.Heading>Online Playground</VibeNext.Heading>`,
+        css: ""
+      }
     },
   },
 };

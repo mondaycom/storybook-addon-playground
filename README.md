@@ -52,6 +52,7 @@ const preview = {
       storyId: "playground",
       components: { ...MyComponentsLibrary, ...MyIconsLibrary },
       editorTheme: "light", // optional - set this to override your storybook's theme
+      introCode: { jsx: `<div>Welcome to my Playground!</div>`, css: "" }, // optional - set this to introdoce a "welcome" code example
     },
   },
 };
