@@ -1,6 +1,10 @@
 import React, { Suspense, useCallback } from "react";
 import { Editor, EditorTabs, EditorToolbar } from "../Editor";
-import { usePlaygroundArgs } from "@/hooks";
+import {
+  usePlaygroundArgs,
+  useInitialCode,
+  useBroadcastEditorChanges,
+} from "@/hooks";
 import { AddonPanel } from "@storybook/components";
 import { Addon_RenderOptions } from "@storybook/types";
 import { Extension } from "@uiw/react-codemirror";
@@ -9,8 +13,6 @@ import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
 import { PlaygroundState, Tab } from "@/types";
 import { langs } from "@uiw/codemirror-extensions-langs";
 import styles from "./Panel.module.css";
-import useInitialCode from "../../hooks/useInitialCode";
-import useBroadcastEditorChanges from "../../hooks/useBroadcastEditorChanges";
 
 const commonExtensions: Extension[] = [];
 const extensions: { jsx: Extension[]; css: Extension[] } = {
