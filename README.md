@@ -100,6 +100,7 @@ graph TD;
     I[Editor]
     J[useCopyToClipboard]
     K[usePlaygroundArgs]
+    Q[useInitialCode]
     L[useToolbarActions]
     M[prettier]
     N[react-codemirror]
@@ -121,10 +122,10 @@ graph TD;
     C -->|Registers Addons| P
 
     F -->|Renders in a story| G
-    G ====>|Using lib| H
+    G ======>|Using lib| H
 
-
-    D -->|Renders| I
+    D -->|Uses| Q
+    D --->|Renders| I
     I ====>|Using lib| N
     I -->|Uses| L
     I -->|Uses| K
