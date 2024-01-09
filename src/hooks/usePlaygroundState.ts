@@ -41,6 +41,7 @@ const usePlaygroundState = () => {
   }, [previewInitialized, currentStoryId, playgroundStoryId]);
 
   return {
+    playgroundStoryId,
     isPlaygroundStorySelected,
   };
 };
