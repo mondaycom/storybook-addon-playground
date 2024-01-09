@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./EditorTab.module.css";
 import cx from "classnames";
+import { IconButton } from "@storybook/components";
 
 interface EditorTabProps {
   title: string;
@@ -14,12 +15,13 @@ const EditorTab: React.FC<EditorTabProps> = ({
   onClick = () => {},
 }) => {
   return (
-    <div
+    <IconButton
+      placeholder={title}
       onClick={() => !selected && onClick()}
       className={cx(styles.tab, { [styles.selected]: selected })}
     >
       {title}
-    </div>
+    </IconButton>
   );
 };
 
