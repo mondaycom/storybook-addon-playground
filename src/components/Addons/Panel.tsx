@@ -13,6 +13,7 @@ import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
 import { PlaygroundState, Tab } from "@/types";
 import { langs } from "@uiw/codemirror-extensions-langs";
 import styles from "./Panel.module.css";
+import useAutoOpenPlayground from "../../hooks/useAutoOpenPlayground";
 
 const commonExtensions: Extension[] = [];
 const extensions: { jsx: Extension[]; css: Extension[] } = {
@@ -23,6 +24,7 @@ const extensions: { jsx: Extension[]; css: Extension[] } = {
 const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
   useInitialCode();
   useBroadcastEditorChanges();
+  useAutoOpenPlayground();
   const { updateCode } = usePlaygroundArgs();
   const [state, setState] = useAddonState<PlaygroundState>(
     PANEL_ID,
