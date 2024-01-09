@@ -95,15 +95,14 @@ graph TD;
 
     F[withPlaygroundRenderer]
     G[PlaygroundRenderer]
+    S[usePlaygroundRendererCode]
     H[react-jsx-parser]
 
     I[Editor]
     J[useCopyToClipboard]
-    K[usePlaygroundArgs]
+    K[usePlaygroundState]
     Q[useInitialCode]
     R[useBroadcastEditorChanges]
-    S[usePlaygroundState]
-    L[useToolbarActions]
     M[prettier]
     N[react-codemirror]
 
@@ -124,18 +123,17 @@ graph TD;
     C -->|Registers Addons| P
 
     F -->|Renders in a story| G
-    G ======>|Using lib| H
+    G =====>|Using lib| H
+    G -->|Uses| S
 
     D -->|Calls| Q
     D -->|Calls| R
-    R -->|Uses| S
-    D --->|Renders| I
+    D -->|Renders| I
     I ====>|Using lib| N
-    I -->|Uses| L
+    I -->|Uses| J
     I -->|Uses| K
 
-    L ===>|Using lib| M
-    L -->|Uses| J
+    K ===>|Using lib| M
     end
 
     subgraph UI

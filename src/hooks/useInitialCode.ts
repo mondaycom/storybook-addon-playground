@@ -1,19 +1,16 @@
 import { useEffect, useMemo } from "react";
-import { useAddonState, useParameter } from "@storybook/manager-api";
+import { useParameter } from "@storybook/manager-api";
 import {
   ADDON_ID_FOR_PARAMETERS,
   DEFAULT_ADDON_PARAMETERS,
   DEFAULT_ADDON_STATE,
-  PANEL_ID,
 } from "@/consts";
-import { Code, PlaygroundParameters, PlaygroundState } from "@/types";
+import { Code, PlaygroundParameters } from "@/types";
+import usePlaygroundState from "./usePlaygroundState";
 
 const useInitialCode = () => {
-  const [state, setState] = useAddonState<PlaygroundState>(
-    PANEL_ID,
-    DEFAULT_ADDON_STATE
-  );
-  const { hasInitialCodeLoaded } = state;
+  const { updateCode, hasInitialCodeLoaded, updateInitialCodeLoaded } =
+    usePlaygroundState();
   const { introCode } = useParameter<PlaygroundParameters>(
     ADDON_ID_FOR_PARAMETERS,
     DEFAULT_ADDON_PARAMETERS
@@ -28,13 +25,15 @@ const useInitialCode = () => {
     if (hasInitialCodeLoaded || !introCode) {
       return;
     }
-
-    setState((state) => ({
-      ...state,
-      code: initialCodeToSet,
-      hasInitialCodeLoaded: true,
-    }));
-  }, [hasInitialCodeLoaded, introCode, setState, initialCodeToSet]);
+    updateCode(initialCodeToSet);
+    updateInitialCodeLoaded();
+  }, [
+    hasInitialCodeLoaded,
+    introCode,
+    updateCode,
+    initialCodeToSet,
+    updateInitialCodeLoaded,
+  ]);
 };
 
 function hasValidCode(code: Code) {

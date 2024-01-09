@@ -12,11 +12,6 @@ export type PlaygroundComponents = Record<
   React.ComponentType | React.ExoticComponent
 >;
 
-export interface PlaygroundArgs {
-  updateCode: (newCode: string) => void;
-  resetCode: () => void;
-}
-
 export interface PlaygroundState {
   hasInitialCodeLoaded?: boolean;
   fontSize: number;
