@@ -1,16 +1,13 @@
-import React, { Suspense, useCallback } from "react";
+import React, { Suspense } from "react";
 import { Editor, EditorTabs, EditorToolbar } from "../Editor";
 import {
-  usePlaygroundArgs,
   useInitialCode,
   useBroadcastEditorChanges,
+  usePlaygroundState,
 } from "@/hooks";
 import { AddonPanel } from "@storybook/components";
 import { Addon_RenderOptions } from "@storybook/types";
 import { Extension } from "@uiw/react-codemirror";
-import { useAddonState } from "@storybook/manager-api";
-import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
-import { PlaygroundState, Tab } from "@/types";
 import { langs } from "@uiw/codemirror-extensions-langs";
 import styles from "./Panel.module.css";
 
@@ -23,27 +20,18 @@ const extensions: { jsx: Extension[]; css: Extension[] } = {
 const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
   useInitialCode();
   useBroadcastEditorChanges();
-  const { updateCode } = usePlaygroundArgs();
-  const [state, setState] = useAddonState<PlaygroundState>(
-    PANEL_ID,
-    DEFAULT_ADDON_STATE
-  );
-
-  const { code, selectedTab, fontSize } = state;
-
-  const onTabChange = useCallback(
-    (newTab: Tab) => {
-      setState((state) => ({ ...state, selectedTab: newTab }));
-    },
-    [setState]
-  );
+  const { code, selectedTab, fontSize, updateCode, updateSelectedTab } =
+    usePlaygroundState();
 
   return (
     <AddonPanel active={active}>
       <div className={styles.panel}>
         <EditorToolbar />
         <div className={styles.editorWrapper}>
-          <EditorTabs selectedTab={selectedTab} onTabChange={onTabChange} />
+          <EditorTabs
+            selectedTab={selectedTab}
+            onTabChange={updateSelectedTab}
+          />
           <div className={styles.editor}>
             <Suspense fallback={"Loading Editor..."}>
               <Editor

@@ -1,19 +1,10 @@
 import React, { useCallback } from "react";
-import { useToolbarActions, usePlaygroundArgs } from "@/hooks";
+import { useCopyToClipboard, usePlaygroundState } from "@/hooks";
 import EditorToolbarButton from "./EditorToolbarButton";
 import EditorToolbarDivider from "./EditorToolbarDivider";
-import {
-  useAddonState,
-  useParameter,
-  useStorybookApi,
-} from "@storybook/manager-api";
-import {
-  ADDON_ID_FOR_PARAMETERS,
-  DEFAULT_ADDON_STATE,
-  PANEL_ID,
-  DEFAULT_ADDON_PARAMETERS,
-} from "@/consts";
-import { PlaygroundParameters, PlaygroundState } from "@/types";
+import { useParameter, useStorybookApi } from "@storybook/manager-api";
+import { ADDON_ID_FOR_PARAMETERS, DEFAULT_ADDON_PARAMETERS } from "@/consts";
+import { PlaygroundParameters } from "@/types";
 import styles from "./EditorToolbar.module.css";
 
 const EditorToolbar: React.FC = () => {
@@ -22,26 +13,16 @@ const EditorToolbar: React.FC = () => {
     ADDON_ID_FOR_PARAMETERS,
     DEFAULT_ADDON_PARAMETERS
   );
+  const { resetCode, formatCode, updateFontSize } = usePlaygroundState();
+  const { onCopy, isCopied, shouldAllowCopy } = useCopyToClipboard();
 
-  const { updateCode, resetCode } = usePlaygroundArgs();
-  const [state, setState] = useAddonState<PlaygroundState>(
-    PANEL_ID,
-    DEFAULT_ADDON_STATE
-  );
-  const { code, selectedTab, fontSize } = state;
+  const increaseFontSize = useCallback(() => {
+    updateFontSize(1);
+  }, [updateFontSize]);
 
-  const onFontSizeChange = useCallback(
-    (amount: number) => {
-      setState((state) => ({
-        ...state,
-        fontSize: Math.max(12, Math.min(18, fontSize + amount)),
-      }));
-    },
-    [fontSize, setState]
-  );
-
-  const { onCopy, isCopied, shouldAllowCopy, onFormatCode, onReset } =
-    useToolbarActions(code, updateCode, resetCode, selectedTab);
+  const decreaseFontSize = useCallback(() => {
+    updateFontSize(-1);
+  }, [updateFontSize]);
 
   return (
     <div className={styles.toolbar}>
@@ -61,20 +42,16 @@ const EditorToolbar: React.FC = () => {
       <EditorToolbarButton
         text="Format"
         icon="paintbrush"
-        onClick={onFormatCode}
+        onClick={formatCode}
       />
-      <EditorToolbarButton text="Reset" icon="trash" onClick={onReset} />
+      <EditorToolbarButton text="Reset" icon="trash" onClick={resetCode} />
       <EditorToolbarDivider />
-      <EditorToolbarButton
-        icon="add"
-        smallPadding
-        onClick={() => onFontSizeChange(1)}
-      />
+      <EditorToolbarButton icon="add" smallPadding onClick={increaseFontSize} />
       Font
       <EditorToolbarButton
         icon="subtract"
         smallPadding
-        onClick={() => onFontSizeChange(-1)}
+        onClick={decreaseFontSize}
       />
     </div>
   );

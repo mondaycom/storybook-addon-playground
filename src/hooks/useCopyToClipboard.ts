@@ -1,23 +1,21 @@
 import { useCallback, useMemo, useState } from "react";
-import { Code, PlaygroundState } from "@/types";
-import { useAddonState } from "@storybook/manager-api";
-import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
+import usePlaygroundState from "./usePlaygroundState";
 
-const useCopyToClipboard = (code: Code) => {
-  const [state] = useAddonState<PlaygroundState>(PANEL_ID, DEFAULT_ADDON_STATE);
+const useCopyToClipboard = () => {
+  const { code, selectedTab } = usePlaygroundState();
   const [isCopied, setCopied] = useState(false);
 
   const onCopy = useCallback(() => {
     if (code) {
-      navigator.clipboard.writeText(code[state.selectedTab]);
+      navigator.clipboard.writeText(code[selectedTab]);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
-  }, [code, state.selectedTab]);
+  }, [code, selectedTab]);
 
   const shouldAllowCopy = useMemo(
-    () => code[state.selectedTab]?.length > 0,
-    [code, state.selectedTab]
+    () => code[selectedTab]?.length > 0,
+    [code, selectedTab]
   );
 
   return { onCopy, isCopied, shouldAllowCopy };
