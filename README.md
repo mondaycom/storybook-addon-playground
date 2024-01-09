@@ -52,6 +52,7 @@ const preview = {
       storyId: "playground",
       components: { ...MyComponentsLibrary, ...MyIconsLibrary },
       editorTheme: "light", // optional - set this to override your storybook's theme
+      introCode: { jsx: `<div>Welcome to my Playground!</div>`, css: "" }, // optional - set this to introdoce a "welcome" code example
     },
   },
 };
@@ -99,6 +100,9 @@ graph TD;
     I[Editor]
     J[useCopyToClipboard]
     K[usePlaygroundArgs]
+    Q[useInitialCode]
+    R[useBroadcastEditorChanges]
+    S[usePlaygroundState]
     L[useToolbarActions]
     M[prettier]
     N[react-codemirror]
@@ -120,10 +124,12 @@ graph TD;
     C -->|Registers Addons| P
 
     F -->|Renders in a story| G
-    G ====>|Using lib| H
+    G ======>|Using lib| H
 
-
-    D -->|Renders| I
+    D -->|Calls| Q
+    D -->|Calls| R
+    R -->|Uses| S
+    D --->|Renders| I
     I ====>|Using lib| N
     I -->|Uses| L
     I -->|Uses| K
