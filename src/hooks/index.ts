@@ -5,3 +5,4 @@ export { default as useCopyToClipboard } from "./useCopyToClipboard";
 export { default as useInitialCode } from "./useInitialCode";
 export { default as useBroadcastEditorChanges } from "./useBroadcastEditorChanges";
 export { default as usePlaygroundRendererCode } from "./usePlaygroundRendererCode";
+export { default as useEditorTheme } from "./useEditorTheme";

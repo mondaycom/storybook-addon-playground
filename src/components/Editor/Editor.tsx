@@ -1,16 +1,15 @@
 import React, { forwardRef, lazy } from "react";
 import { Extension, ReactCodeMirrorRef } from "@uiw/react-codemirror";
-import { EditorTheme, PlaygroundParameters, PlaygroundState } from "@/types";
-import { useParameter, useStorybookState } from "@storybook/manager-api";
-import { ADDON_ID_FOR_PARAMETERS, DEFAULT_ADDON_PARAMETERS } from "@/consts";
+import { Code, EditorTheme, PlaygroundState } from "@/types";
 const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
 
 interface EditorProps {
   type: PlaygroundState["selectedTab"];
-  code: string;
+  code: Code["jsx"] | Code["css"];
+  theme?: EditorTheme;
   fontSize: PlaygroundState["fontSize"];
   extensions: Extension[];
-  onChange: (newVal: string) => void;
+  onChange: (newVal: Code["jsx"] | Code["css"]) => void;
 }
 
 type EditorComponent = React.ForwardRefExoticComponent<
@@ -18,15 +17,8 @@ type EditorComponent = React.ForwardRefExoticComponent<
 >;
 
 const Editor: EditorComponent = forwardRef(
-  ({ type, code, fontSize, extensions, onChange }, ref) => {
-    const { theme: storybookTheme } = useStorybookState();
-    const { editorTheme: addonTheme } = useParameter<PlaygroundParameters>(
-      ADDON_ID_FOR_PARAMETERS,
-      DEFAULT_ADDON_PARAMETERS
-    );
+  ({ type, code, theme = "light", fontSize, extensions, onChange }, ref) => {
     const placeholder = `Insert your ${type.toUpperCase()} code here`;
-    const theme: EditorTheme =
-      addonTheme || (storybookTheme.base === "dark" ? "dark" : "light");
 
     return (
       <CodeMirror

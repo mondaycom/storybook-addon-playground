@@ -103,6 +103,7 @@ graph TD;
     Q[useInitialCode]
     R[useBroadcastEditorChanges]
     S[usePlaygroundState]
+    T[useEditorTheme]
     L[useToolbarActions]
     M[prettier]
     N[react-codemirror]
@@ -133,6 +134,7 @@ graph TD;
     I ====>|Using lib| N
     I -->|Uses| L
     I -->|Uses| K
+    I -->|Uses| T
 
     L ===>|Using lib| M
     L -->|Uses| J
