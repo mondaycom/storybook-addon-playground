@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/mondaycom/storybook-addon-playground/compare/v1.0.3...v1.0.4) (2024-01-14)
+
+
+### Bug Fixes
+
+* editor should have self code state to not have circular dependency, change to events-based mechanism ([#26](https://github.com/mondaycom/storybook-addon-playground/issues/26)) ([13fffa9](https://github.com/mondaycom/storybook-addon-playground/commit/13fffa9395f042e7448217945feb5fd7d7dbf0bc))
+
 ## [1.0.3](https://github.com/mondaycom/storybook-addon-playground/compare/v1.0.2...v1.0.3) (2023-12-20)
 
 
