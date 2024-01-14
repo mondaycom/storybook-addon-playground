@@ -1,12 +1,12 @@
 import React from "react";
-import PlaygroundRenderer from "../components/PlaygroundRenderer/PlaygroundRenderer";
+import PlaygroundPreview from "../components/PlaygroundPreview/PlaygroundPreview";
 import { StoryFn } from "@storybook/react";
 import { PlaygroundParameters } from "@/types";
-import { usePlaygroundRendererCode } from "@/hooks";
+import { usePlaygroundPreviewCode } from "@/hooks";
 import { LiveProvider } from "react-live";
 
 const withPlayground: StoryFn = (_Story, { parameters }) => {
-  const code = usePlaygroundRendererCode();
+  const code = usePlaygroundPreviewCode();
   const playgroundParameters: PlaygroundParameters = parameters.playground;
 
   return (
@@ -15,7 +15,7 @@ const withPlayground: StoryFn = (_Story, { parameters }) => {
       scope={playgroundParameters.components}
       enableTypeScript
     >
-      <PlaygroundRenderer css={code.css} />
+      <PlaygroundPreview css={code.css} />
     </LiveProvider>
   );
 };

@@ -5,5 +5,5 @@ export { default as useCopyToClipboard } from "./useCopyToClipboard";
 export { default as useInitialCode } from "./useInitialCode";
 export { default as useAutoOpenPlayground } from "./useAutoOpenPlayground";
 export { default as useBroadcastEditorChanges } from "./useBroadcastEditorChanges";
-export { default as usePlaygroundRendererCode } from "./usePlaygroundRendererCode";
+export { default as usePlaygroundPreviewCode } from "./usePlaygroundPreviewCode";
 export { default as useEditorTheme } from "./useEditorTheme";

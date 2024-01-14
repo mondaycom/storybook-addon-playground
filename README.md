@@ -94,7 +94,7 @@ graph TD;
     E[Tool addon]
 
     F[withPlayground]
-    G[PlaygroundRenderer]
+    G[PlaygroundPreview]
     H[react-live]
 
     I[Editor]
