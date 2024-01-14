@@ -95,7 +95,7 @@ graph TD;
 
     F[withPlaygroundRenderer]
     G[PlaygroundRenderer]
-    H[react-jsx-parser]
+    H[react-live]
 
     I[Editor]
     J[useCopyToClipboard]

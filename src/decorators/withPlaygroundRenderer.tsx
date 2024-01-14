@@ -3,16 +3,20 @@ import PlaygroundRenderer from "../components/PlaygroundRenderer/PlaygroundRende
 import { StoryFn } from "@storybook/react";
 import { PlaygroundParameters } from "@/types";
 import { usePlaygroundRendererCode } from "@/hooks";
+import { LiveProvider } from "react-live";
 
 const withPlaygroundRenderer: StoryFn = (_Story, { parameters }) => {
   const code = usePlaygroundRendererCode();
   const playgroundParameters: PlaygroundParameters = parameters.playground;
 
   return (
-    <PlaygroundRenderer
-      code={code}
-      components={playgroundParameters.components}
-    />
+    <LiveProvider
+      code={code.jsx}
+      scope={playgroundParameters.components}
+      enableTypeScript
+    >
+      <PlaygroundRenderer css={code.css} />
+    </LiveProvider>
   );
 };
 
