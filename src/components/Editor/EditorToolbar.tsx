@@ -23,22 +23,25 @@ const EditorToolbar: React.FC = () => {
     DEFAULT_ADDON_PARAMETERS
   );
 
-  const { code, updateCode, resetCode } = usePlaygroundArgs();
+  const { updateCode, resetCode } = usePlaygroundArgs();
   const [state, setState] = useAddonState<PlaygroundState>(
     PANEL_ID,
     DEFAULT_ADDON_STATE
   );
+  const { code, selectedTab, fontSize } = state;
+
   const onFontSizeChange = useCallback(
     (amount: number) => {
       setState((state) => ({
         ...state,
-        fontSize: Math.max(12, Math.min(18, state.fontSize + amount)),
+        fontSize: Math.max(12, Math.min(18, fontSize + amount)),
       }));
     },
-    [setState]
+    [fontSize, setState]
   );
+
   const { onCopy, isCopied, shouldAllowCopy, onFormatCode, onReset } =
-    useToolbarActions(code, updateCode, resetCode, state.selectedTab);
+    useToolbarActions(code, updateCode, resetCode, selectedTab);
 
   return (
     <div className={styles.toolbar}>

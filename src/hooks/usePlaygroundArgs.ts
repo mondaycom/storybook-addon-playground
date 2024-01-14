@@ -1,36 +1,29 @@
-import { useAddonState, useArgs } from "@storybook/manager-api";
-import { useCallback, useMemo } from "react";
-import { debounce } from "lodash-es";
-import { Code, PlaygroundArgs, PlaygroundState } from "@/types";
+import { useAddonState } from "@storybook/manager-api";
+import { useCallback } from "react";
+import { PlaygroundArgs, PlaygroundState } from "@/types";
 import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
 
 const usePlaygroundArgs = (): PlaygroundArgs => {
-  const [state] = useAddonState<PlaygroundState>(PANEL_ID, DEFAULT_ADDON_STATE);
-  const [args, updateArgs] = useArgs();
-  const debouncedUpdateArgs = useMemo(
-    () => debounce(updateArgs, 300),
-    [updateArgs]
+  const [state, setState] = useAddonState<PlaygroundState>(
+    PANEL_ID,
+    DEFAULT_ADDON_STATE
   );
-
-  const code = useMemo<Code>(
-    () => args?.code || { jsx: "", css: "" },
-    [args?.code]
-  );
+  const { code, selectedTab } = state;
 
   const updateCode = useCallback(
     (newCode: string) => {
-      const updatedCode = { ...code, [state.selectedTab]: newCode };
-      debouncedUpdateArgs({ code: updatedCode });
+      const updatedCode = { ...code, [selectedTab]: newCode };
+      setState((state) => ({ ...state, code: updatedCode }));
     },
-    [code, debouncedUpdateArgs, state.selectedTab]
+    [code, selectedTab, setState]
   );
 
   const resetCode = useCallback(() => {
-    const updatedCode = { ...code, [state.selectedTab]: "" };
-    debouncedUpdateArgs({ code: updatedCode });
-  }, [code, debouncedUpdateArgs, state.selectedTab]);
+    const updatedCode = { ...code, [selectedTab]: "" };
+    setState((state) => ({ ...state, code: updatedCode }));
+  }, [code, selectedTab, setState]);
 
-  return { code, updateCode, resetCode };
+  return { updateCode, resetCode };
 };
 
 export default usePlaygroundArgs;
