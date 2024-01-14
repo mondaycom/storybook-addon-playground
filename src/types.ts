@@ -4,6 +4,7 @@ export interface PlaygroundParameters {
   storyId: string;
   components: PlaygroundComponents;
   editorTheme?: EditorTheme;
+  introCode?: Code;
 }
 
 export type PlaygroundComponents = Record<
@@ -17,6 +18,7 @@ export interface PlaygroundArgs {
 }
 
 export interface PlaygroundState {
+  hasInitialCodeLoaded?: boolean;
   fontSize: number;
   code?: Code;
   selectedTab: Tab;

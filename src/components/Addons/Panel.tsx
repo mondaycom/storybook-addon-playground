@@ -1,6 +1,10 @@
-import React, { useCallback, Suspense } from "react";
+import React, { Suspense, useCallback } from "react";
 import { Editor, EditorTabs, EditorToolbar } from "../Editor";
-import { usePlaygroundArgs } from "@/hooks";
+import {
+  usePlaygroundArgs,
+  useInitialCode,
+  useBroadcastEditorChanges,
+} from "@/hooks";
 import { AddonPanel } from "@storybook/components";
 import { Addon_RenderOptions } from "@storybook/types";
 import { Extension } from "@uiw/react-codemirror";
@@ -17,6 +21,8 @@ const extensions: { jsx: Extension[]; css: Extension[] } = {
 };
 
 const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
+  useInitialCode();
+  useBroadcastEditorChanges();
   const { updateCode } = usePlaygroundArgs();
   const [state, setState] = useAddonState<PlaygroundState>(
     PANEL_ID,

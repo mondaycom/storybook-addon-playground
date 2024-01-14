@@ -8,6 +8,14 @@
   ],
   "ignorePatterns": ["dist/", ".eslintrc.cjs"],
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "overrides": [
+    {
+      "files": ["src/decorators/with*.{js,jsx,ts,tsx}"],
+      "rules": {
+        "react-hooks/rules-of-hooks": "off"
+      }
+    }
+  ],
   "rules": {
     "react/display-name": "off",
     "react/prop-types": 0,
