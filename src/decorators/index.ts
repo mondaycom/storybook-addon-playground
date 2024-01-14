@@ -1,1 +1,1 @@
-export { default as withPlaygroundRenderer } from "./withPlaygroundRenderer";
+export { default as withPlayground } from "./withPlayground";

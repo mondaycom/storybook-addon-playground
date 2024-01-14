@@ -1,8 +1,8 @@
-import { withPlaygroundRenderer } from "../../src/decorators";
+import { withPlayground } from "../../src/decorators";
 
 export default {
   title: "Playground",
-  decorators: [withPlaygroundRenderer],
+  decorators: [withPlayground],
 };
 
 export const Playground = {};

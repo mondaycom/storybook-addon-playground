@@ -63,11 +63,11 @@ const preview = {
 Create a story with the following content:
 
 ```js
-import { withPlaygroundRenderer } from "../../src/decorators";
+import { withPlayground } from "../../src/decorators";
 
 export default {
   title: "Playground",
-  decorators: [withPlaygroundRenderer],
+  decorators: [withPlayground],
 };
 
 export const Playground = {};
@@ -93,7 +93,7 @@ graph TD;
     D[Panel addon]
     E[Tool addon]
 
-    F[withPlaygroundRenderer]
+    F[withPlayground]
     G[PlaygroundRenderer]
     H[react-live]
 

@@ -5,7 +5,7 @@ import { PlaygroundParameters } from "@/types";
 import { usePlaygroundRendererCode } from "@/hooks";
 import { LiveProvider } from "react-live";
 
-const withPlaygroundRenderer: StoryFn = (_Story, { parameters }) => {
+const withPlayground: StoryFn = (_Story, { parameters }) => {
   const code = usePlaygroundRendererCode();
   const playgroundParameters: PlaygroundParameters = parameters.playground;
 
@@ -20,4 +20,4 @@ const withPlaygroundRenderer: StoryFn = (_Story, { parameters }) => {
   );
 };
 
-export default withPlaygroundRenderer;
+export default withPlayground;
