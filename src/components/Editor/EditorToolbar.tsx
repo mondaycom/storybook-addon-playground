@@ -1,27 +1,19 @@
 import React, { useCallback } from "react";
-import { useToolbarActions, usePlaygroundArgs } from "@/hooks";
+import {
+  useToolbarActions,
+  usePlaygroundArgs,
+  usePlaygroundState,
+} from "@/hooks";
 import EditorToolbarButton from "./EditorToolbarButton";
 import EditorToolbarDivider from "./EditorToolbarDivider";
-import {
-  useAddonState,
-  useParameter,
-  useStorybookApi,
-} from "@storybook/manager-api";
-import {
-  ADDON_ID_FOR_PARAMETERS,
-  DEFAULT_ADDON_STATE,
-  PANEL_ID,
-  DEFAULT_ADDON_PARAMETERS,
-} from "@/consts";
-import { PlaygroundParameters, PlaygroundState } from "@/types";
+import { useAddonState, useStorybookApi } from "@storybook/manager-api";
+import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
+import { PlaygroundState } from "@/types";
 import styles from "./EditorToolbar.module.css";
 
 const EditorToolbar: React.FC = () => {
   const { selectStory } = useStorybookApi();
-  const { storyId } = useParameter<PlaygroundParameters>(
-    ADDON_ID_FOR_PARAMETERS,
-    DEFAULT_ADDON_PARAMETERS
-  );
+  const { playgroundStoryId } = usePlaygroundState();
 
   const { updateCode, resetCode } = usePlaygroundArgs();
   const [state, setState] = useAddonState<PlaygroundState>(
@@ -29,6 +21,10 @@ const EditorToolbar: React.FC = () => {
     DEFAULT_ADDON_STATE
   );
   const { code, selectedTab, fontSize } = state;
+
+  const selectPlaygroundStory = useCallback(() => {
+    selectStory(playgroundStoryId);
+  }, [selectStory, playgroundStoryId]);
 
   const onFontSizeChange = useCallback(
     (amount: number) => {
@@ -48,7 +44,7 @@ const EditorToolbar: React.FC = () => {
       <EditorToolbarButton
         tooltip="Show playground view"
         icon="beaker"
-        onClick={() => selectStory(storyId)}
+        onClick={selectPlaygroundStory}
       />
       <EditorToolbarButton
         tooltip={shouldAllowCopy ? "" : "Editor is empty"}
