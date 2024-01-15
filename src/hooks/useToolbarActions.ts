@@ -27,10 +27,10 @@ const useToolbarActions = (
       } else {
         formatted = formatCss(code.css);
       }
+      updateCode(formatted);
     } catch (error) {
       console.error(error.message);
     }
-    updateCode(formatted);
   }, [code, currentTab, updateCode]);
 
   const onReset = useCallback(() => {
