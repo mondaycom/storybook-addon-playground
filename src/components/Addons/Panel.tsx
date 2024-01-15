@@ -4,6 +4,7 @@ import {
   usePlaygroundArgs,
   useInitialCode,
   useBroadcastEditorChanges,
+  useEditorTheme,
 } from "@/hooks";
 import { AddonPanel } from "@storybook/components";
 import { Addon_RenderOptions } from "@storybook/types";
@@ -23,6 +24,7 @@ const extensions: { jsx: Extension[]; css: Extension[] } = {
 const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
   useInitialCode();
   useBroadcastEditorChanges();
+  const theme = useEditorTheme();
   const { updateCode } = usePlaygroundArgs();
   const [state, setState] = useAddonState<PlaygroundState>(
     PANEL_ID,
@@ -49,6 +51,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
               <Editor
                 type={selectedTab}
                 code={code[selectedTab]}
+                theme={theme}
                 extensions={extensions[selectedTab]}
                 fontSize={fontSize}
                 onChange={updateCode}
