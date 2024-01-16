@@ -11,7 +11,7 @@ const withPlayground: StoryFn = (_Story, { parameters }) => {
 
   return (
     <LiveProvider
-      code={code.jsx}
+      code={code.jsx || "<></>"}
       scope={playgroundParameters.components}
       enableTypeScript
     >
