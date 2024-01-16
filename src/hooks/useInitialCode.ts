@@ -25,7 +25,7 @@ const useInitialCode = () => {
   );
 
   useEffect(() => {
-    if (hasInitialCodeLoaded || !introCode) {
+    if (hasInitialCodeLoaded || introCode === null) {
       return;
     }
 
