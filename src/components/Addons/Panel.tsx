@@ -33,7 +33,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
     DEFAULT_ADDON_STATE
   );
 
-  const { code, selectedTab, fontSize } = state;
+  const { code, selectedTab, fontSize, hasInitialCodeLoaded } = state;
 
   const onTabChange = useCallback(
     (newTab: Tab) => {
@@ -51,6 +51,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
           <div className={styles.editor}>
             <Suspense fallback={"Loading Editor..."}>
               <Editor
+                loading={!hasInitialCodeLoaded}
                 type={selectedTab}
                 code={code[selectedTab]}
                 theme={theme}

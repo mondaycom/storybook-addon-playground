@@ -1,9 +1,11 @@
 import React, { forwardRef, lazy } from "react";
 import { Extension, ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { Code, EditorTheme, PlaygroundState } from "@/types";
+import { Loader } from "@storybook/components";
 const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
 
 interface EditorProps {
+  loading: boolean;
   type: PlaygroundState["selectedTab"];
   code: Code["jsx"] | Code["css"];
   theme?: EditorTheme;
@@ -17,19 +19,28 @@ type EditorComponent = React.ForwardRefExoticComponent<
 >;
 
 const Editor: EditorComponent = forwardRef(
-  ({ type, code, theme = "light", fontSize, extensions, onChange }, ref) => {
+  (
+    { loading, type, code, theme = "light", fontSize, extensions, onChange },
+    ref
+  ) => {
     const placeholder = `Insert your ${type.toUpperCase()} code here`;
 
     return (
-      <CodeMirror
-        style={{ fontSize }}
-        ref={ref}
-        theme={theme}
-        value={code}
-        extensions={extensions}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
+      <>
+        {loading ? (
+          <Loader />
+        ) : (
+          <CodeMirror
+            style={{ fontSize }}
+            ref={ref}
+            theme={theme}
+            value={code}
+            extensions={extensions}
+            onChange={onChange}
+            placeholder={placeholder}
+          />
+        )}
+      </>
     );
   }
 );
