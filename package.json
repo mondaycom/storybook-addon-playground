@@ -59,7 +59,7 @@
     "@uiw/react-codemirror": "^4.21.21",
     "lodash-es": "^4.17.21",
     "prettier": "^2.3.2",
-    "react-jsx-parser": "^1.29.0",
+    "react-live": "^4.1.5",
     "style-inject": "^0.3.0"
   },
   "devDependencies": {
@@ -107,6 +107,7 @@
     "@storybook/components": ">=7.0.0",
     "@storybook/core-events": ">=7.0.0",
     "@storybook/manager-api": ">=7.0.0",
+    "@storybook/preview-api": ">=7.0.0",
     "@storybook/types": ">=7.0.0",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
