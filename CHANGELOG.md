@@ -1,3 +1,17 @@
+# [1.1.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.0.4...v1.1.0) (2024-01-18)
+
+
+### Bug Fixes
+
+* beaker on Tool and EditorToolbar is not opening playground ([#30](https://github.com/mondaycom/storybook-addon-playground/issues/30)) ([0d6391e](https://github.com/mondaycom/storybook-addon-playground/commit/0d6391e66430de356998e05f102fa8f930447ebb))
+* **EditorTabs:** fix shrinking tabs + add a11y to Tab component ([#32](https://github.com/mondaycom/storybook-addon-playground/issues/32)) ([0cf857e](https://github.com/mondaycom/storybook-addon-playground/commit/0cf857e23b6a631e34a1a8f3d55df7551b04ec2c))
+* **format:** updating the code should only be done in case format result is valid ([#31](https://github.com/mondaycom/storybook-addon-playground/issues/31)) ([59fb474](https://github.com/mondaycom/storybook-addon-playground/commit/59fb4740251fcb72151312167d2178b7ea4d09e4))
+
+
+### Features
+
+* automatically open playground panel when navigating to playground story ([#29](https://github.com/mondaycom/storybook-addon-playground/issues/29)) ([ad81616](https://github.com/mondaycom/storybook-addon-playground/commit/ad816166584c00af8d132501fa82756893c23a4e))
+
 ## [1.0.4](https://github.com/mondaycom/storybook-addon-playground/compare/v1.0.3...v1.0.4) (2024-01-15)
 
 
