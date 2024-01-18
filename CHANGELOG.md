@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.1.0...v1.2.0) (2024-01-18)
+
+
+### Features
+
+* migrate to react-live ([#35](https://github.com/mondaycom/storybook-addon-playground/issues/35)) ([f47256b](https://github.com/mondaycom/storybook-addon-playground/commit/f47256ba4283ac0e39a38030f9f4c6ca1fa9c121))
+
 # [1.1.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.0.4...v1.1.0) (2024-01-18)
 
 
