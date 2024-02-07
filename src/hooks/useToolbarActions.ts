@@ -11,6 +11,11 @@ interface UseToolbarActionsReturnType {
   shouldAllowCopy: boolean;
 }
 
+const formatFunctions = {
+  jsx: formatJsx,
+  css: formatCss,
+};
+
 const useToolbarActions = (
   code: Code,
   updateCode: (newCode: string) => void,
@@ -20,12 +25,11 @@ const useToolbarActions = (
   const { onCopy, isCopied, shouldAllowCopy } = useCopyToClipboard(code);
 
   const onFormatCode = useCallback(async () => {
-    let formatted: string;
     try {
-      if (currentTab === "jsx") {
-        formatted = formatJsx(code.jsx);
-      } else {
-        formatted = formatCss(code.css);
+      const formatter = formatFunctions[currentTab];
+      const formatted = formatter?.(code[currentTab]);
+      if (formatted === code[currentTab]) {
+        return;
       }
       updateCode(formatted);
     } catch (error) {
