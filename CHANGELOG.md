@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.2.0...v1.3.0) (2024-02-07)
+
+
+### Bug Fixes
+
+* **useToolbarActions:** do not update code if current and new code are equal ([#40](https://github.com/mondaycom/storybook-addon-playground/issues/40)) ([7bee879](https://github.com/mondaycom/storybook-addon-playground/commit/7bee879eac18ee2371a6f12f45dca5dc84f9a4a8))
+
+
+### Features
+
+* **Panel:** make topbar and left tabs sticky ([#39](https://github.com/mondaycom/storybook-addon-playground/issues/39)) ([44fa35e](https://github.com/mondaycom/storybook-addon-playground/commit/44fa35e84a026a3f733bcb9f21b19e9d11d352fa))
+
 # [1.2.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.1.0...v1.2.0) (2024-01-18)
 
 
