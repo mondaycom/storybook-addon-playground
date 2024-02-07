@@ -7,8 +7,10 @@
 .editorWrapper {
   display: flex;
   height: 100%;
+  overflow: auto;
 }
 
 .editor {
   flex: 1;
+  overflow: auto;
 }
