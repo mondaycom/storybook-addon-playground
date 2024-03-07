@@ -1,14 +1,15 @@
 name: Lint merge commit name
 
 on:
-  merge_group:
-    types: [checks_requested]
+  push:
+    branches-ignore:
+      - "master"
 
 jobs:
   lint-commit-name:
+    if: contains(github.ref, 'gh-readonly-queue/master/')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - uses: wagoid/commitlint-github-action@v5
         with:
           commitDepth: 1
