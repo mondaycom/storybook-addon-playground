@@ -63,7 +63,7 @@ const preview = {
 Create a story with the following content:
 
 ```js
-import { withPlayground } from "../../src/decorators";
+import { withPlayground } from "storybook-addon-playground";
 
 export default {
   title: "Playground",
