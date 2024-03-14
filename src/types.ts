@@ -2,15 +2,25 @@ import React from "react";
 
 export interface PlaygroundParameters {
   storyId: string;
-  components: PlaygroundComponents;
+  components: Components;
+  autocompletions: AutocompletionsMetadata;
   editorTheme?: EditorTheme;
   introCode?: Code;
 }
 
-export type PlaygroundComponents = Record<
+type Components = Record<string, React.ComponentType | React.ExoticComponent>;
+
+type AutoCompletionItem = Record<
   string,
-  React.ComponentType | React.ExoticComponent
+  {
+    type: string | string[];
+    required: boolean;
+    defaultValue: unknown;
+    description?: string;
+  }
 >;
+
+export type AutocompletionsMetadata = Record<string, AutoCompletionItem[]>;
 
 export interface PlaygroundArgs {
   updateCode: (newCode: string) => void;
