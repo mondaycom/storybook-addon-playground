@@ -1,0 +1,89 @@
+:global(.cm-tooltip.playground-autocompletion-dialog),
+:global(
+    .cm-tooltip.playground-autocompletion-dialog .cm-tooltip.cm-completionInfo
+  ) {
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 8px;
+  translate: 4px 0;
+}
+
+:global(
+    .cm-tooltip.playground-autocompletion-dialog
+      > ul
+      > completion-section:first-child
+  ) {
+  background: #ffffff;
+  pointer-events: none;
+  color: #676879;
+  border-bottom: 1px solid #d0d4e4;
+  padding: 0 0 8px 0;
+  margin: 0 0 8px 0;
+  opacity: 1;
+}
+
+:global(
+    .cm-tooltip.playground-autocompletion-dialog
+      > ul
+      > li.playground-autocompletion-option
+  ),
+:global(
+    .cm-tooltip.playground-autocompletion-dialog .cm-tooltip.cm-completionInfo
+  ) {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  cursor: pointer;
+  color: #323338;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+:global(
+    .cm-tooltip.playground-autocompletion-dialog
+      > ul
+      > li.playground-autocompletion-option[aria-selected]
+  ) {
+  background-color: #dcdfec;
+}
+
+:global(
+    .cm-tooltip.playground-autocompletion-dialog
+      > ul
+      > li.playground-autocompletion-option
+      .cm-completionIcon:not(.cm-completionIcon-required)
+  ) {
+  display: none;
+}
+
+:global(
+    .cm-tooltip.playground-autocompletion-dialog
+      > ul
+      > li.playground-autocompletion-option
+      .cm-completionIcon.cm-completionIcon-required::after
+  ) {
+  color: red;
+  content: "*";
+}
+
+:global(
+    .cm-tooltip.playground-autocompletion-dialog
+      > ul
+      > li.playground-autocompletion-option
+      .cm-completionDetail
+  ) {
+  margin-left: auto;
+  font-size: 11px;
+  color: #676879;
+}
+
+:global(
+    .cm-tooltip.playground-autocompletion-dialog
+      > ul
+      > li.playground-autocompletion-option
+      .cm-completionLabel
+  ) {
+  margin-right: 8px;
+}
