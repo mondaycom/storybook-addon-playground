@@ -95,7 +95,9 @@ function generatePropCompletions(
       boost: required ? 1 : 0,
       detail: Array.isArray(type) ? type.join(" | ") : type,
       info:
-        description + (defaultValue ? ` | Defaults to: ${defaultValue}` : ""),
+        (description ? `${description}` : "") +
+        (description && defaultValue ? " | " : "") +
+        (defaultValue ? ` Defaults to: ${defaultValue}` : ""),
       section: `${componentName}'s props`,
       type: required ? "required" : "property",
       apply: (view, _completion, from, to) => {
