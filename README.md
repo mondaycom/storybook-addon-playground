@@ -27,7 +27,10 @@ On your `.storybook/main.ts` file, add the following:
 
 ```js
 const config = {
-  addons: [..."storybook-addon-playground"],
+  addons: [
+    ...
+    "storybook-addon-playground"
+  ],
 };
 ```
 
