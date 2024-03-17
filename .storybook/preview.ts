@@ -3,7 +3,7 @@ import * as VibeComponents from "monday-ui-react-core";
 import * as VibeNext from "monday-ui-react-core/next";
 import * as VibeIcons from "monday-ui-react-core/icons";
 import reactDocgenOutput from "./react-docgen-output-example.json";
-import generateAutocompletion from "../src/codemirror/utils/generate-autocompletion";
+import { generateAutocompletion } from "../src";
 
 const preview: Preview = {
   parameters: {
