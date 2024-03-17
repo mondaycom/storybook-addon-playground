@@ -86,10 +86,6 @@ function generatePropCompletions(
     .filter(
       ({ name }) => !usedProps.has(name) && name.startsWith(partialPropName)
     )
-    .map((item) => {
-      console.log({ item });
-      return item;
-    })
     .map(({ name, type, required, defaultValue, description }) => ({
       label: name,
       boost: required ? 1 : 0,
