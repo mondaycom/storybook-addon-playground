@@ -10,7 +10,7 @@ type PropEntry = [string, PropDescriptor];
 type TsPropDescriptor = PropDescriptor["tsType"];
 type JsPropDescriptor = PropDescriptor["type"];
 
-function generateAutocompletion(input: ReactDocGenOutput) {
+export function generateAutocompletion(input: ReactDocGenOutput) {
   return Object.values(input)
     .flat()
     .reduce((acc, { displayName, props = {} }) => {
@@ -88,5 +88,3 @@ function parseDefaultValue(defaultValue: DefaultValueDescriptor) {
   }
   return defaultValue.value;
 }
-
-export default generateAutocompletion;
