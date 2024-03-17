@@ -27,11 +27,7 @@ On your `.storybook/main.ts` file, add the following:
 
 ```js
 const config = {
-  ...
-  addons: [
-    ...
-    "storybook-addon-playground",
-  ],
+  addons: [..."storybook-addon-playground"],
 };
 ```
 
@@ -40,17 +36,18 @@ const config = {
 On your `.storybook/preview.ts` file, add the following:
 
 ```js
-...
-import MyComponentsLibrary from 'my-components-library';
-import MyIconsLibrary from 'my-icons-library';
-...
+import MyComponentsLibrary from "my-components-library";
+import MyIconsLibrary from "my-icons-library";
+import { generateAutocompletions } from "storybook-addon-playground";
+const documentation = reactDocgen.parse("../path/to/your/components");
+
 const preview = {
-  ...
   parameters: {
     playground: {
       // title of your story (including category prefix, if there is one)
       storyId: "playground",
       components: { ...MyComponentsLibrary, ...MyIconsLibrary },
+      autocompletions: generateAutocompletions(documentation),
       editorTheme: "light", // optional - set this to override your storybook's theme
       introCode: { jsx: `<div>Welcome to my Playground!</div>`, css: "" }, // optional - set this to introdoce a "welcome" code example
     },
@@ -94,6 +91,7 @@ graph TD;
     E[Tool addon]
 
     F[withPlayground]
+    U[generateAutocompletions]
     G[PlaygroundPreview]
     H[react-live]
 
@@ -116,6 +114,7 @@ graph TD;
     A -->|Entry| C
 
     B -->|Exports| F
+    B -->|Exports| U
 
     P --> D
     P --> E
