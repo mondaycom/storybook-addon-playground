@@ -5,7 +5,7 @@ import {
   Completion,
   autocompletion,
 } from "@codemirror/autocomplete";
-import { extractEditorStateInfo } from "../utils/extensions-utils";
+import { getEditorStateInfo } from "../utils/extensions-utils";
 import { AutocompletionsMetadata } from "@/types";
 
 function isNewTagContext(lineText: string): boolean {
@@ -120,7 +120,7 @@ function playgroundAutocompletion(
 ): CompletionResult | null {
   const { state } = context;
   const { cursorPos, fullLineText, lineTextUpToCursor } =
-    extractEditorStateInfo(state);
+    getEditorStateInfo(state);
 
   let completions: Completion[] = [];
   let from = cursorPos;
