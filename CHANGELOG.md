@@ -1,3 +1,11 @@
+# [1.5.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.4.1...v1.5.0) (2024-03-18)
+
+
+### Features
+
+* codemirror extension to automatically insert matching tag name once closed ([#44](https://github.com/mondaycom/storybook-addon-playground/issues/44)) ([658ade1](https://github.com/mondaycom/storybook-addon-playground/commit/658ade1c3bcd001435253924480b8f419a3e6d9d))
+* codemirror extension to automatically insert self closing tag once closed ([#45](https://github.com/mondaycom/storybook-addon-playground/issues/45)) ([929a9fc](https://github.com/mondaycom/storybook-addon-playground/commit/929a9fccdf236f4faa523044e224ab78e2e61a67))
+
 ## [1.4.1](https://github.com/mondaycom/storybook-addon-playground/compare/v1.4.0...v1.4.1) (2024-03-18)
 
 
