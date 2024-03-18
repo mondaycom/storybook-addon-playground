@@ -88,14 +88,15 @@ function generatePropCompletions(
     )
     .map(({ name, type, required, defaultValue, description }) => ({
       label: name,
-      boost: required ? 1 : 0,
+      boost: required ? 1 : 0, // move required props to the top of the list
       detail: Array.isArray(type) ? type.join(" | ") : type,
+      // show description and default value in the completion tooltip
       info:
         (description ? `${description}` : "") +
         (description && defaultValue ? " | " : "") +
         (defaultValue ? ` Defaults to: ${defaultValue}` : ""),
-      section: `${componentName}'s props`,
-      type: required ? "required" : "property",
+      section: `${componentName}'s props`, // group props by component name
+      type: required ? "required" : "property", // property won't have * next to it
       apply: (view, _completion, from, to) => {
         const applyText = type === "string" ? `${name}=""` : `${name}={}`;
         const applyPrefix = lineTextUpToCursor.endsWith(" ") ? "" : " ";
