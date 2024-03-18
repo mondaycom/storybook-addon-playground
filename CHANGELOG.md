@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/mondaycom/storybook-addon-playground/compare/v1.4.0...v1.4.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* classnames should be a dep, not a dev dep ([#47](https://github.com/mondaycom/storybook-addon-playground/issues/47)) ([113d362](https://github.com/mondaycom/storybook-addon-playground/commit/113d3623874f125741676d3b104c3343281be72d))
+
 # [1.4.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.3.0...v1.4.0) (2024-03-18)
 
 
