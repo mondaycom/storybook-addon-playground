@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import {
+  useCopyToClipboard,
   useToolbarActions,
   usePlaygroundArgs,
   usePlaygroundState,
@@ -36,8 +37,14 @@ const EditorToolbar: React.FC = () => {
     [fontSize, setState]
   );
 
-  const { onCopy, isCopied, shouldAllowCopy, onFormatCode, onReset } =
-    useToolbarActions(code, updateCode, resetCode, selectedTab);
+  const { onCopy, isCopied, shouldAllowCopy } = useCopyToClipboard(code);
+
+  const { onFormatCode, onReset } = useToolbarActions(
+    code,
+    updateCode,
+    resetCode,
+    selectedTab
+  );
 
   return (
     <div className={styles.toolbar}>

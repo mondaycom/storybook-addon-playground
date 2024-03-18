@@ -135,9 +135,9 @@ graph TD;
     I -->|Uses| L
     I -->|Uses| K
     I -->|Uses| T
+    I -->|Uses| J
 
     L ===>|Using lib| M
-    L -->|Uses| J
     end
 
     subgraph UI
