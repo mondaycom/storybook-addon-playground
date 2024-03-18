@@ -9,7 +9,7 @@ import {
 } from "@/hooks";
 import { AddonPanel } from "@storybook/components";
 import { Addon_RenderOptions } from "@storybook/types";
-import { Extension } from "@uiw/react-codemirror";
+import { Extension, keymap } from "@uiw/react-codemirror";
 import { useAddonState, useParameter } from "@storybook/manager-api";
 import {
   ADDON_ID_FOR_PARAMETERS,
@@ -21,6 +21,7 @@ import { PlaygroundParameters, PlaygroundState, Tab } from "@/types";
 import { langs } from "@uiw/codemirror-extensions-langs";
 import styles from "./Panel.module.css";
 import { autocomplete as playgroundAutocompletion } from "@/codemirror/extensions";
+import playgroundKeymaps from "@/codemirror/keymaps";
 
 const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
   useInitialCode();
@@ -43,6 +44,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
         langs.html(),
         langs.javascript(),
         playgroundAutocompletion(autocompletions),
+        keymap.of(playgroundKeymaps),
       ],
       css: [langs.css()],
     }),
