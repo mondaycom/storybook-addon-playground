@@ -3,7 +3,7 @@ import React from "react";
 export interface PlaygroundParameters {
   storyId: string;
   components: Components;
-  autocompletions: AutocompletionsMetadata;
+  autocompletions?: AutocompletionsMetadata;
   editorTheme?: EditorTheme;
   introCode?: Code;
 }

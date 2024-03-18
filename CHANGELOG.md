@@ -1,3 +1,17 @@
+## [1.4.1](https://github.com/mondaycom/storybook-addon-playground/compare/v1.4.0...v1.4.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* classnames should be a dep, not a dev dep ([#47](https://github.com/mondaycom/storybook-addon-playground/issues/47)) ([113d362](https://github.com/mondaycom/storybook-addon-playground/commit/113d3623874f125741676d3b104c3343281be72d))
+
+# [1.4.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.3.0...v1.4.0) (2024-03-18)
+
+
+### Features
+
+* add autocomplete abilities for the playground editor ([#43](https://github.com/mondaycom/storybook-addon-playground/issues/43)) ([9c0f2d7](https://github.com/mondaycom/storybook-addon-playground/commit/9c0f2d773f6f91ad44ca686d3a229faf8d54f80c))
+
 # [1.3.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.2.0...v1.3.0) (2024-02-07)
 
 
