@@ -54,6 +54,7 @@
     "start": "npm run build && npm run storybook"
   },
   "dependencies": {
+    "@storybook/addon-links": "^7.6.4",
     "@types/lodash-es": "^4.17.12",
     "@uiw/codemirror-extensions-langs": "^4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
