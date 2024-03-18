@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.3.0...v1.4.0) (2024-03-18)
+
+
+### Features
+
+* add autocomplete abilities for the playground editor ([#43](https://github.com/mondaycom/storybook-addon-playground/issues/43)) ([9c0f2d7](https://github.com/mondaycom/storybook-addon-playground/commit/9c0f2d773f6f91ad44ca686d3a229faf8d54f80c))
+
 # [1.3.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.2.0...v1.3.0) (2024-02-07)
 
 
