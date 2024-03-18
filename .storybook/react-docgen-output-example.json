@@ -1,0 +1,1047 @@
+{
+  "src/components/Button/Button.tsx": [
+    {
+      "description": "",
+      "methods": [],
+      "displayName": "Button",
+      "props": {
+        "className": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "Custom class names to pass to the component",
+          "defaultValue": {
+            "value": "undefined",
+            "computed": true
+          }
+        },
+        "data-testid": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": ""
+        },
+        "id": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "id to pass to the button",
+          "defaultValue": {
+            "value": "undefined",
+            "computed": true
+          }
+        },
+        "children": {
+          "required": false,
+          "tsType": {
+            "name": "ReactReactNode",
+            "raw": "React.ReactNode"
+          },
+          "description": ""
+        },
+        "activeButtonClassName": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": ""
+        },
+        "kind": {
+          "required": false,
+          "tsType": {
+            "name": "ButtonType"
+          },
+          "description": "The button's kind",
+          "defaultValue": {
+            "value": "ButtonType.PRIMARY",
+            "computed": true
+          }
+        },
+        "onClick": {
+          "required": false,
+          "tsType": {
+            "name": "signature",
+            "type": "function",
+            "raw": "(event: React.MouseEvent<HTMLButtonElement>) => void",
+            "signature": {
+              "arguments": [
+                {
+                  "type": {
+                    "name": "ReactMouseEvent",
+                    "raw": "React.MouseEvent<HTMLButtonElement>",
+                    "elements": [
+                      {
+                        "name": "HTMLButtonElement"
+                      }
+                    ]
+                  },
+                  "name": "event"
+                }
+              ],
+              "return": {
+                "name": "void"
+              }
+            }
+          },
+          "description": "Callback function to run when the button is clicked",
+          "defaultValue": {
+            "value": "function NOOP() {}",
+            "computed": false
+          }
+        },
+        "onMouseDown": {
+          "required": false,
+          "tsType": {
+            "name": "signature",
+            "type": "function",
+            "raw": "(event: React.MouseEvent<HTMLButtonElement>) => void",
+            "signature": {
+              "arguments": [
+                {
+                  "type": {
+                    "name": "ReactMouseEvent",
+                    "raw": "React.MouseEvent<HTMLButtonElement>",
+                    "elements": [
+                      {
+                        "name": "HTMLButtonElement"
+                      }
+                    ]
+                  },
+                  "name": "event"
+                }
+              ],
+              "return": {
+                "name": "void"
+              }
+            }
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "function NOOP() {}",
+            "computed": false
+          }
+        },
+        "blurOnMouseUp": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "Blur on button click",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          }
+        },
+        "name": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "Name of the button - for form submit usages",
+          "defaultValue": {
+            "value": "undefined",
+            "computed": true
+          }
+        },
+        "size": {
+          "required": false,
+          "tsType": {
+            "name": "union",
+            "raw": "(typeof SIZES)[keyof typeof SIZES] | keyof typeof OLD_BUTTON_SIZES",
+            "elements": [
+              {
+                "name": "unknown[union]",
+                "raw": "(typeof SIZES)[keyof typeof SIZES]"
+              },
+              {
+                "name": "union",
+                "raw": "keyof typeof OLD_BUTTON_SIZES",
+                "elements": [
+                  {
+                    "name": "literal",
+                    "value": "sm"
+                  },
+                  {
+                    "name": "literal",
+                    "value": "md"
+                  },
+                  {
+                    "name": "literal",
+                    "value": "lg"
+                  }
+                ]
+              }
+            ]
+          },
+          "description": "The button's size",
+          "defaultValue": {
+            "value": "SIZES.MEDIUM",
+            "computed": true
+          }
+        },
+        "color": {
+          "required": false,
+          "tsType": {
+            "name": "ButtonColor"
+          },
+          "description": "The button's color",
+          "defaultValue": {
+            "value": "ButtonColor.PRIMARY",
+            "computed": true
+          }
+        },
+        "type": {
+          "required": false,
+          "tsType": {
+            "name": "ButtonInputType"
+          },
+          "description": "The button's type",
+          "defaultValue": {
+            "value": "ButtonInputType.BUTTON",
+            "computed": true
+          }
+        },
+        "disabled": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "Whether the button should be disabled or not",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "rightIcon": {
+          "required": false,
+          "tsType": {
+            "name": "union",
+            "raw": "string | React.FC<IconSubComponentProps> | null",
+            "elements": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "ReactFC",
+                "raw": "React.FC<IconSubComponentProps>",
+                "elements": [
+                  {
+                    "name": "IconSubComponentProps"
+                  }
+                ]
+              },
+              {
+                "name": "null"
+              }
+            ]
+          },
+          "description": "Icon to place on the right",
+          "defaultValue": {
+            "value": "null",
+            "computed": false
+          }
+        },
+        "leftIcon": {
+          "required": false,
+          "tsType": {
+            "name": "union",
+            "raw": "string | React.FC<IconSubComponentProps> | null",
+            "elements": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "ReactFC",
+                "raw": "React.FC<IconSubComponentProps>",
+                "elements": [
+                  {
+                    "name": "IconSubComponentProps"
+                  }
+                ]
+              },
+              {
+                "name": "null"
+              }
+            ]
+          },
+          "description": "Icon to place on the left",
+          "defaultValue": {
+            "value": "null",
+            "computed": false
+          }
+        },
+        "success": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "the success props are used when you have async action and wants to display a success message",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "successIcon": {
+          "required": false,
+          "tsType": {
+            "name": "union",
+            "raw": "string | React.FC<IconSubComponentProps> | null",
+            "elements": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "ReactFC",
+                "raw": "React.FC<IconSubComponentProps>",
+                "elements": [
+                  {
+                    "name": "IconSubComponentProps"
+                  }
+                ]
+              },
+              {
+                "name": "null"
+              }
+            ]
+          },
+          "description": "Success icon name",
+          "defaultValue": {
+            "value": "null",
+            "computed": false
+          }
+        },
+        "successText": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "Success text",
+          "defaultValue": {
+            "value": "\"\"",
+            "computed": false
+          }
+        },
+        "loading": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "loading boolean which switches the text to a loader",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "style": {
+          "required": false,
+          "tsType": {
+            "name": "ReactCSSProperties",
+            "raw": "React.CSSProperties"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "undefined",
+            "computed": true
+          }
+        },
+        "active": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "displays the active state",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "marginRight": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "adds 8px margin to the right",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "marginLeft": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "adds 8px margin to the left",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "ariaLabeledBy": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "element id to describe the button accordingly",
+          "defaultValue": {
+            "value": "undefined",
+            "computed": true
+          }
+        },
+        "ariaLabel": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "aria label to provide important when providing only Icon",
+          "defaultValue": {
+            "value": "undefined",
+            "computed": true
+          }
+        },
+        "ariaHasPopup": {
+          "required": false,
+          "tsType": {
+            "name": "ReactHTMLProps[\"aria-haspopup\"]",
+            "raw": "React.HTMLProps<HTMLButtonElement>[\"aria-haspopup\"]"
+          },
+          "description": "aria for a button popup",
+          "defaultValue": {
+            "value": "undefined",
+            "computed": true
+          }
+        },
+        "ariaExpanded": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "aria to be set if the popup is open",
+          "defaultValue": {
+            "value": "undefined",
+            "computed": true
+          }
+        },
+        "ariaControls": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "aria controls - receives id for the controlled region",
+          "defaultValue": {
+            "value": "undefined",
+            "computed": true
+          }
+        },
+        "aria-describedby": {
+          "required": false,
+          "tsType": {
+            "name": "AriaAttributes[\"aria-describedby\"]",
+            "raw": "AriaAttributes[\"aria-describedby\"]"
+          },
+          "description": ""
+        },
+        "aria-hidden": {
+          "required": false,
+          "tsType": {
+            "name": "AriaAttributes[\"aria-hidden\"]",
+            "raw": "AriaAttributes[\"aria-hidden\"]"
+          },
+          "description": "aria to be used for screen reader to know if the button is hidden"
+        },
+        "onFocus": {
+          "required": false,
+          "tsType": {
+            "name": "signature",
+            "type": "function",
+            "raw": "(event: React.FocusEvent<HTMLButtonElement>) => void",
+            "signature": {
+              "arguments": [
+                {
+                  "type": {
+                    "name": "ReactFocusEvent",
+                    "raw": "React.FocusEvent<HTMLButtonElement>",
+                    "elements": [
+                      {
+                        "name": "HTMLButtonElement"
+                      }
+                    ]
+                  },
+                  "name": "event"
+                }
+              ],
+              "return": {
+                "name": "void"
+              }
+            }
+          },
+          "description": "On Button Focus callback",
+          "defaultValue": {
+            "value": "function NOOP() {}",
+            "computed": false
+          }
+        },
+        "onBlur": {
+          "required": false,
+          "tsType": {
+            "name": "signature",
+            "type": "function",
+            "raw": "(event: React.FocusEvent<HTMLButtonElement>) => void",
+            "signature": {
+              "arguments": [
+                {
+                  "type": {
+                    "name": "ReactFocusEvent",
+                    "raw": "React.FocusEvent<HTMLButtonElement>",
+                    "elements": [
+                      {
+                        "name": "HTMLButtonElement"
+                      }
+                    ]
+                  },
+                  "name": "event"
+                }
+              ],
+              "return": {
+                "name": "void"
+              }
+            }
+          },
+          "description": "On Button Blur callback",
+          "defaultValue": {
+            "value": "function NOOP() {}",
+            "computed": false
+          }
+        },
+        "rightFlat": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "leftFlat": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "preventClickAnimation": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "noSidePadding": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "defaultTextColorOnPrimaryColor": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "default color for text color in ON_PRIMARY_COLOR kind (should be any type of css color (rbg, var, hex...)",
+          "defaultValue": {
+            "value": "\"rgba(0, 0, 0, 0)\"",
+            "computed": false
+          }
+        },
+        "dataTestId": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "@deprecated - use \"data-testid\" instead",
+          "defaultValue": {
+            "value": "undefined",
+            "computed": true
+          }
+        },
+        "insetFocus": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "Change the focus indicator from around the button to within it",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "tabIndex": {
+          "required": false,
+          "tsType": {
+            "name": "number"
+          },
+          "description": "Specifies the tab order of an element"
+        }
+      }
+    }
+  ],
+  "src/components/Text/Text.tsx": [
+    {
+      "description": "",
+      "methods": [],
+      "displayName": "Text",
+      "props": {
+        "className": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": ""
+        },
+        "data-testid": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": ""
+        },
+        "id": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": ""
+        },
+        "element": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "The element tag of the text component",
+          "defaultValue": {
+            "value": "\"div\"",
+            "computed": false
+          }
+        },
+        "children": {
+          "required": true,
+          "tsType": {
+            "name": "ReactNode"
+          },
+          "description": "The textual content"
+        },
+        "color": {
+          "required": false,
+          "tsType": {
+            "name": "TypographyColor"
+          },
+          "description": ""
+        },
+        "align": {
+          "required": false,
+          "tsType": {
+            "name": "TypographyAlign"
+          },
+          "description": ""
+        },
+        "ellipsis": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "When the text is too long, cut the end of the text and display instead of it three dots (...)"
+        },
+        "maxLines": {
+          "required": false,
+          "tsType": {
+            "name": "number"
+          },
+          "description": "Use this prop combined with the boolean ellipsis prop for truncate the text and add an ellipsis after a certain number of lines"
+        },
+        "tooltipProps": {
+          "required": false,
+          "tsType": {
+            "name": "intersection",
+            "raw": "TooltipBaseProps & (TooltipWithChildrenProps | TooltipWithoutChildrenProps)",
+            "elements": [
+              {
+                "name": "TooltipBaseProps"
+              },
+              {
+                "name": "unknown"
+              }
+            ]
+          },
+          "description": "All props are passed to the tooltip displayed when hovering over the text. By default, the tooltip will display when text contains an ellipsis and will show the full text"
+        },
+        "withoutTooltip": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "Hide tooltip when hovering the text, by default the tooltip swill display when text contains an ellipsis"
+        },
+        "type": {
+          "required": false,
+          "tsType": {
+            "name": "TextType"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "TextType.TEXT2",
+            "computed": true
+          }
+        },
+        "weight": {
+          "required": false,
+          "tsType": {
+            "name": "TextWeight"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "TextWeight.NORMAL",
+            "computed": true
+          }
+        }
+      },
+      "composes": [
+        "HTMLAttributes"
+      ]
+    }
+  ],
+  "src/components/Avatar/Avatar.tsx": [
+    {
+      "description": "",
+      "methods": [],
+      "displayName": "Avatar",
+      "props": {
+        "className": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": ""
+        },
+        "data-testid": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": ""
+        },
+        "id": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": ""
+        },
+        "src": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": ""
+        },
+        "text": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": ""
+        },
+        "tooltipProps": {
+          "required": false,
+          "tsType": {
+            "name": "intersection",
+            "raw": "TooltipBaseProps & (TooltipWithChildrenProps | TooltipWithoutChildrenProps)",
+            "elements": [
+              {
+                "name": "TooltipBaseProps"
+              },
+              {
+                "name": "unknown"
+              }
+            ]
+          },
+          "description": ""
+        },
+        "ariaLabel": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": ""
+        },
+        "withoutTooltip": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "icon": {
+          "required": false,
+          "tsType": {
+            "name": "union",
+            "raw": "string | React.FC<IconSubComponentProps> | null",
+            "elements": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "ReactFC",
+                "raw": "React.FC<IconSubComponentProps>",
+                "elements": [
+                  {
+                    "name": "IconSubComponentProps"
+                  }
+                ]
+              },
+              {
+                "name": "null"
+              }
+            ]
+          },
+          "description": ""
+        },
+        "type": {
+          "required": false,
+          "tsType": {
+            "name": "AvatarType"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "AvatarType.TEXT",
+            "computed": true
+          }
+        },
+        "textClassName": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "Class name for the avatar content of text type",
+          "defaultValue": {
+            "value": "\"\"",
+            "computed": false
+          }
+        },
+        "avatarContentWrapperClassName": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "Class name for a div-wrapper of avatar content"
+        },
+        "backgroundColor": {
+          "required": false,
+          "tsType": {
+            "name": "union",
+            "raw": "(typeof ElementAllowedColor)[keyof typeof ElementAllowedColor] | string",
+            "elements": [
+              {
+                "name": "unknown[unknown]",
+                "raw": "(typeof ElementAllowedColor)[keyof typeof ElementAllowedColor]"
+              },
+              {
+                "name": "string"
+              }
+            ]
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "Avatar.colors.CHILI_BLUE",
+            "computed": true
+          }
+        },
+        "customBackgroundColor": {
+          "required": false,
+          "tsType": {
+            "name": "string"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "null",
+            "computed": false
+          }
+        },
+        "role": {
+          "required": false,
+          "tsType": {
+            "name": "AriaRole"
+          },
+          "description": ""
+        },
+        "size": {
+          "required": false,
+          "tsType": {
+            "name": "AvatarSize"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "AvatarSize.LARGE",
+            "computed": true
+          }
+        },
+        "customSize": {
+          "required": false,
+          "tsType": {
+            "name": "number"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "null",
+            "computed": false
+          }
+        },
+        "tabIndex": {
+          "required": false,
+          "tsType": {
+            "name": "number"
+          },
+          "description": ""
+        },
+        "ariaHidden": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "disabled": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": ""
+        },
+        "isSquare": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "@deprecated - use square instead"
+        },
+        "isDisabled": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "@deprecated - use disabled instead"
+        },
+        "square": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": ""
+        },
+        "topLeftBadgeProps": {
+          "required": false,
+          "tsType": {
+            "name": "AvatarBadgeProps"
+          },
+          "description": ""
+        },
+        "topRightBadgeProps": {
+          "required": false,
+          "tsType": {
+            "name": "AvatarBadgeProps"
+          },
+          "description": ""
+        },
+        "bottomLeftBadgeProps": {
+          "required": false,
+          "tsType": {
+            "name": "AvatarBadgeProps"
+          },
+          "description": ""
+        },
+        "bottomRightBadgeProps": {
+          "required": false,
+          "tsType": {
+            "name": "AvatarBadgeProps"
+          },
+          "description": ""
+        },
+        "withoutBorder": {
+          "required": false,
+          "tsType": {
+            "name": "boolean"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "onClick": {
+          "required": false,
+          "tsType": {
+            "name": "signature",
+            "type": "function",
+            "raw": "(event: React.MouseEvent | React.KeyboardEvent, avatarId: string) => void",
+            "signature": {
+              "arguments": [
+                {
+                  "type": {
+                    "name": "union",
+                    "raw": "React.MouseEvent | React.KeyboardEvent",
+                    "elements": [
+                      {
+                        "name": "ReactMouseEvent",
+                        "raw": "React.MouseEvent"
+                      },
+                      {
+                        "name": "ReactKeyboardEvent",
+                        "raw": "React.KeyboardEvent"
+                      }
+                    ]
+                  },
+                  "name": "event"
+                },
+                {
+                  "type": {
+                    "name": "string"
+                  },
+                  "name": "avatarId"
+                }
+              ],
+              "return": {
+                "name": "void"
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    }
+  ]
+}
