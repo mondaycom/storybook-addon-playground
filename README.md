@@ -7,6 +7,13 @@
 Install dependencies and start
 
 ```bash
+yarn
+yarn start
+```
+
+Or
+
+```bash
 npm i
 npm start
 ```
@@ -16,6 +23,12 @@ Go to [localhost:6006](http://localhost:6006)
 ## How to add to your Storybook project
 
 ### Install
+
+```bash
+yarn add -D storybook-addon-playground
+```
+
+Or
 
 ```bash
 npm install -D storybook-addon-playground

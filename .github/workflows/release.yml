@@ -11,10 +11,10 @@ jobs:
         with:
           node-version-file: ".nvmrc"
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run build
-      - run: npm run test
+      - run: yarn
+      - run: yarn lint
+      - run: yarn build
+      - run: yarn test
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
         env:
