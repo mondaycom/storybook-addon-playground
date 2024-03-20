@@ -3,6 +3,7 @@ import { Extension, ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { Code, EditorTheme, PlaygroundState } from "@/types";
 import { Loader } from "@storybook/components";
 const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
+import "./Editor.module.css";
 
 interface EditorProps {
   loading: boolean;

@@ -1,4 +1,4 @@
-import React, { Suspense, useCallback } from "react";
+import React, { Suspense, useCallback, useMemo } from "react";
 import { Editor, EditorTabs, EditorToolbar } from "../Editor";
 import {
   useInitialCode,
@@ -9,18 +9,19 @@ import {
 } from "@/hooks";
 import { AddonPanel } from "@storybook/components";
 import { Addon_RenderOptions } from "@storybook/types";
-import { Extension } from "@uiw/react-codemirror";
-import { useAddonState } from "@storybook/manager-api";
-import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
-import { PlaygroundState, Tab } from "@/types";
+import { Extension, keymap } from "@uiw/react-codemirror";
+import { useAddonState, useParameter } from "@storybook/manager-api";
+import {
+  ADDON_ID_FOR_PARAMETERS,
+  DEFAULT_ADDON_PARAMETERS,
+  DEFAULT_ADDON_STATE,
+  PANEL_ID,
+} from "@/consts";
+import { PlaygroundParameters, PlaygroundState, Tab } from "@/types";
 import { langs } from "@uiw/codemirror-extensions-langs";
 import styles from "./Panel.module.css";
-
-const commonExtensions: Extension[] = [];
-const extensions: { jsx: Extension[]; css: Extension[] } = {
-  jsx: [langs.html(), langs.javascript(), ...commonExtensions],
-  css: [langs.css(), ...commonExtensions],
-};
+import { autocomplete as playgroundAutocompletion } from "@/codemirror/extensions";
+import playgroundKeymaps from "@/codemirror/keymaps";
 
 const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
   useInitialCode();
@@ -28,9 +29,26 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
   useAutoOpenPlayground();
   const theme = useEditorTheme();
   const { updateCode } = usePlaygroundArgs();
+  const { autocompletions } = useParameter<PlaygroundParameters>(
+    ADDON_ID_FOR_PARAMETERS,
+    DEFAULT_ADDON_PARAMETERS
+  );
   const [state, setState] = useAddonState<PlaygroundState>(
     PANEL_ID,
     DEFAULT_ADDON_STATE
+  );
+
+  const extensions: { jsx: Extension[]; css: Extension[] } = useMemo(
+    () => ({
+      jsx: [
+        langs.html(),
+        langs.javascript(),
+        playgroundAutocompletion(autocompletions),
+        keymap.of(playgroundKeymaps),
+      ],
+      css: [langs.css()],
+    }),
+    [autocompletions]
   );
 
   const { code, selectedTab, fontSize, hasInitialCodeLoaded } = state;

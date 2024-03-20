@@ -4,6 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["src/components/*"],
+      "@/codemirror/extensions": ["src/codemirror/extensions"],
+      "@/codemirror/keymaps": ["src/codemirror/keymaps"],
       "@/consts": ["src/consts"],
       "@/hooks": ["src/hooks"],
       "@/utils": ["src/utils"],
