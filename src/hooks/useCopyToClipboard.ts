@@ -21,7 +21,7 @@ const useCopyToClipboard = (code: Code) => {
     navigator.clipboard.writeText(currentTabCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  }, [currentTabCode]);
+  }, [currentTabCode, shouldAllowCopy]);
 
   return { onCopy, isCopied, shouldAllowCopy };
 };
