@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.5.0...v1.6.0) (2024-03-21)
+
+
+### Features
+
+* add share code capabilities for the playground ([#46](https://github.com/mondaycom/storybook-addon-playground/issues/46)) ([9a6195a](https://github.com/mondaycom/storybook-addon-playground/commit/9a6195a4f5a68e3e15cc09cced19f4a51ad1e773))
+
 # [1.5.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.4.1...v1.5.0) (2024-03-18)
 
 
