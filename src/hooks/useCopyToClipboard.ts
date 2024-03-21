@@ -7,18 +7,21 @@ const useCopyToClipboard = (code: Code) => {
   const [state] = useAddonState<PlaygroundState>(PANEL_ID, DEFAULT_ADDON_STATE);
   const [isCopied, setCopied] = useState(false);
 
-  const onCopy = useCallback(() => {
-    if (code) {
-      navigator.clipboard.writeText(code[state.selectedTab]);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  }, [code, state.selectedTab]);
+  const currentTabCode = code[state.selectedTab];
 
   const shouldAllowCopy = useMemo(
-    () => code[state.selectedTab]?.length > 0,
-    [code, state.selectedTab]
+    () => currentTabCode?.length > 0,
+    [currentTabCode?.length]
   );
+
+  const onCopy = useCallback(() => {
+    if (!shouldAllowCopy) {
+      return;
+    }
+    navigator.clipboard.writeText(currentTabCode);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }, [currentTabCode, shouldAllowCopy]);
 
   return { onCopy, isCopied, shouldAllowCopy };
 };

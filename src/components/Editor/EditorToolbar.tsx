@@ -1,5 +1,7 @@
 import React, { useCallback } from "react";
 import {
+  useCopyToClipboard,
+  useShare,
   useToolbarActions,
   usePlaygroundArgs,
   usePlaygroundState,
@@ -36,8 +38,15 @@ const EditorToolbar: React.FC = () => {
     [fontSize, setState]
   );
 
-  const { onCopy, isCopied, shouldAllowCopy, onFormatCode, onReset } =
-    useToolbarActions(code, updateCode, resetCode, selectedTab);
+  const { onCopy, isCopied, shouldAllowCopy } = useCopyToClipboard(code);
+  const { onShare, isShareCopied, shouldAllowShare } = useShare(code);
+
+  const { onFormatCode, onReset } = useToolbarActions(
+    code,
+    updateCode,
+    resetCode,
+    selectedTab
+  );
 
   return (
     <div className={styles.toolbar}>
@@ -53,6 +62,14 @@ const EditorToolbar: React.FC = () => {
         color={isCopied ? "green" : undefined}
         disabled={isCopied || !shouldAllowCopy}
         onClick={onCopy}
+      />
+      <EditorToolbarButton
+        tooltip={shouldAllowShare ? "" : "Editor is empty"}
+        text={isShareCopied ? "Copied!" : "Share"}
+        icon={isShareCopied ? "check" : "share"}
+        color={isShareCopied ? "green" : undefined}
+        disabled={isShareCopied || !shouldAllowShare}
+        onClick={onShare}
       />
       <EditorToolbarButton
         text="Format"

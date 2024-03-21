@@ -2,6 +2,7 @@ export { default as usePlaygroundArgs } from "./usePlaygroundArgs";
 export { default as usePlaygroundState } from "./usePlaygroundState";
 export { default as useToolbarActions } from "./useToolbarActions";
 export { default as useCopyToClipboard } from "./useCopyToClipboard";
+export { default as useShare } from "./useShare";
 export { default as useInitialCode } from "./useInitialCode";
 export { default as useAutoOpenPlayground } from "./useAutoOpenPlayground";
 export { default as useBroadcastEditorChanges } from "./useBroadcastEditorChanges";
