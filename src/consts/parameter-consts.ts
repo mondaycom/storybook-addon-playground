@@ -6,4 +6,5 @@ export const DEFAULT_ADDON_PARAMETERS: PlaygroundParameters = {
   autocompletions: {},
   editorTheme: null,
   introCode: null,
+  share: false,
 };

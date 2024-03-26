@@ -8,9 +8,18 @@ import {
 } from "@/hooks";
 import EditorToolbarButton from "./EditorToolbarButton";
 import EditorToolbarDivider from "./EditorToolbarDivider";
-import { useAddonState, useStorybookApi } from "@storybook/manager-api";
-import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
-import { PlaygroundState } from "@/types";
+import {
+  useAddonState,
+  useParameter,
+  useStorybookApi,
+} from "@storybook/manager-api";
+import {
+  ADDON_ID_FOR_PARAMETERS,
+  DEFAULT_ADDON_PARAMETERS,
+  DEFAULT_ADDON_STATE,
+  PANEL_ID,
+} from "@/consts";
+import { PlaygroundParameters, PlaygroundState } from "@/types";
 import styles from "./EditorToolbar.module.css";
 
 const EditorToolbar: React.FC = () => {
@@ -21,6 +30,10 @@ const EditorToolbar: React.FC = () => {
   const [state, setState] = useAddonState<PlaygroundState>(
     PANEL_ID,
     DEFAULT_ADDON_STATE
+  );
+  const { share: enableShare } = useParameter<PlaygroundParameters>(
+    ADDON_ID_FOR_PARAMETERS,
+    DEFAULT_ADDON_PARAMETERS
   );
   const { code, selectedTab, fontSize } = state;
 
@@ -63,14 +76,16 @@ const EditorToolbar: React.FC = () => {
         disabled={isCopied || !shouldAllowCopy}
         onClick={onCopy}
       />
-      <EditorToolbarButton
-        tooltip={shouldAllowShare ? "" : "Editor is empty"}
-        text={isShareCopied ? "Copied!" : "Share"}
-        icon={isShareCopied ? "check" : "share"}
-        color={isShareCopied ? "green" : undefined}
-        disabled={isShareCopied || !shouldAllowShare}
-        onClick={onShare}
-      />
+      {enableShare && (
+        <EditorToolbarButton
+          tooltip={shouldAllowShare ? "" : "Editor is empty"}
+          text={isShareCopied ? "Copied!" : "Share"}
+          icon={isShareCopied ? "check" : "share"}
+          color={isShareCopied ? "green" : undefined}
+          disabled={isShareCopied || !shouldAllowShare}
+          onClick={onShare}
+        />
+      )}
       <EditorToolbarButton
         text="Format"
         icon="paintbrush"
