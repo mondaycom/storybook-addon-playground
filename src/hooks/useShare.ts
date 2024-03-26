@@ -15,7 +15,7 @@ const useShare = (code: Code): UseShareReturnType => {
   const [isShareCopied, setShareCopied] = useState(false);
 
   const shouldAllowShare = useMemo(
-    () => !code?.jsx && !code?.css,
+    () => Boolean(code?.jsx || code?.css),
     [code?.css, code?.jsx]
   );
 
