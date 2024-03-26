@@ -21,7 +21,7 @@ const useInitialCode = () => {
     DEFAULT_ADDON_STATE
   );
   const { hasInitialCodeLoaded } = state;
-  const { introCode } = useParameter<PlaygroundParameters>(
+  const { introCode, disableShare } = useParameter<PlaygroundParameters>(
     ADDON_ID_FOR_PARAMETERS,
     DEFAULT_ADDON_PARAMETERS
   );
@@ -35,14 +35,14 @@ const useInitialCode = () => {
   }, [getQueryParam]);
 
   const initialCodeToSet = useMemo(() => {
-    if (hasValidCode(sharedCode)) {
+    if (!disableShare && hasValidCode(sharedCode)) {
       return sharedCode;
     }
     if (hasValidCode(introCode)) {
       return introCode;
     }
     return DEFAULT_ADDON_STATE.code;
-  }, [sharedCode, introCode]);
+  }, [disableShare, sharedCode, introCode]);
 
   useEffect(() => {
     if (hasInitialCodeLoaded || introCode === null) {

@@ -1,8 +1,13 @@
 import { useCallback, useMemo, useState } from "react";
-import { Code } from "@/types";
+import { Code, PlaygroundParameters } from "@/types";
 import { compressAndEncode } from "@/utils";
-import { SNIPPET_SHARE_QUERY_ID } from "@/consts";
+import {
+  ADDON_ID_FOR_PARAMETERS,
+  DEFAULT_ADDON_PARAMETERS,
+  SNIPPET_SHARE_QUERY_ID,
+} from "@/consts";
 import usePlaygroundState from "./usePlaygroundState";
+import { useParameter } from "@storybook/manager-api";
 
 interface UseShareReturnType {
   onShare: () => Promise<void>;
@@ -12,11 +17,15 @@ interface UseShareReturnType {
 
 const useShare = (code: Code): UseShareReturnType => {
   const { playgroundStoryBaseUrl } = usePlaygroundState();
+  const { disableShare } = useParameter<PlaygroundParameters>(
+    ADDON_ID_FOR_PARAMETERS,
+    DEFAULT_ADDON_PARAMETERS
+  );
   const [isShareCopied, setShareCopied] = useState(false);
 
   const shouldAllowShare = useMemo(
-    () => Boolean(code?.jsx || code?.css),
-    [code?.css, code?.jsx]
+    () => Boolean(code?.jsx || code?.css) && !disableShare,
+    [code?.css, code?.jsx, disableShare]
   );
 
   const onShare = useCallback(async () => {

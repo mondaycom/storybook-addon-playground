@@ -15,7 +15,8 @@ const preview: Preview = {
       introCode: {
         jsx: `<VibeNext.Heading>Online Playground</VibeNext.Heading>`,
         css: ""
-      }
+      },
+      disableShare: false,
     },
   },
 };
