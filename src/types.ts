@@ -6,7 +6,7 @@ export interface PlaygroundParameters {
   autocompletions?: AutocompletionsMetadata;
   editorTheme?: EditorTheme;
   introCode?: Code;
-  disableShare?: boolean;
+  share?: boolean;
 }
 
 type Components = Record<string, React.ComponentType | React.ExoticComponent>;

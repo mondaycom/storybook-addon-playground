@@ -31,7 +31,7 @@ const EditorToolbar: React.FC = () => {
     PANEL_ID,
     DEFAULT_ADDON_STATE
   );
-  const { disableShare } = useParameter<PlaygroundParameters>(
+  const { share: enableShare } = useParameter<PlaygroundParameters>(
     ADDON_ID_FOR_PARAMETERS,
     DEFAULT_ADDON_PARAMETERS
   );
@@ -76,7 +76,7 @@ const EditorToolbar: React.FC = () => {
         disabled={isCopied || !shouldAllowCopy}
         onClick={onCopy}
       />
-      {!disableShare && (
+      {enableShare && (
         <EditorToolbarButton
           tooltip={shouldAllowShare ? "" : "Editor is empty"}
           text={isShareCopied ? "Copied!" : "Share"}

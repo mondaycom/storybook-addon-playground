@@ -16,7 +16,7 @@ const preview: Preview = {
         jsx: `<VibeNext.Heading>Online Playground</VibeNext.Heading>`,
         css: ""
       },
-      disableShare: false,
+      share: true,
     },
   },
 };

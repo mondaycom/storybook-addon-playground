@@ -17,15 +17,15 @@ interface UseShareReturnType {
 
 const useShare = (code: Code): UseShareReturnType => {
   const { playgroundStoryBaseUrl } = usePlaygroundState();
-  const { disableShare } = useParameter<PlaygroundParameters>(
+  const { share: enableShare } = useParameter<PlaygroundParameters>(
     ADDON_ID_FOR_PARAMETERS,
     DEFAULT_ADDON_PARAMETERS
   );
   const [isShareCopied, setShareCopied] = useState(false);
 
   const shouldAllowShare = useMemo(
-    () => Boolean(code?.jsx || code?.css) && !disableShare,
-    [code?.css, code?.jsx, disableShare]
+    () => Boolean(code?.jsx || code?.css) && enableShare,
+    [code?.css, code?.jsx, enableShare]
   );
 
   const onShare = useCallback(async () => {
