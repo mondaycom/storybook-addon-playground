@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.6.0...v1.7.0) (2024-03-28)
+
+
+### Bug Fixes
+
+* **useShare:** shouldAllowShare logic ([#49](https://github.com/mondaycom/storybook-addon-playground/issues/49)) ([dd824af](https://github.com/mondaycom/storybook-addon-playground/commit/dd824af1c6bbb8d1bbb39c08d20153aa90bca0d6))
+
+
+### Features
+
+* **share:** allow disabling share capabilities ([#50](https://github.com/mondaycom/storybook-addon-playground/issues/50)) ([f618f37](https://github.com/mondaycom/storybook-addon-playground/commit/f618f37a1cb2eeed9945abd3f94bedb9127a1d94))
+
 # [1.6.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.5.0...v1.6.0) (2024-03-21)
 
 
