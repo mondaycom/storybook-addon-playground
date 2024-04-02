@@ -1,4 +1,5 @@
 import React from "react";
+import { Extension } from "@uiw/react-codemirror";
 
 export interface PlaygroundParameters {
   storyId: string;
@@ -39,4 +40,4 @@ export type Code = { jsx: string; css: string };
 
 export type Tab = "jsx" | "css";
 
-export type EditorTheme = "light" | "dark";
+export type EditorTheme = "light" | "dark" | Extension;

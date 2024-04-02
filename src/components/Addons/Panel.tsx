@@ -70,11 +70,11 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
             <Suspense fallback={"Loading Editor..."}>
               <Editor
                 loading={!hasInitialCodeLoaded}
-                type={selectedTab}
+                placeholder={`Insert your ${selectedTab.toUpperCase()} code here`}
                 code={code[selectedTab]}
                 theme={theme}
                 extensions={extensions[selectedTab]}
-                fontSize={fontSize}
+                style={{ fontSize }}
                 onChange={updateCode}
               />
             </Suspense>
