@@ -7,6 +7,7 @@ import {
 import { Loader } from "@storybook/components";
 const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
 import "./Editor.module.css";
+import { EditorInitialState } from "@/types";
 
 interface EditorProps {
   code: string;
@@ -17,6 +18,7 @@ interface EditorProps {
   style?: React.CSSProperties;
   extensions?: Extension[];
   setup?: BasicSetupOptions;
+  initialState?: EditorInitialState;
 }
 
 type EditorComponent = React.ForwardRefExoticComponent<
@@ -34,6 +36,7 @@ const Editor: EditorComponent = forwardRef(
       style,
       extensions,
       setup,
+      initialState,
     },
     ref
   ) => {
@@ -51,6 +54,7 @@ const Editor: EditorComponent = forwardRef(
             onChange={onChange}
             placeholder={placeholder}
             basicSetup={setup}
+            initialState={initialState?.json && initialState}
           />
         )}
       </>

@@ -1,4 +1,4 @@
-import React, { Suspense, useCallback, useMemo } from "react";
+import React, { Suspense, useCallback, useMemo, useRef } from "react";
 import { Editor, EditorTabs, EditorToolbar } from "../Editor";
 import {
   useInitialCode,
@@ -9,12 +9,13 @@ import {
 } from "@/hooks";
 import { AddonPanel } from "@storybook/components";
 import { Addon_RenderOptions } from "@storybook/types";
-import { Extension, keymap } from "@uiw/react-codemirror";
+import { Extension, keymap, ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { useAddonState, useParameter } from "@storybook/manager-api";
 import {
   ADDON_ID_FOR_PARAMETERS,
   DEFAULT_ADDON_PARAMETERS,
   DEFAULT_ADDON_STATE,
+  EDITOR_STATE_FIELDS,
   PANEL_ID,
 } from "@/consts";
 import { PlaygroundParameters, PlaygroundState, Tab } from "@/types";
@@ -24,6 +25,8 @@ import { autocomplete as playgroundAutocompletion } from "@/codemirror/extension
 import playgroundKeymaps from "@/codemirror/keymaps";
 
 const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
+  const editorRef = useRef<ReactCodeMirrorRef>(null);
+
   useInitialCode();
   useBroadcastEditorChanges();
   useAutoOpenPlayground();
@@ -38,7 +41,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
     DEFAULT_ADDON_STATE
   );
 
-  const extensions: { jsx: Extension[]; css: Extension[] } = useMemo(
+  const extensions = useMemo<Record<Tab, Extension[]>>(
     () => ({
       jsx: [
         langs.html(),
@@ -51,13 +54,36 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
     [autocompletions]
   );
 
-  const { code, selectedTab, fontSize, hasInitialCodeLoaded } = state;
+  const { code, selectedTab, fontSize, hasInitialCodeLoaded, editorState } =
+    state;
 
   const onTabChange = useCallback(
     (newTab: Tab) => {
-      setState((state) => ({ ...state, selectedTab: newTab }));
+      setState((prev) => {
+        const updates = {
+          ...prev,
+          selectedTab: newTab,
+        };
+        const editorStateJson =
+          editorRef.current?.view?.state?.toJSON?.(EDITOR_STATE_FIELDS);
+        if (editorStateJson) {
+          updates.editorState = {
+            ...prev.editorState,
+            [prev.selectedTab]: editorStateJson,
+          };
+        }
+        return updates;
+      });
     },
     [setState]
+  );
+
+  const editorInitialState = useMemo(
+    () => ({
+      json: editorState[selectedTab],
+      fields: EDITOR_STATE_FIELDS,
+    }),
+    [editorState, selectedTab]
   );
 
   return (
@@ -69,6 +95,8 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
           <div className={styles.editor}>
             <Suspense fallback={"Loading Editor..."}>
               <Editor
+                key={selectedTab}
+                ref={editorRef}
                 loading={!hasInitialCodeLoaded}
                 placeholder={`Insert your ${selectedTab.toUpperCase()} code here`}
                 code={code[selectedTab]}
@@ -76,6 +104,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
                 extensions={extensions[selectedTab]}
                 style={{ fontSize }}
                 onChange={updateCode}
+                initialState={editorInitialState}
               />
             </Suspense>
           </div>

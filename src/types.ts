@@ -1,5 +1,7 @@
 import React from "react";
 import { Extension } from "@uiw/react-codemirror";
+import { EditorStateConfig } from "@codemirror/state";
+import { EDITOR_STATE_FIELDS } from "@/consts";
 
 export interface PlaygroundParameters {
   storyId: string;
@@ -31,13 +33,27 @@ export interface PlaygroundArgs {
 
 export interface PlaygroundState {
   hasInitialCodeLoaded?: boolean;
-  fontSize: number;
+  fontSize?: number;
   code?: Code;
-  selectedTab: Tab;
+  selectedTab?: Tab;
+  editorState?: Record<Tab, EditorStateJson>;
 }
 
-export type Code = { jsx: string; css: string };
+type EditorStateFields = typeof EDITOR_STATE_FIELDS;
 
-export type Tab = "jsx" | "css";
+export interface EditorInitialState {
+  fields: EditorStateFields;
+  json: EditorStateJson;
+}
+
+type EditorStateJson = Partial<EditorStateConfig> & {
+  [K in keyof EditorStateFields]: unknown;
+};
+
+export type Code = Record<SupportedLanguages, string>;
+
+export type Tab = SupportedLanguages;
+
+type SupportedLanguages = "jsx" | "css";
 
 export type EditorTheme = "light" | "dark" | Extension;
