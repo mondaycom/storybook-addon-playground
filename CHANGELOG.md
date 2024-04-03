@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/mondaycom/storybook-addon-playground/compare/v1.7.0...v1.7.1) (2024-04-03)
+
+
+### Bug Fixes
+
+* Editor's state should not be shared between tabs ([#52](https://github.com/mondaycom/storybook-addon-playground/issues/52)) ([50fe86f](https://github.com/mondaycom/storybook-addon-playground/commit/50fe86f9a1b6a3d73e5b55824661a019a5906110))
+
 # [1.7.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.6.0...v1.7.0) (2024-03-28)
 
 
