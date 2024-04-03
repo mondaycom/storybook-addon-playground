@@ -36,8 +36,10 @@ export interface PlaygroundState {
   selectedTab?: Tab;
 }
 
-export type Code = { jsx: string; css: string };
+export type Code = Record<SupportedLanguages, string>;
 
-export type Tab = "jsx" | "css";
+export type Tab = SupportedLanguages;
+
+type SupportedLanguages = "jsx" | "css";
 
 export type EditorTheme = "light" | "dark" | Extension;
