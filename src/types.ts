@@ -31,9 +31,9 @@ export interface PlaygroundArgs {
 
 export interface PlaygroundState {
   hasInitialCodeLoaded?: boolean;
-  fontSize: number;
+  fontSize?: number;
   code?: Code;
-  selectedTab: Tab;
+  selectedTab?: Tab;
 }
 
 export type Code = { jsx: string; css: string };
