@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.7.1...v1.8.0) (2024-04-15)
+
+
+### Features
+
+* **autocomplete:** autocomplete enhancements ([#53](https://github.com/mondaycom/storybook-addon-playground/issues/53)) ([e86ec44](https://github.com/mondaycom/storybook-addon-playground/commit/e86ec4438e1ce59d06644c82a38d65d878c82371))
+
 ## [1.7.1](https://github.com/mondaycom/storybook-addon-playground/compare/v1.7.0...v1.7.1) (2024-04-03)
 
 
