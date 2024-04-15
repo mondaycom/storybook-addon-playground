@@ -7,10 +7,12 @@ import {
 } from "@codemirror/autocomplete";
 import { getEditorStateInfo } from "../utils/extensions-utils";
 import { AutocompletionsMetadata } from "@/types";
-
-function isNewTagContext(lineText: string): boolean {
-  return /<\w*$/.test(lineText);
-}
+import {
+  getNewTagContext,
+  shouldTriggerPropSuggestions,
+  extractAlreadyUsedProps,
+  isInsideAttribute,
+} from "../utils/autocomplete-utils";
 
 function generateComponentNameCompletions(
   partialName: string,
@@ -41,37 +43,11 @@ function generateComponentNameCompletions(
     }));
 }
 
-function extractAlreadyUsedProps(
-  fullLineText: string,
-  cursorPos: number
-): Set<string> {
-  const tagStart = fullLineText.lastIndexOf("<", cursorPos);
-  let tagEnd = fullLineText.indexOf(">", cursorPos);
-  if (tagEnd === -1) {
-    // tags that aren't closed yet
-    tagEnd = fullLineText.length;
-  }
-
-  const tagContent = fullLineText.substring(tagStart, tagEnd);
-
-  // props in the format propName="value", propName={value}, and just propName (flag-boolean)
-  const propRegex = /(\w+)(?=\s*=|\s*\/>|>|$)/g;
-  const usedProps = new Set<string>();
-  let match;
-
-  while ((match = propRegex.exec(tagContent))) {
-    usedProps.add(match[1]);
-  }
-
-  return usedProps;
-}
-
 function generatePropCompletions(
   componentName: keyof AutocompletionsMetadata,
   options: AutocompletionsMetadata,
   partialPropName: string,
-  usedProps: Set<string>,
-  lineTextUpToCursor: string
+  usedProps: Set<string>
 ): Completion[] {
   const componentProps = options[componentName];
   if (!componentProps?.length) {
@@ -98,17 +74,16 @@ function generatePropCompletions(
       section: `${componentName}'s props`, // group props by component name
       type: required ? "required" : "property", // property won't have * next to it
       apply: (view, _completion, from, to) => {
-        const applyText = type === "string" ? `${name}=""` : `${name}={}`;
-        const applyPrefix = lineTextUpToCursor.endsWith(" ") ? "" : " ";
-        const textToInsert = applyPrefix + applyText;
+        const textToInsert = type === "string" ? `${name}=""` : `${name}={}`;
+        const replaceFrom = from - partialPropName.length;
 
         const transaction = view.state.update({
           changes: {
-            from,
+            from: replaceFrom,
             to,
             insert: textToInsert,
           },
-          selection: { anchor: from + textToInsert.length - 1 },
+          selection: { anchor: replaceFrom + textToInsert.length - 1 },
         });
         view.dispatch(transaction); // Dispatch the transaction to apply changes and set cursor
       },
@@ -126,33 +101,35 @@ function playgroundAutocompletion(
   let completions: Completion[] = [];
   let from = cursorPos;
 
-  if (isNewTagContext(lineTextUpToCursor)) {
+  if (isInsideAttribute(fullLineText, cursorPos)) {
+    // never show suggestions from any kind inside attributes
+    return null;
+  }
+
+  const newTagName = getNewTagContext(lineTextUpToCursor);
+  if (newTagName !== null) {
     // if the cursor is in a new tag context, generate component name completions
-    const partialComponentName =
-      /<(\w*)$/.exec(lineTextUpToCursor)?.[1] || null;
-    if (partialComponentName) {
-      from -= partialComponentName.length;
-      completions = generateComponentNameCompletions(
-        partialComponentName,
-        options
-      );
-    } else if (lineTextUpToCursor.endsWith("<")) {
-      completions = generateComponentNameCompletions("", options);
+    completions = generateComponentNameCompletions(newTagName, options);
+    if (newTagName !== "") {
+      from -= newTagName.length;
     }
   } else {
     // otherwise, generate prop completions
-    const usedProps = extractAlreadyUsedProps(fullLineText, cursorPos);
-    const match = lineTextUpToCursor.match(/<(\w+)\s[\s\S]*?(\w*)$/);
-    if (match) {
-      const [, componentName, partialPropName] = match;
-      completions = generatePropCompletions(
-        componentName,
-        options,
-        partialPropName,
-        usedProps,
-        lineTextUpToCursor
-      );
+    if (!shouldTriggerPropSuggestions(fullLineText, cursorPos)) {
+      return null;
     }
+    const match = lineTextUpToCursor.match(/<(\w+)\s[\s\S]*?(\w*)$/);
+    if (!match) {
+      return null;
+    }
+    const usedProps = extractAlreadyUsedProps(fullLineText, cursorPos);
+    const [, componentName, partialPropName] = match;
+    completions = generatePropCompletions(
+      componentName,
+      options,
+      partialPropName,
+      usedProps
+    );
   }
 
   if (completions.length === 0) {
@@ -163,6 +140,7 @@ function playgroundAutocompletion(
     from,
     to: cursorPos,
     options: completions,
+    validFor: /^[\w-]*$/,
   };
 }
 
