@@ -54,8 +54,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
     [autocompletions]
   );
 
-  const { code, selectedTab, fontSize, hasInitialCodeLoaded, editorState } =
-    state;
+  const { code, selectedTab, hasInitialCodeLoaded, editorState } = state;
 
   const onTabChange = useCallback(
     (newTab: Tab) => {
@@ -102,7 +101,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
                 code={code[selectedTab]}
                 theme={theme}
                 extensions={extensions[selectedTab]}
-                style={{ fontSize }}
+                style={{ fontSize: 13 }}
                 onChange={updateCode}
                 initialState={editorInitialState}
               />

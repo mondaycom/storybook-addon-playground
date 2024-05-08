@@ -33,7 +33,6 @@ export interface PlaygroundArgs {
 
 export interface PlaygroundState {
   hasInitialCodeLoaded?: boolean;
-  fontSize?: number;
   code?: Code;
   selectedTab?: Tab;
   editorState?: Record<Tab, EditorStateJson>;

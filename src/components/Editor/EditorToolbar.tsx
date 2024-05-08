@@ -7,7 +7,6 @@ import {
   usePlaygroundState,
 } from "@/hooks";
 import EditorToolbarButton from "./EditorToolbarButton";
-import EditorToolbarDivider from "./EditorToolbarDivider";
 import {
   useAddonState,
   useParameter,
@@ -27,29 +26,16 @@ const EditorToolbar: React.FC = () => {
   const { playgroundStoryId } = usePlaygroundState();
 
   const { updateCode, resetCode } = usePlaygroundArgs();
-  const [state, setState] = useAddonState<PlaygroundState>(
-    PANEL_ID,
-    DEFAULT_ADDON_STATE
-  );
+  const [state] = useAddonState<PlaygroundState>(PANEL_ID, DEFAULT_ADDON_STATE);
   const { share: enableShare } = useParameter<PlaygroundParameters>(
     ADDON_ID_FOR_PARAMETERS,
     DEFAULT_ADDON_PARAMETERS
   );
-  const { code, selectedTab, fontSize } = state;
+  const { code, selectedTab } = state;
 
   const selectPlaygroundStory = useCallback(() => {
     selectStory(playgroundStoryId);
   }, [selectStory, playgroundStoryId]);
-
-  const onFontSizeChange = useCallback(
-    (amount: number) => {
-      setState((state) => ({
-        ...state,
-        fontSize: Math.max(12, Math.min(18, fontSize + amount)),
-      }));
-    },
-    [fontSize, setState]
-  );
 
   const { onCopy, isCopied, shouldAllowCopy } = useCopyToClipboard(code);
   const { onShare, isShareCopied, shouldAllowShare } = useShare(code);
@@ -92,18 +78,6 @@ const EditorToolbar: React.FC = () => {
         onClick={onFormatCode}
       />
       <EditorToolbarButton text="Reset" icon="trash" onClick={onReset} />
-      <EditorToolbarDivider />
-      <EditorToolbarButton
-        icon="add"
-        smallPadding
-        onClick={() => onFontSizeChange(1)}
-      />
-      Font
-      <EditorToolbarButton
-        icon="subtract"
-        smallPadding
-        onClick={() => onFontSizeChange(-1)}
-      />
     </div>
   );
 };
