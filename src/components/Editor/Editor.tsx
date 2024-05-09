@@ -7,14 +7,14 @@ import {
 import { Loader } from "@storybook/components";
 const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
 import "./Editor.module.css";
-import { EditorInitialState } from "@/types";
+import { EditorInitialState, EditorTheme } from "@/types";
 
 interface EditorProps {
   code: string;
   onChange: (newVal: string) => void;
   placeholder?: string;
   loading?: boolean;
-  theme: Extension;
+  theme: EditorTheme;
   style?: React.CSSProperties;
   extensions?: Extension[];
   setup?: BasicSetupOptions;

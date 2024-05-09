@@ -10,7 +10,6 @@ import {
 import { AddonPanel } from "@storybook/components";
 import { Addon_RenderOptions } from "@storybook/types";
 import { Extension, keymap, ReactCodeMirrorRef } from "@uiw/react-codemirror";
-import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
 import { useAddonState, useParameter } from "@storybook/manager-api";
 import {
   ADDON_ID_FOR_PARAMETERS,
@@ -74,7 +73,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
                 loading={!hasInitialCodeLoaded}
                 placeholder={`Insert your ${selectedTab.toUpperCase()} code here`}
                 code={code[selectedTab]}
-                theme={theme === "dark" ? githubDark : githubLight}
+                theme={theme}
                 extensions={extensions[selectedTab]}
                 style={{ fontSize: 13 }}
                 onChange={updateCode}
