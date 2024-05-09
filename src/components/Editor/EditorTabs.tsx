@@ -12,7 +12,7 @@ const EditorTabs: React.FC<EditorTabsProps> = ({
   selectedTab,
   onTabChange,
 }) => (
-  <div className={styles.tabs}>
+  <section className={styles.tabs}>
     <EditorTab
       title="JSX"
       selected={selectedTab === "jsx"}
@@ -23,7 +23,7 @@ const EditorTabs: React.FC<EditorTabsProps> = ({
       selected={selectedTab === "css"}
       onClick={() => onTabChange("css")}
     />
-  </div>
+  </section>
 );
 
 export default EditorTabs;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
   useCopyToClipboard,
   useShare,
@@ -11,14 +11,25 @@ import {
   ADDON_ID_FOR_PARAMETERS,
   DEFAULT_ADDON_PARAMETERS,
   DEFAULT_ADDON_STATE,
+  EDITOR_STATE_FIELDS,
   PANEL_ID,
 } from "@/consts";
-import { PlaygroundParameters, PlaygroundState } from "@/types";
+import { PlaygroundParameters, PlaygroundState, Tab } from "@/types";
 import styles from "./EditorToolbar.module.css";
+import EditorTabs from "@/components/Editor/EditorTabs";
+import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
+import { Copy, Edit, Reset, Share } from "@/icons";
 
-const EditorToolbar: React.FC = () => {
+interface EditorToolbarProps {
+  editorRef: React.RefObject<ReactCodeMirrorRef>;
+}
+
+const EditorToolbar: React.FC<EditorToolbarProps> = ({ editorRef }) => {
   const { updateCode, resetCode } = usePlaygroundArgs();
-  const [state] = useAddonState<PlaygroundState>(PANEL_ID, DEFAULT_ADDON_STATE);
+  const [state, setState] = useAddonState<PlaygroundState>(
+    PANEL_ID,
+    DEFAULT_ADDON_STATE
+  );
   const { share: enableShare } = useParameter<PlaygroundParameters>(
     ADDON_ID_FOR_PARAMETERS,
     DEFAULT_ADDON_PARAMETERS
@@ -35,32 +46,58 @@ const EditorToolbar: React.FC = () => {
     selectedTab
   );
 
+  const onTabChange = useCallback(
+    (newTab: Tab) => {
+      setState((prev) => {
+        const updates = {
+          ...prev,
+          selectedTab: newTab,
+        };
+        const editorStateJson =
+          editorRef.current?.view?.state?.toJSON?.(EDITOR_STATE_FIELDS);
+        if (editorStateJson) {
+          updates.editorState = {
+            ...prev.editorState,
+            [prev.selectedTab]: editorStateJson,
+          };
+        }
+        return updates;
+      });
+    },
+    [editorRef, setState]
+  );
+
   return (
     <div className={styles.toolbar}>
-      <EditorToolbarButton
-        tooltip={shouldAllowCopy ? "" : "Editor is empty"}
-        text={isCopied ? "Copied!" : "Copy"}
-        icon={isCopied ? "check" : "copy"}
-        color={isCopied ? "green" : undefined}
-        disabled={isCopied || !shouldAllowCopy}
-        onClick={onCopy}
-      />
-      {enableShare && (
+      <EditorTabs selectedTab={selectedTab} onTabChange={onTabChange} />
+      <section>
         <EditorToolbarButton
-          tooltip={shouldAllowShare ? "" : "Editor is empty"}
-          text={isShareCopied ? "Copied!" : "Share"}
-          icon={isShareCopied ? "check" : "share"}
-          color={isShareCopied ? "green" : undefined}
-          disabled={isShareCopied || !shouldAllowShare}
-          onClick={onShare}
+          tooltip={shouldAllowCopy ? "" : "Editor is empty"}
+          text={isCopied ? "Copied!" : "Copy"}
+          renderIcon={<Copy />}
+          disabled={isCopied || !shouldAllowCopy}
+          onClick={onCopy}
         />
-      )}
-      <EditorToolbarButton
-        text="Format"
-        icon="paintbrush"
-        onClick={onFormatCode}
-      />
-      <EditorToolbarButton text="Reset" icon="trash" onClick={onReset} />
+        {enableShare && (
+          <EditorToolbarButton
+            tooltip={shouldAllowShare ? "" : "Editor is empty"}
+            text={isShareCopied ? "Copied!" : "Share"}
+            renderIcon={<Share />}
+            disabled={isShareCopied || !shouldAllowShare}
+            onClick={onShare}
+          />
+        )}
+        <EditorToolbarButton
+          text="Format"
+          renderIcon={<Edit />}
+          onClick={onFormatCode}
+        />
+        <EditorToolbarButton
+          text="Reset"
+          renderIcon={<Reset />}
+          onClick={onReset}
+        />
+      </section>
     </div>
   );
 };
