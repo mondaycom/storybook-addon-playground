@@ -1,0 +1,63 @@
+graph TD;
+subgraph ADDON
+A{{Rollup}}
+B[index.ts]
+C[manager.ts]
+
+D[Panel addon]
+E[Tool addon]
+
+F[withPlayground]
+U[generateAutocompletions]
+G[PlaygroundPreview]
+H[react-live]
+
+I[Editor]
+J[useCopyToClipboard]
+K[usePlaygroundArgs]
+Q[useInitialCode]
+R[useBroadcastEditorChanges]
+S[usePlaygroundState]
+T[useEditorTheme]
+L[useToolbarActions]
+M[prettier]
+N[react-codemirror]
+
+O[Toolbar icon]
+
+P[Storybook Addon API]
+
+A -->|Entry| B
+A -->|Entry| C
+
+B -->|Exports| F
+B -->|Exports| U
+
+P --> D
+P --> E
+
+E -->|Renders| O
+
+C -->|Registers Addons| P
+
+F -->|Renders in a story| G
+G ======>|Using lib| H
+
+D -->|Calls| Q
+D -->|Calls| R
+R -->|Uses| S
+D --->|Renders| I
+I ====>|Using lib| N
+I -->|Uses| L
+I -->|Uses| K
+I -->|Uses| T
+I -->|Uses| J
+
+L ===>|Using lib| M
+end
+
+subgraph UI
+X{{Vite}}
+Z["Storybook UI (.storybook - Testing and Development)"]
+X --> Z
+end

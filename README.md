@@ -1,42 +1,22 @@
-# Storybook Addon Playground
+# Playground - Storybook Addon
+
+This addon enhances your Storybook experience by allowing you to interactively play with your components. It's perfect for developers looking to experiment in real time, debug issues, or build complex compositions.
 
 ![img.png](assets/img.png)
 
-## Develop locally
+## Installation
 
-Install dependencies and start
-
-```bash
-yarn
-yarn start
-```
-
-Or
-
-```bash
-npm i
-npm start
-```
-
-Go to [localhost:6006](http://localhost:6006)
-
-## How to add to your Storybook project
-
-### Install
+To install the addon, run one of the following commands in your project directory:
 
 ```bash
 yarn add -D storybook-addon-playground
-```
-
-Or
-
-```bash
+# or
 npm install -D storybook-addon-playground
 ```
 
-### Register addon
+## Configuration
 
-On your `.storybook/main.ts` file, add the following:
+Add the addon to your Storybook configuration in `.storybook/main.js` or `.storybook/main.ts`:
 
 ```js
 const config = {
@@ -47,9 +27,9 @@ const config = {
 };
 ```
 
-### Addon Configuration
+The addon configuration is done through Storybook's `preview`.
 
-The addon configuration is done through Storybook's `preview`. Few of the parameters are required for the addon to work properly:
+Few of the parameters are required for the addon to work properly:
 
 - `storyId`: **Required**. The story id that your playground has on Storybook.
 - `components`: **Required**. An object with the components that should be rendered in the playground. The key is the component name and the value is the component itself.
@@ -79,9 +59,7 @@ const preview = {
 };
 ```
 
-### Render a story including the playground in the sidebar
-
-Create a story with the following content:
+Set up the playground environment in your Storybook stories:
 
 ```js
 import { withPlayground } from "storybook-addon-playground";
@@ -94,78 +72,34 @@ export default {
 export const Playground = {};
 ```
 
-## Build
+## Usage
 
-### Vite
+To use the Playground, navigate to the Storybook UI and select a story that has the playground decorator. In your addons panel, see an interactive code editor alongside your component, where you can modify the code and immediately see your changes reflected.
 
-Vite is used to build the local Storybook for testing and dev purposes
+## Contributing
 
-### Rollup
+Contributions are welcome! Feel free to open an issue or submit a pull request.
 
-Rollup is used to build the addon for publishing
+### Develop locally
 
-```mermaid
-graph TD;
-    subgraph ADDON
-    A{{Rollup}}
-    B[index.ts]
-    C[manager.ts]
+Install dependencies and start
 
-    D[Panel addon]
-    E[Tool addon]
-
-    F[withPlayground]
-    U[generateAutocompletions]
-    G[PlaygroundPreview]
-    H[react-live]
-
-    I[Editor]
-    J[useCopyToClipboard]
-    K[usePlaygroundArgs]
-    Q[useInitialCode]
-    R[useBroadcastEditorChanges]
-    S[usePlaygroundState]
-    T[useEditorTheme]
-    L[useToolbarActions]
-    M[prettier]
-    N[react-codemirror]
-
-    O[Toolbar icon]
-
-    P[Storybook Addon API]
-
-    A -->|Entry| B
-    A -->|Entry| C
-
-    B -->|Exports| F
-    B -->|Exports| U
-
-    P --> D
-    P --> E
-
-    E -->|Renders| O
-
-    C -->|Registers Addons| P
-
-    F -->|Renders in a story| G
-    G ======>|Using lib| H
-
-    D -->|Calls| Q
-    D -->|Calls| R
-    R -->|Uses| S
-    D --->|Renders| I
-    I ====>|Using lib| N
-    I -->|Uses| L
-    I -->|Uses| K
-    I -->|Uses| T
-    I -->|Uses| J
-
-    L ===>|Using lib| M
-    end
-
-    subgraph UI
-    X{{Vite}}
-    Z["Storybook UI (.storybook - Testing and Development)"]
-    X --> Z
-    end
+```bash
+yarn
+yarn start
+# or
+npm i
+npm start
 ```
+
+Go to [localhost:6006](http://localhost:6006)
+
+### Build
+
+#### Rollup
+
+Rollup is used to build the addon for publishing.
+
+#### Vite
+
+Vite serves the build to a local Storybook for testing and dev purposes.
