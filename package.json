@@ -48,7 +48,7 @@
     "test:watch": "yarn test -- -w",
     "build": "yarn build:icons && rollup -c",
     "build:watch": "yarn build -- -w",
-    "build:icons": "yarn svgr --typescript --no-svgo --out-dir src/icons --ignore-existing assets/icons",
+    "build:icons": "yarn svgr --typescript --no-svgo --out-dir src/icons assets/icons",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "yarn lint -- --fix",
     "storybook": "storybook dev -p 6006",

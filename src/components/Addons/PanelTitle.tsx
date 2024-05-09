@@ -4,7 +4,7 @@ import { Beaker } from "@/icons";
 
 const PanelTitle: React.FC = () => (
   <span className={styles.title}>
-    <Beaker width={18} height={18} />
+    <Beaker />
     Playground
   </span>
 );

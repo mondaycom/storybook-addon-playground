@@ -16,3 +16,7 @@
 .toolbarButton:hover {
   background-color: #6768791a;
 }
+
+.toolbarButton > svg {
+  width: auto;
+}
