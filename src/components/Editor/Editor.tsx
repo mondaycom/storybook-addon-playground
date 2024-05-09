@@ -14,7 +14,7 @@ interface EditorProps {
   onChange: (newVal: string) => void;
   placeholder?: string;
   loading?: boolean;
-  theme?: "light" | "dark" | Extension;
+  theme: Extension;
   style?: React.CSSProperties;
   extensions?: Extension[];
   setup?: BasicSetupOptions;
@@ -32,7 +32,7 @@ const Editor: EditorComponent = forwardRef(
       onChange,
       placeholder,
       loading,
-      theme = "light",
+      theme,
       style,
       extensions,
       setup,

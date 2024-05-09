@@ -10,6 +10,7 @@ import {
 import { AddonPanel } from "@storybook/components";
 import { Addon_RenderOptions } from "@storybook/types";
 import { Extension, keymap, ReactCodeMirrorRef } from "@uiw/react-codemirror";
+import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
 import { useAddonState, useParameter } from "@storybook/manager-api";
 import {
   ADDON_ID_FOR_PARAMETERS,
@@ -44,10 +45,9 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
   const extensions = useMemo<Record<Tab, Extension[]>>(
     () => ({
       jsx: [
-        langs.html(),
-        langs.javascript(),
         playgroundAutocompletion(autocompletions),
         keymap.of(playgroundKeymaps),
+        langs.javascript({ jsx: true, typescript: true }),
       ],
       css: [langs.css()],
     }),
@@ -99,11 +99,14 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
                 loading={!hasInitialCodeLoaded}
                 placeholder={`Insert your ${selectedTab.toUpperCase()} code here`}
                 code={code[selectedTab]}
-                theme={theme}
+                theme={theme === "dark" ? githubDark : githubLight}
                 extensions={extensions[selectedTab]}
                 style={{ fontSize: 13 }}
                 onChange={updateCode}
                 initialState={editorInitialState}
+                setup={{
+                  foldGutter: false,
+                }}
               />
             </Suspense>
           </div>

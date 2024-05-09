@@ -3972,6 +3972,22 @@
     "@replit/codemirror-lang-svelte" "^6.0.0"
     codemirror-lang-mermaid "^0.5.0"
 
+"@uiw/codemirror-theme-github@^4.21.21":
+  version "4.22.0"
+  resolved "https://registry.npmjs.org/@uiw/codemirror-theme-github/-/codemirror-theme-github-4.22.0.tgz#a415f0348c212dd7364506ef7032ecb21375525e"
+  integrity sha512-toRG+V8xCKVvqZnyEHgR9posQ8fA28U0m8ALqn0fWTRRFuGPvYCSSX+i2mpA3HF06Sv7GWCzgHe8ioyYbrN2Lg==
+  dependencies:
+    "@uiw/codemirror-themes" "4.22.0"
+
+"@uiw/codemirror-themes@4.22.0":
+  version "4.22.0"
+  resolved "https://registry.npmjs.org/@uiw/codemirror-themes/-/codemirror-themes-4.22.0.tgz#79b0d1775c007b8507b7207be9a1851040dc9c48"
+  integrity sha512-nn7K+lkfdLOSQN6NZx651ae24L5L2RiCuNOxIeP3/CcGm9tnic8i+9pq42IXZe+hEoxX64yUTZisoB5qtocvrQ==
+  dependencies:
+    "@codemirror/language" "^6.0.0"
+    "@codemirror/state" "^6.0.0"
+    "@codemirror/view" "^6.0.0"
+
 "@uiw/react-codemirror@^4.21.21":
   version "4.21.21"
   resolved "https://registry.npmjs.org/@uiw/react-codemirror/-/react-codemirror-4.21.21.tgz#986b18dbd6dc69aa470fc3d4e47b89b504af6778"

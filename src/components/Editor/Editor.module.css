@@ -87,3 +87,13 @@
   ) {
   margin-right: 8px;
 }
+
+:global(.cm-theme),
+:global(.cm-editor) {
+  height: 100%;
+}
+
+:global(.cm-gutter.cm-lineNumbers .cm-gutterElement) {
+  min-width: 35px;
+  padding-inline: 8px;
+}
