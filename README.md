@@ -91,6 +91,16 @@ yarn start
 
 Go to [localhost:6006](http://localhost:6006)
 
+### Add new icons
+
+Icons are generated using [svgr](https://react-svgr.com/docs/).
+
+In order to add new icons to the addon, drop the icons somewhere in the repo and run the following command:
+
+```bash
+yarn build:icons path/to/your/icons
+```
+
 ### Build
 
 #### Rollup
