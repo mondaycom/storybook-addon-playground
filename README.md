@@ -27,16 +27,16 @@ const config = {
 };
 ```
 
-The addon configuration is done through Storybook's `preview`.
+The addon configuration is done through Storybook's `preview` parameters.
 
-Few of the parameters are required for the addon to work properly:
-
-- `storyId`: **Required**. The story id that your playground has on Storybook.
-- `components`: **Required**. An object with the components that should be rendered in the playground. The key is the component name and the value is the component itself.
-- `autocompletions`: Optional. An array of autocompletions that should be used on the playground. Default is an empty array. We recommend on using `react-docgen` to generate a documentation output and run our util function on the output. You can use whatever tool you'd like as long as it matches the expected format in the addon. _Default is no autocompletions._
-- `editorTheme`: Optional. The theme that should be used on the playground. _Default is your Storybook theme._
-- `initialCode`: Optional. The initial code ("welcome") that should be rendered on the playground. _Default is empty editor._
-- `share`: Optional. A boolean that allow users to share the code. _Default is false._
+| Parameter        | Required | Default                           | Description                                                                                                           |
+|------------------|----------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| `storyId`        | `true`   |                                   | The story id that your playground has on Storybook.                                                                   |
+| `components`     | `true`   |                                   | An object with the components that should be rendered in the playground. The key is the component name and the value is the component itself. |
+| `autocompletions`| `false`  | `[]`                              | An array of autocompletions that should be used on the playground. Recommended to use `react-docgen` for generating documentation outputs. |
+| `editorTheme`    | `false`  | Your Storybook theme              | The theme that should be used on the playground.                                                                      |
+| `initialCode`    | `false`  | Empty editor                      | The initial code ("welcome") that should be rendered on the playground.                                               |
+| `share`          | `false`  | `false`                           | Whether to allow share capabilities.                                                                                  |
 
 On your `.storybook/preview.ts` file, you should add something similar to the following:
 
