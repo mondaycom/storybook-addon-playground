@@ -48,6 +48,7 @@
     "test:watch": "yarn test -- -w",
     "build": "rollup -c",
     "build:watch": "yarn build -- -w",
+    "build:icons": "yarn svgr --typescript --no-svgo --out-dir src/icons",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "yarn lint -- --fix",
     "storybook": "storybook dev -p 6006",
@@ -56,6 +57,7 @@
   "dependencies": {
     "@storybook/addon-links": "^7.6.4",
     "@uiw/codemirror-extensions-langs": "^4.21.21",
+    "@uiw/codemirror-theme-github": "^4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
     "classnames": "^2.3.2",
     "lodash-es": "^4.17.21",
@@ -74,6 +76,7 @@
     "@storybook/react": "^7.6.4",
     "@storybook/react-vite": "^7.6.4",
     "@storybook/theming": "^7.6.4",
+    "@svgr/cli": "^8.1.0",
     "@testing-library/jest-dom": "^6.1.6",
     "@testing-library/react": "^14.1.2",
     "@types/lodash-es": "^4.17.12",

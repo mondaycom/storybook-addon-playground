@@ -7,3 +7,16 @@
 .toolbarButton.smallPadding {
   padding-inline: 8px;
 }
+
+.toolbarButton,
+.toolbarButton:hover {
+  color: #4a4a4a;
+}
+
+.toolbarButton:hover {
+  background-color: #6768791a;
+}
+
+.toolbarButton > svg {
+  width: auto;
+}

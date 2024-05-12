@@ -1,22 +1,37 @@
 .tab {
   position: relative;
-  width: 100%;
-  height: 50px;
+  height: 100%;
   cursor: default;
   margin: 0;
-  padding: 0;
+  padding: 4px 16px;
   border-radius: unset;
   font-weight: normal;
 }
 
-.tab.selected::after {
+.tab::after {
   content: "";
   position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 3px;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+}
+
+.tab:not(.selected)::after {
+  height: 1px;
+  background: #c3c6d4;
+}
+
+.tab.selected::after {
+  height: 2px;
   background: #029cfd;
+}
+
+.tab:hover {
+  background: transparent;
+}
+
+.tab:hover.selected {
+  color: inherit;
 }
 
 .tab:hover:not(.selected) {

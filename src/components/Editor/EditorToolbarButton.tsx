@@ -1,13 +1,12 @@
-import React, { SVGAttributes, memo } from "react";
-import { IconButton, Icons, IconsProps } from "@storybook/components";
+import React, { memo } from "react";
+import { IconButton } from "@storybook/components";
 import cx from "classnames";
 import styles from "./EditorToolbarButton.module.css";
 
 interface EditorToolbarButtonProps {
   tooltip?: string;
   text?: string;
-  icon: IconsProps["icon"];
-  color?: SVGAttributes<SVGElement>["color"];
+  renderIcon: React.ReactElement;
   disabled?: boolean;
   smallPadding?: boolean;
   onClick?: () => void;
@@ -16,8 +15,7 @@ interface EditorToolbarButtonProps {
 const EditorToolbarButton: React.FC<EditorToolbarButtonProps> = ({
   tooltip,
   text,
-  icon,
-  color,
+  renderIcon,
   disabled,
   smallPadding,
   onClick,
@@ -31,7 +29,7 @@ const EditorToolbarButton: React.FC<EditorToolbarButtonProps> = ({
       [styles.smallPadding]: smallPadding,
     })}
   >
-    <Icons icon={icon} color={color} />
+    {renderIcon}
     {text && <span>{text}</span>}
   </IconButton>
 );

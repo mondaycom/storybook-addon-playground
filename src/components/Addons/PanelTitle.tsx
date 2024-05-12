@@ -1,11 +1,11 @@
 import React from "react";
-import { Icons } from "@storybook/components";
 import styles from "./PanelTitle.module.css";
+import { Beaker } from "@/icons";
 
 const PanelTitle: React.FC = () => (
   <span className={styles.title}>
+    <Beaker />
     Playground
-    <Icons icon="beaker" />
   </span>
 );
 export default PanelTitle;

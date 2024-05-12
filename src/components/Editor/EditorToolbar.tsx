@@ -4,28 +4,27 @@ import {
   useShare,
   useToolbarActions,
   usePlaygroundArgs,
-  usePlaygroundState,
 } from "@/hooks";
 import EditorToolbarButton from "./EditorToolbarButton";
-import EditorToolbarDivider from "./EditorToolbarDivider";
-import {
-  useAddonState,
-  useParameter,
-  useStorybookApi,
-} from "@storybook/manager-api";
+import { useAddonState, useParameter } from "@storybook/manager-api";
 import {
   ADDON_ID_FOR_PARAMETERS,
   DEFAULT_ADDON_PARAMETERS,
   DEFAULT_ADDON_STATE,
+  EDITOR_STATE_FIELDS,
   PANEL_ID,
 } from "@/consts";
-import { PlaygroundParameters, PlaygroundState } from "@/types";
+import { PlaygroundParameters, PlaygroundState, Tab } from "@/types";
 import styles from "./EditorToolbar.module.css";
+import EditorTabs from "@/components/Editor/EditorTabs";
+import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
+import { Copy, Edit, Reset, Share } from "@/icons";
 
-const EditorToolbar: React.FC = () => {
-  const { selectStory } = useStorybookApi();
-  const { playgroundStoryId } = usePlaygroundState();
+interface EditorToolbarProps {
+  editorRef: React.RefObject<ReactCodeMirrorRef>;
+}
 
+const EditorToolbar: React.FC<EditorToolbarProps> = ({ editorRef }) => {
   const { updateCode, resetCode } = usePlaygroundArgs();
   const [state, setState] = useAddonState<PlaygroundState>(
     PANEL_ID,
@@ -35,21 +34,7 @@ const EditorToolbar: React.FC = () => {
     ADDON_ID_FOR_PARAMETERS,
     DEFAULT_ADDON_PARAMETERS
   );
-  const { code, selectedTab, fontSize } = state;
-
-  const selectPlaygroundStory = useCallback(() => {
-    selectStory(playgroundStoryId);
-  }, [selectStory, playgroundStoryId]);
-
-  const onFontSizeChange = useCallback(
-    (amount: number) => {
-      setState((state) => ({
-        ...state,
-        fontSize: Math.max(12, Math.min(18, fontSize + amount)),
-      }));
-    },
-    [fontSize, setState]
-  );
+  const { code, selectedTab } = state;
 
   const { onCopy, isCopied, shouldAllowCopy } = useCopyToClipboard(code);
   const { onShare, isShareCopied, shouldAllowShare } = useShare(code);
@@ -61,49 +46,58 @@ const EditorToolbar: React.FC = () => {
     selectedTab
   );
 
+  const onTabChange = useCallback(
+    (newTab: Tab) => {
+      setState((prev) => {
+        const updates = {
+          ...prev,
+          selectedTab: newTab,
+        };
+        const editorStateJson =
+          editorRef.current?.view?.state?.toJSON?.(EDITOR_STATE_FIELDS);
+        if (editorStateJson) {
+          updates.editorState = {
+            ...prev.editorState,
+            [prev.selectedTab]: editorStateJson,
+          };
+        }
+        return updates;
+      });
+    },
+    [editorRef, setState]
+  );
+
   return (
     <div className={styles.toolbar}>
-      <EditorToolbarButton
-        tooltip="Show playground view"
-        icon="beaker"
-        onClick={selectPlaygroundStory}
-      />
-      <EditorToolbarButton
-        tooltip={shouldAllowCopy ? "" : "Editor is empty"}
-        text={isCopied ? "Copied!" : "Copy"}
-        icon={isCopied ? "check" : "copy"}
-        color={isCopied ? "green" : undefined}
-        disabled={isCopied || !shouldAllowCopy}
-        onClick={onCopy}
-      />
-      {enableShare && (
+      <EditorTabs selectedTab={selectedTab} onTabChange={onTabChange} />
+      <section>
         <EditorToolbarButton
-          tooltip={shouldAllowShare ? "" : "Editor is empty"}
-          text={isShareCopied ? "Copied!" : "Share"}
-          icon={isShareCopied ? "check" : "share"}
-          color={isShareCopied ? "green" : undefined}
-          disabled={isShareCopied || !shouldAllowShare}
-          onClick={onShare}
+          tooltip={shouldAllowCopy ? "" : "Editor is empty"}
+          text={isCopied ? "Copied!" : "Copy"}
+          renderIcon={<Copy />}
+          disabled={isCopied || !shouldAllowCopy}
+          onClick={onCopy}
         />
-      )}
-      <EditorToolbarButton
-        text="Format"
-        icon="paintbrush"
-        onClick={onFormatCode}
-      />
-      <EditorToolbarButton text="Reset" icon="trash" onClick={onReset} />
-      <EditorToolbarDivider />
-      <EditorToolbarButton
-        icon="add"
-        smallPadding
-        onClick={() => onFontSizeChange(1)}
-      />
-      Font
-      <EditorToolbarButton
-        icon="subtract"
-        smallPadding
-        onClick={() => onFontSizeChange(-1)}
-      />
+        {enableShare && (
+          <EditorToolbarButton
+            tooltip={shouldAllowShare ? "" : "Editor is empty"}
+            text={isShareCopied ? "Copied!" : "Share"}
+            renderIcon={<Share />}
+            disabled={isShareCopied || !shouldAllowShare}
+            onClick={onShare}
+          />
+        )}
+        <EditorToolbarButton
+          text="Format"
+          renderIcon={<Edit />}
+          onClick={onFormatCode}
+        />
+        <EditorToolbarButton
+          text="Reset"
+          renderIcon={<Reset />}
+          onClick={onReset}
+        />
+      </section>
     </div>
   );
 };

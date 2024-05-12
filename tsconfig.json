@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["src/components/*"],
+      "@/icons": ["src/icons"],
       "@/codemirror/extensions": ["src/codemirror/extensions"],
       "@/codemirror/keymaps": ["src/codemirror/keymaps"],
       "@/consts": ["src/consts"],

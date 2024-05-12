@@ -1,5 +1,5 @@
-import React, { Suspense, useCallback, useMemo, useRef } from "react";
-import { Editor, EditorTabs, EditorToolbar } from "../Editor";
+import React, { Suspense, useMemo, useRef } from "react";
+import { Editor, EditorToolbar } from "../Editor";
 import {
   useInitialCode,
   useBroadcastEditorChanges,
@@ -36,47 +36,21 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
     ADDON_ID_FOR_PARAMETERS,
     DEFAULT_ADDON_PARAMETERS
   );
-  const [state, setState] = useAddonState<PlaygroundState>(
-    PANEL_ID,
-    DEFAULT_ADDON_STATE
-  );
+  const [state] = useAddonState<PlaygroundState>(PANEL_ID, DEFAULT_ADDON_STATE);
 
   const extensions = useMemo<Record<Tab, Extension[]>>(
     () => ({
       jsx: [
-        langs.html(),
-        langs.javascript(),
         playgroundAutocompletion(autocompletions),
         keymap.of(playgroundKeymaps),
+        langs.javascript({ jsx: true, typescript: true }),
       ],
       css: [langs.css()],
     }),
     [autocompletions]
   );
 
-  const { code, selectedTab, fontSize, hasInitialCodeLoaded, editorState } =
-    state;
-
-  const onTabChange = useCallback(
-    (newTab: Tab) => {
-      setState((prev) => {
-        const updates = {
-          ...prev,
-          selectedTab: newTab,
-        };
-        const editorStateJson =
-          editorRef.current?.view?.state?.toJSON?.(EDITOR_STATE_FIELDS);
-        if (editorStateJson) {
-          updates.editorState = {
-            ...prev.editorState,
-            [prev.selectedTab]: editorStateJson,
-          };
-        }
-        return updates;
-      });
-    },
-    [setState]
-  );
+  const { code, selectedTab, hasInitialCodeLoaded, editorState } = state;
 
   const editorInitialState = useMemo(
     () => ({
@@ -89,9 +63,8 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
   return (
     <AddonPanel active={active}>
       <div className={styles.panel}>
-        <EditorToolbar />
+        <EditorToolbar editorRef={editorRef} />
         <div className={styles.editorWrapper}>
-          <EditorTabs selectedTab={selectedTab} onTabChange={onTabChange} />
           <div className={styles.editor}>
             <Suspense fallback={"Loading Editor..."}>
               <Editor
@@ -102,9 +75,12 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
                 code={code[selectedTab]}
                 theme={theme}
                 extensions={extensions[selectedTab]}
-                style={{ fontSize }}
+                style={{ fontSize: 13 }}
                 onChange={updateCode}
                 initialState={editorInitialState}
+                setup={{
+                  foldGutter: false,
+                }}
               />
             </Suspense>
           </div>

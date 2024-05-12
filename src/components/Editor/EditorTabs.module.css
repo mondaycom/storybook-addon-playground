@@ -1,4 +1,7 @@
 .tabs {
-  border-inline-end: 1px solid rgba(0, 0, 0, 0.1);
-  min-width: 50px;
+  display: flex;
+  position: relative;
+  left: -8px;
+  flex: 1;
+  height: 100%;
 }
