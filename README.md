@@ -87,9 +87,6 @@ Install dependencies and start
 ```bash
 yarn
 yarn start
-# or
-npm i
-npm start
 ```
 
 Go to [localhost:6006](http://localhost:6006)
