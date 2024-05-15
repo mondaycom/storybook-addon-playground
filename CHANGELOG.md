@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.8.0...v1.9.0) (2024-05-15)
+
+
+### Features
+
+* new design ([#54](https://github.com/mondaycom/storybook-addon-playground/issues/54)) ([a911376](https://github.com/mondaycom/storybook-addon-playground/commit/a91137689566a3702683d2a543401c27bd09818f))
+
 # [1.8.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.7.1...v1.8.0) (2024-04-15)
 
 
