@@ -6,7 +6,7 @@ import styles from "./EditorToolbarButton.module.css";
 interface EditorToolbarButtonProps {
   tooltip?: string;
   text?: string;
-  renderIcon: React.ReactElement;
+  renderIcon: React.FC<React.SVGProps<SVGSVGElement>>;
   disabled?: boolean;
   smallPadding?: boolean;
   onClick?: () => void;
@@ -15,7 +15,7 @@ interface EditorToolbarButtonProps {
 const EditorToolbarButton: React.FC<EditorToolbarButtonProps> = ({
   tooltip,
   text,
-  renderIcon,
+  renderIcon: IconComponent,
   disabled,
   smallPadding,
   onClick,
@@ -29,7 +29,7 @@ const EditorToolbarButton: React.FC<EditorToolbarButtonProps> = ({
       [styles.smallPadding]: smallPadding,
     })}
   >
-    {renderIcon}
+    <IconComponent />
     {text && <span>{text}</span>}
   </IconButton>
 );

@@ -1,12 +1,11 @@
-import React from "react";
+import React, { SVGProps } from "react";
 import { fireEvent, render, within } from "@testing-library/react";
 import EditorToolbarButton from "../EditorToolbarButton";
+const IconMock: React.FC<SVGProps<SVGSVGElement>> = () => <span>Icon</span>;
 
 describe("EditorToolbarButton", () => {
   it("should render button correctly", () => {
-    const { getByRole } = render(
-      <EditorToolbarButton renderIcon={<span>Icon</span>} />
-    );
+    const { getByRole } = render(<EditorToolbarButton renderIcon={IconMock} />);
     const button = getByRole("button");
     expect(button).toBeInTheDocument();
   });
@@ -14,7 +13,7 @@ describe("EditorToolbarButton", () => {
   it("should render text within the button", () => {
     const text = "Button text";
     const { getByRole } = render(
-      <EditorToolbarButton text={text} renderIcon={<span>Icon</span>} />
+      <EditorToolbarButton text={text} renderIcon={IconMock} />
     );
     const button = getByRole("button");
     const textElement = within(button).getByText(text);
@@ -23,7 +22,7 @@ describe("EditorToolbarButton", () => {
 
   it("should render button as disabled", () => {
     const { getByRole } = render(
-      <EditorToolbarButton renderIcon={<span>Icon</span>} disabled />
+      <EditorToolbarButton renderIcon={IconMock} disabled />
     );
     const button = getByRole("button");
     expect(button).toBeDisabled();
@@ -32,10 +31,7 @@ describe("EditorToolbarButton", () => {
   it('should call the "onClick" function when a button is clicked', () => {
     const onClickMock = vi.fn();
     const { getByRole } = render(
-      <EditorToolbarButton
-        renderIcon={<span>Icon</span>}
-        onClick={onClickMock}
-      />
+      <EditorToolbarButton renderIcon={IconMock} onClick={onClickMock} />
     );
     const button = getByRole("button");
     fireEvent.click(button);
@@ -46,7 +42,7 @@ describe("EditorToolbarButton", () => {
     const onClickMock = vi.fn();
     const { getByRole } = render(
       <EditorToolbarButton
-        renderIcon={<span>Icon</span>}
+        renderIcon={IconMock}
         disabled
         onClick={onClickMock}
       />

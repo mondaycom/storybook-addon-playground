@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { SVGProps } from "react";
-const SvgShare = (props: SVGProps<SVGSVGElement>) => (
+const SvgShare = (props?: SVGProps<SVGSVGElement>) => (
   <svg
     width={18}
     height={18}
