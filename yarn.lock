@@ -3348,6 +3348,18 @@
     magic-string "^0.30.0"
     rollup "^2.25.0 || ^3.3.0"
 
+"@storybook/channels@7.6.20":
+  version "7.6.20"
+  resolved "https://registry.npmjs.org/@storybook/channels/-/channels-7.6.20.tgz#33d8292b1b16d7f504bf751c57a792477d1c3a9e"
+  integrity sha512-4hkgPSH6bJclB2OvLnkZOGZW1WptJs09mhQ6j6qLjgBZzL/ZdD6priWSd7iXrmPiN5TzUobkG4P4Dp7FjkiO7A==
+  dependencies:
+    "@storybook/client-logger" "7.6.20"
+    "@storybook/core-events" "7.6.20"
+    "@storybook/global" "^5.0.0"
+    qs "^6.10.0"
+    telejson "^7.2.0"
+    tiny-invariant "^1.3.1"
+
 "@storybook/channels@7.6.4":
   version "7.6.4"
   resolved "https://registry.npmjs.org/@storybook/channels/-/channels-7.6.4.tgz#d0af47f1f049c3ad77bcdefec54253f56b3b0a47"
@@ -3407,6 +3419,13 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
+"@storybook/client-logger@7.6.20":
+  version "7.6.20"
+  resolved "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-7.6.20.tgz#1d6e93443091cccd50e269371aa786172d0c4659"
+  integrity sha512-NwG0VIJQCmKrSaN5GBDFyQgTAHLNishUPLW1NrzqTDNAhfZUoef64rPQlinbopa0H4OXmlB+QxbQIb3ubeXmSQ==
+  dependencies:
+    "@storybook/global" "^5.0.0"
+
 "@storybook/client-logger@7.6.4":
   version "7.6.4"
   resolved "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-7.6.4.tgz#7533f5194903f554c297b0d327efee04c5accfbb"
@@ -3450,6 +3469,22 @@
     use-resize-observer "^9.1.0"
     util-deprecate "^1.0.2"
 
+"@storybook/components@^7.6.4":
+  version "7.6.20"
+  resolved "https://registry.npmjs.org/@storybook/components/-/components-7.6.20.tgz#09d044923142d2e087a1c4a43dec6731a42d2871"
+  integrity sha512-0d8u4m558R+W5V+rseF/+e9JnMciADLXTpsILrG+TBhwECk0MctIWW18bkqkujdCm8kDZr5U2iM/5kS1Noy7Ug==
+  dependencies:
+    "@radix-ui/react-select" "^1.2.2"
+    "@radix-ui/react-toolbar" "^1.0.4"
+    "@storybook/client-logger" "7.6.20"
+    "@storybook/csf" "^0.1.2"
+    "@storybook/global" "^5.0.0"
+    "@storybook/theming" "7.6.20"
+    "@storybook/types" "7.6.20"
+    memoizerific "^1.11.3"
+    use-resize-observer "^9.1.0"
+    util-deprecate "^1.0.2"
+
 "@storybook/core-client@7.6.4":
   version "7.6.4"
   resolved "https://registry.npmjs.org/@storybook/core-client/-/core-client-7.6.4.tgz#d38ddb80bbc6119017a8ba15b88c030cf03d27e0"
@@ -3485,6 +3520,13 @@
     pkg-dir "^5.0.0"
     pretty-hrtime "^1.0.3"
     resolve-from "^5.0.0"
+    ts-dedent "^2.0.0"
+
+"@storybook/core-events@7.6.20":
+  version "7.6.20"
+  resolved "https://registry.npmjs.org/@storybook/core-events/-/core-events-7.6.20.tgz#6648d661d1c96841a4c2a710a35759b01b6a06a1"
+  integrity sha512-tlVDuVbDiNkvPDFAu+0ou3xBBYbx9zUURQz4G9fAq0ScgBOs/bpzcRrFb4mLpemUViBAd47tfZKdH4MAX45KVQ==
+  dependencies:
     ts-dedent "^2.0.0"
 
 "@storybook/core-events@7.6.4":
@@ -3728,6 +3770,16 @@
     fs-extra "^11.1.0"
     read-pkg-up "^7.0.1"
 
+"@storybook/theming@7.6.20":
+  version "7.6.20"
+  resolved "https://registry.npmjs.org/@storybook/theming/-/theming-7.6.20.tgz#c932cd82c27314979d22d0e7867268e301f5f97c"
+  integrity sha512-iT1pXHkSkd35JsCte6Qbanmprx5flkqtSHC6Gi6Umqoxlg9IjiLPmpHbaIXzoC06DSW93hPj5Zbi1lPlTvRC7Q==
+  dependencies:
+    "@emotion/use-insertion-effect-with-fallbacks" "^1.0.0"
+    "@storybook/client-logger" "7.6.20"
+    "@storybook/global" "^5.0.0"
+    memoizerific "^1.11.3"
+
 "@storybook/theming@7.6.4", "@storybook/theming@^7.6.4":
   version "7.6.4"
   resolved "https://registry.npmjs.org/@storybook/theming/-/theming-7.6.4.tgz#cc81d0aee5fc80fe383cb6790e3a0e2ad80d2185"
@@ -3737,6 +3789,16 @@
     "@storybook/client-logger" "7.6.4"
     "@storybook/global" "^5.0.0"
     memoizerific "^1.11.3"
+
+"@storybook/types@7.6.20", "@storybook/types@^7.6.4":
+  version "7.6.20"
+  resolved "https://registry.npmjs.org/@storybook/types/-/types-7.6.20.tgz#b8d62b30914b35e6750b1f4937da532432f02890"
+  integrity sha512-GncdY3x0LpbhmUAAJwXYtJDUQEwfF175gsjH0/fxPkxPoV7Sef9TM41jQLJW/5+6TnZoCZP/+aJZTJtq3ni23Q==
+  dependencies:
+    "@storybook/channels" "7.6.20"
+    "@types/babel__core" "^7.0.0"
+    "@types/express" "^4.7.0"
+    file-system-cache "2.3.0"
 
 "@storybook/types@7.6.4", "@storybook/types@^7.5.0":
   version "7.6.4"
