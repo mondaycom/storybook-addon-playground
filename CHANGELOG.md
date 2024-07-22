@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/mondaycom/storybook-addon-playground/compare/v1.9.0...v1.9.1) (2024-07-22)
+
+
+### Bug Fixes
+
+* addon is not working on Storybook8 ([#57](https://github.com/mondaycom/storybook-addon-playground/issues/57)) ([4dc7417](https://github.com/mondaycom/storybook-addon-playground/commit/4dc7417f1245b6d5b9e6f2f97f241e3b9b98bac0))
+
 # [1.9.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.8.0...v1.9.0) (2024-05-15)
 
 

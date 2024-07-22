@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-playground",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "A playground to enable consumers learn how to use the component library or to reproduce bugs",
   "type": "module",
   "keywords": [
