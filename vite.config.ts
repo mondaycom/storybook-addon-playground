@@ -8,19 +8,5 @@ export default defineConfig({
   build: {
     sourcemap: true,
   },
-  test: {
-    globals: true,
-    environment: "jsdom",
-    setupFiles: "src/tests/setup.ts",
-    include: ["**/__tests__/**/*.test.ts", "**/__tests__/**/*.test.tsx"],
-    clearMocks: true,
-    typecheck: {
-      enabled: true,
-    },
-    css: {
-      modules: {
-        classNameStrategy: "non-scoped",
-      },
-    },
-  },
+  assetsInclude: ["/sb-preview/runtime.js"],
 });

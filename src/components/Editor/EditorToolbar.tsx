@@ -74,7 +74,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = ({ editorRef }) => {
         <EditorToolbarButton
           tooltip={shouldAllowCopy ? "" : "Editor is empty"}
           text={isCopied ? "Copied!" : "Copy"}
-          renderIcon={<Copy />}
+          renderIcon={Copy}
           disabled={isCopied || !shouldAllowCopy}
           onClick={onCopy}
         />
@@ -82,19 +82,19 @@ const EditorToolbar: React.FC<EditorToolbarProps> = ({ editorRef }) => {
           <EditorToolbarButton
             tooltip={shouldAllowShare ? "" : "Editor is empty"}
             text={isShareCopied ? "Copied!" : "Share"}
-            renderIcon={<Share />}
+            renderIcon={Share}
             disabled={isShareCopied || !shouldAllowShare}
             onClick={onShare}
           />
         )}
         <EditorToolbarButton
           text="Format"
-          renderIcon={<Edit />}
+          renderIcon={Edit}
           onClick={onFormatCode}
         />
         <EditorToolbarButton
           text="Reset"
-          renderIcon={<Reset />}
+          renderIcon={Reset}
           onClick={onReset}
         />
       </section>

@@ -1,9 +1,10 @@
 import React, { memo, useCallback } from "react";
 import { useStorybookApi } from "@storybook/manager-api";
-import { Icons, IconButton } from "@storybook/components";
+import { IconButton } from "@storybook/components";
 import { Addon_RenderOptions } from "@storybook/types";
 import styles from "./Tool.module.css";
 import { usePlaygroundState } from "@/hooks";
+import { Beaker } from "@/icons";
 
 const Tool: React.FC<Addon_RenderOptions> = () => {
   const { selectStory } = useStorybookApi();
@@ -20,7 +21,7 @@ const Tool: React.FC<Addon_RenderOptions> = () => {
       onClick={selectPlaygroundStory}
       className={styles.tool}
     >
-      <Icons icon="beaker" />
+      <Beaker />
     </IconButton>
   );
 };
