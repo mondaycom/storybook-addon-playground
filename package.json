@@ -57,6 +57,7 @@
   "dependencies": {
     "@storybook/addon-links": "^7.6.4",
     "@storybook/components": "^7.6.4",
+    "@storybook/core-events": "^7.6.4",
     "@uiw/codemirror-extensions-langs": "^4.23.0",
     "@uiw/codemirror-theme-github": "^4.23.0",
     "@uiw/react-codemirror": "^4.23.0",
@@ -110,9 +111,8 @@
     "vitest": "^2.0.3"
   },
   "peerDependencies": {
-    "@storybook/core-events": ">=7.0.0",
-    "@storybook/manager-api": ">=7.0.0",
-    "@storybook/preview-api": ">=7.0.0",
+    "@storybook/manager-api": "^7.0.0 || ^8.0.0",
+    "@storybook/preview-api": "^7.0.0 || ^8.0.0",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   }
