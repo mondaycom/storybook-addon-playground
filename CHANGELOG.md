@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/mondaycom/storybook-addon-playground/compare/v1.9.1...v1.9.2) (2024-07-23)
+
+
+### Bug Fixes
+
+* include core-events in bundle (not included by default in SBv8 as in SBv7 ([#58](https://github.com/mondaycom/storybook-addon-playground/issues/58)) ([8ebe23e](https://github.com/mondaycom/storybook-addon-playground/commit/8ebe23e7f9c9e4e30485765352a78b8c285b20fb))
+
 ## [1.9.1](https://github.com/mondaycom/storybook-addon-playground/compare/v1.9.0...v1.9.1) (2024-07-22)
 
 
