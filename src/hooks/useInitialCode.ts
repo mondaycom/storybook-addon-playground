@@ -12,7 +12,7 @@ import {
   SNIPPET_SHARE_QUERY_ID,
 } from "@/consts";
 import { Code, PlaygroundParameters, PlaygroundState } from "@/types";
-import { decodeAndDecompress } from "@/utils";
+import { decodeAndDecompress, loadCodeFromStorage } from "@/utils";
 
 const useInitialCode = () => {
   const { getQueryParam } = useStorybookApi();
@@ -34,15 +34,22 @@ const useInitialCode = () => {
     return decodeAndDecompress(shared);
   }, [getQueryParam]);
 
+  const persistedCode = useMemo(() => {
+    return loadCodeFromStorage();
+  }, []);
+
   const initialCodeToSet = useMemo(() => {
     if (enableShare && hasValidCode(sharedCode)) {
       return sharedCode;
+    }
+    if (hasValidCode(persistedCode)) {
+      return persistedCode;
     }
     if (hasValidCode(introCode)) {
       return introCode;
     }
     return DEFAULT_ADDON_STATE.code;
-  }, [enableShare, sharedCode, introCode]);
+  }, [enableShare, sharedCode, persistedCode, introCode]);
 
   useEffect(() => {
     if (hasInitialCodeLoaded || introCode === null) {
