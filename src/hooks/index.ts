@@ -8,3 +8,4 @@ export { default as useAutoOpenPlayground } from "./useAutoOpenPlayground";
 export { default as useBroadcastEditorChanges } from "./useBroadcastEditorChanges";
 export { default as usePlaygroundPreviewCode } from "./usePlaygroundPreviewCode";
 export { default as useEditorTheme } from "./useEditorTheme";
+export { default as usePersistence } from "./usePersistence";
