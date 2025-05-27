@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.9.2...v1.10.0) (2025-05-27)
+
+
+### Features
+
+* integrate persistence to keep code between refreshes ([#59](https://github.com/mondaycom/storybook-addon-playground/issues/59)) ([58b184b](https://github.com/mondaycom/storybook-addon-playground/commit/58b184b3c581307555e65fb65b8687c2f3a0e55f))
+
 ## [1.9.2](https://github.com/mondaycom/storybook-addon-playground/compare/v1.9.1...v1.9.2) (2024-07-23)
 
 
