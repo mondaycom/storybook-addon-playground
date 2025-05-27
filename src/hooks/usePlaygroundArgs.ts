@@ -1,7 +1,13 @@
-import { useAddonState } from "@storybook/manager-api";
+import { useAddonState, useParameter } from "@storybook/manager-api";
 import { useCallback } from "react";
-import { PlaygroundArgs, PlaygroundState } from "@/types";
-import { DEFAULT_ADDON_STATE, PANEL_ID } from "@/consts";
+import { PlaygroundArgs, PlaygroundState, PlaygroundParameters } from "@/types";
+import {
+  DEFAULT_ADDON_STATE,
+  PANEL_ID,
+  ADDON_ID_FOR_PARAMETERS,
+  DEFAULT_ADDON_PARAMETERS,
+} from "@/consts";
+import { clearStoredCode } from "@/utils";
 
 const usePlaygroundArgs = (): PlaygroundArgs => {
   const [state, setState] = useAddonState<PlaygroundState>(
@@ -9,6 +15,10 @@ const usePlaygroundArgs = (): PlaygroundArgs => {
     DEFAULT_ADDON_STATE
   );
   const { code, selectedTab } = state;
+  const { introCode } = useParameter<PlaygroundParameters>(
+    ADDON_ID_FOR_PARAMETERS,
+    DEFAULT_ADDON_PARAMETERS
+  );
 
   const updateCode = useCallback(
     (newCode: string) => {
@@ -19,9 +29,12 @@ const usePlaygroundArgs = (): PlaygroundArgs => {
   );
 
   const resetCode = useCallback(() => {
-    const updatedCode = { ...code, [selectedTab]: "" };
+    clearStoredCode();
+
+    const resetValue = introCode?.[selectedTab] ?? "";
+    const updatedCode = { ...code, [selectedTab]: resetValue };
     setState((state) => ({ ...state, code: updatedCode }));
-  }, [code, selectedTab, setState]);
+  }, [code, selectedTab, setState, introCode]);
 
   return { updateCode, resetCode };
 };

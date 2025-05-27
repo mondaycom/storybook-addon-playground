@@ -6,6 +6,7 @@ import {
   useAutoOpenPlayground,
   useEditorTheme,
   usePlaygroundArgs,
+  usePersistence,
 } from "@/hooks";
 import { AddonPanel } from "@storybook/components";
 import { Addon_RenderOptions } from "@storybook/types";
@@ -30,6 +31,7 @@ const Panel: React.FC<Addon_RenderOptions> = ({ active }) => {
   useInitialCode();
   useBroadcastEditorChanges();
   useAutoOpenPlayground();
+  usePersistence();
   const theme = useEditorTheme();
   const { updateCode } = usePlaygroundArgs();
   const { autocompletions } = useParameter<PlaygroundParameters>(
