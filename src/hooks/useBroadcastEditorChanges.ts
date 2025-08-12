@@ -6,12 +6,13 @@ import {
   PLAYGROUND_STORY_PREPARED,
 } from "@/consts";
 import { useAddonState, useStorybookApi } from "@storybook/manager-api";
+import { STORY_RENDERED } from "@storybook/core-events";
 import usePlaygroundState from "./usePlaygroundState";
 import { PlaygroundState } from "@/types";
 
 const useBroadcastEditorChanges = () => {
   const { emit, on, off } = useStorybookApi();
-  const { isPlaygroundStorySelected } = usePlaygroundState();
+  const { isPlaygroundStorySelected, playgroundStoryId } = usePlaygroundState();
   const [state] = useAddonState<PlaygroundState>(PANEL_ID, DEFAULT_ADDON_STATE);
   const { code, hasInitialCodeLoaded } = state;
 
@@ -25,12 +26,30 @@ const useBroadcastEditorChanges = () => {
     }
 
     if (isPlaygroundStorySelected) {
-      handleEditorChange();
-      return;
+      const handleStoryRendered = (renderedStoryId: string) => {
+        if (renderedStoryId === playgroundStoryId) {
+          handleEditorChange();
+        }
+      };
+
+      on(STORY_RENDERED, handleStoryRendered);
+      return () => off(STORY_RENDERED, handleStoryRendered);
     }
 
     on(PLAYGROUND_STORY_PREPARED, handleEditorChange);
-  }, [emit, code, hasInitialCodeLoaded, isPlaygroundStorySelected, on, off]);
+
+    return () => {
+      off(PLAYGROUND_STORY_PREPARED, handleEditorChange);
+    };
+  }, [
+    emit,
+    code,
+    hasInitialCodeLoaded,
+    isPlaygroundStorySelected,
+    playgroundStoryId,
+    on,
+    off,
+  ]);
 };
 
 export default useBroadcastEditorChanges;

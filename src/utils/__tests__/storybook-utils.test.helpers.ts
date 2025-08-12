@@ -6,9 +6,7 @@ export const componentEntry: ComponentEntry = {
   name: "Story",
   depth: 0,
   children: ["story--story"],
-  isRoot: false,
-  isComponent: true,
-  isLeaf: false,
+  tags: ["story"],
 };
 
 export const storyEntry: StoryEntry = {
@@ -18,10 +16,6 @@ export const storyEntry: StoryEntry = {
   id: "story--story",
   importPath: "path/to/story",
   initialArgs: {},
-  isComponent: false,
-  isLeaf: true,
-  isRoot: false,
-  kind: "Story",
   name: "Story",
   parameters: {},
   parent: "story",

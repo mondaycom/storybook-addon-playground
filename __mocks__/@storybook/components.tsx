@@ -6,8 +6,6 @@ interface IconButtonProps {
   className?: string;
 }
 
-export * from "@storybook/components";
-
 export const IconButton: React.FC<React.PropsWithChildren<IconButtonProps>> = ({
   onClick,
   disabled,

@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import {
   useAddonState,
   useParameter,
@@ -16,11 +16,13 @@ import { decodeAndDecompress, loadCodeFromStorage } from "@/utils";
 
 const useInitialCode = () => {
   const { getQueryParam } = useStorybookApi();
+  const initializedRef = useRef(false);
   const [state, setState] = useAddonState<PlaygroundState>(
     PANEL_ID,
     DEFAULT_ADDON_STATE
   );
   const { hasInitialCodeLoaded } = state;
+
   const { introCode, share: enableShare } = useParameter<PlaygroundParameters>(
     ADDON_ID_FOR_PARAMETERS,
     DEFAULT_ADDON_PARAMETERS
@@ -52,16 +54,21 @@ const useInitialCode = () => {
   }, [enableShare, sharedCode, persistedCode, introCode]);
 
   useEffect(() => {
-    if (hasInitialCodeLoaded || introCode === null) {
+    // Use ref to prevent multiple initializations
+    if (hasInitialCodeLoaded || initializedRef.current) {
       return;
     }
 
-    setState((state) => ({
-      ...state,
-      code: initialCodeToSet,
-      hasInitialCodeLoaded: true,
-    }));
-  }, [hasInitialCodeLoaded, introCode, setState, initialCodeToSet]);
+    initializedRef.current = true;
+
+    setTimeout(() => {
+      setState((prevState) => ({
+        ...prevState,
+        code: initialCodeToSet,
+        hasInitialCodeLoaded: true,
+      }));
+    }, 0);
+  }, [hasInitialCodeLoaded, setState, initialCodeToSet]);
 };
 
 function hasValidCode(code: Code) {
