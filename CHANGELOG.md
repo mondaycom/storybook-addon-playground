@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.10.0...v2.0.0) (2025-08-12)
+
+
+### Features
+
+* trigger major version release ([db7b06b](https://github.com/mondaycom/storybook-addon-playground/commit/db7b06b6b478a196901b50338c342671636c904c))
+
+
+### BREAKING CHANGES
+
+* This commit forces a major version bump to release the Storybook v8 upgrade
+
 # [1.10.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.9.2...v1.10.0) (2025-05-27)
 
 
