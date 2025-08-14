@@ -58,7 +58,6 @@
   "dependencies": {
     "@storybook/addon-links": "^8.6.14",
     "@storybook/components": "^8.6.14",
-    "@storybook/core-events": "^8.6.14",
     "@uiw/codemirror-extensions-langs": "^4.23.0",
     "@uiw/codemirror-theme-github": "^4.23.0",
     "@uiw/react-codemirror": "^4.23.0",

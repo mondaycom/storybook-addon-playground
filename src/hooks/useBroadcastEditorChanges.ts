@@ -6,7 +6,6 @@ import {
   PLAYGROUND_STORY_PREPARED,
 } from "@/consts";
 import { useAddonState, useStorybookApi } from "@storybook/manager-api";
-import { STORY_RENDERED } from "@storybook/core-events";
 import usePlaygroundState from "./usePlaygroundState";
 import { PlaygroundState } from "@/types";
 
@@ -32,8 +31,8 @@ const useBroadcastEditorChanges = () => {
         }
       };
 
-      on(STORY_RENDERED, handleStoryRendered);
-      return () => off(STORY_RENDERED, handleStoryRendered);
+      on("storyRendered", handleStoryRendered);
+      return () => off("storyRendered", handleStoryRendered);
     }
 
     on(PLAYGROUND_STORY_PREPARED, handleEditorChange);
