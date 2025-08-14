@@ -9,7 +9,6 @@ import {
   TOOL_ID,
 } from "./consts";
 import { PlaygroundParameters } from "@/types";
-import { STORY_PREPARED } from "@storybook/core-events";
 import { getStoryId } from "@/utils";
 
 addons.register(ADDON_ID, ({ getCurrentParameter, on, emit, resolveStory }) => {
@@ -19,7 +18,7 @@ addons.register(ADDON_ID, ({ getCurrentParameter, on, emit, resolveStory }) => {
     return storyId;
   }
 
-  on(STORY_PREPARED, ({ id: preparedStoryId }) => {
+  on("storyPrepared", ({ id: preparedStoryId }) => {
     const resolvedStory = resolveStory(getPlaygroundStoryId());
     if (preparedStoryId === getStoryId(resolvedStory)) {
       emit(PLAYGROUND_STORY_PREPARED);
