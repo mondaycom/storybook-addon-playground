@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/mondaycom/storybook-addon-playground/compare/v2.0.0...v2.0.1) (2025-08-14)
+
+
+### Bug Fixes
+
+* use strings instead of core-events ([#64](https://github.com/mondaycom/storybook-addon-playground/issues/64)) ([7dd280d](https://github.com/mondaycom/storybook-addon-playground/commit/7dd280d829125c5450df2186994e253c01e95a5d))
+
 # [2.0.0](https://github.com/mondaycom/storybook-addon-playground/compare/v1.10.0...v2.0.0) (2025-08-12)
 
 
